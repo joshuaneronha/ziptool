@@ -3,7 +3,7 @@ import pandas as pd
 from ipumspy import IpumsApiClient, UsaExtract, readers, ddi
 import ipumspy
 from config import *
-from pipeline import *
+from ziptool.pipeline import *
 import weighted
 from pathlib import Path
 import time
