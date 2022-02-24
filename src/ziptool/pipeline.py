@@ -3,9 +3,12 @@ import shutil
 import urllib
 import zipfile
 from functools import lru_cache
+import os
 from os.path import exists
 from pathlib import Path
 from typing import Dict, List, Union
+import pkg_resources
+import tempfile
 
 import geopandas as gpd
 import numpy as np
@@ -25,33 +28,35 @@ FilenameType = Union[str, Path]
 3. better integration over all
 """
 
-ALBERS_EPSG_ID = 5070
 
-# hud_crosswalk = pd.read_excel("resources/ZIP_TRACT_122021.xlsx")
-
+def load_crosswalk():
+    stream = pkg_resources.resource_stream(__name__, 'resources/ZIP_TRACT_122021.XLSX')
+    return pd.read_excel(stream)
 
 @lru_cache(maxsize=100)
 def get_state_intersections(state_fips_code: str) -> gpd.GeoDataFrame:
-    puma = gpd.read_file("data/tl_2019_" + state_fips_code + "_puma10.shp").to_crs(
+
+    os.chdir(shp_dir.name)
+
+    puma = gpd.read_file("tl_2019_" + state_fips_code + "_puma10.shp").to_crs(
         epsg=ALBERS_EPSG_ID
     )
-    tract = gpd.read_file("data/tl_2019_" + state_fips_code + "_tract.shp").to_crs(
+    tract = gpd.read_file("tl_2019_" + state_fips_code + "_tract.shp").to_crs(
         epsg=ALBERS_EPSG_ID
     )
 
     return gpd.overlay(puma, tract, how="intersection", keep_geom_type=False)
 
 
-def download_file(url: str, output_filename: FilenameType):
-    """
-    Download the URL to `output_filename`
-    """
-    with requests.get(url, stream=True) as response:
-        response.raise_for_status()
-        with open(output_filename, "wb") as outfile:
-            for chunk in response.iter_content(chunk_size=8192):
-                outfile.write(chunk)
-
+# def download_file(url: str, output_filename: FilenameType):
+#     """
+#     Download the URL to `output_filename`
+#     """
+#     with requests.get(url, stream=True) as response:
+#         response.raise_for_status()
+#         with open(output_filename, "wb") as outfile:
+#             for chunk in response.iter_content(chunk_size=8192):
+#                 outfile.write(chunk
 
 def get_fips_code_from_abbr(state: str) -> str:
     """
@@ -88,6 +93,13 @@ def data_by_zip(zips: List[str], acs_data, variables):
 
     ans_dict = {}
 
+    global hud_crosswalk
+    global shp_dir
+
+    shp_dir = tempfile.TemporaryDirectory()
+
+    hud_crosswalk = load_crosswalk()
+
     # TODO(khw): zip is a keyword, change the name
     for zip in zips:
         tracts, state_fips_code = zip_to_tract(zip)
@@ -115,23 +127,26 @@ def download_data(state_fip_code):
     Returns:
         Saves .shp files for both PUMA and census tracts within the data directory.
     """
+
+    os.chdir(shp_dir.name)
+
     tract_file = "tl_2019_" + state_fip_code + "_tract"
     puma_file = "tl_2019_" + state_fip_code + "_puma10"
 
-    if exists("data/" + tract_file + ".shp"):
+    if exists(tract_file + ".shp"):
         pass
     else:
         req, _ = urllib.request.urlretrieve(
             "https://www2.census.gov/geo/tiger/TIGER2019/PUMA/" + puma_file + ".zip"
         )
         zipped = zipfile.ZipFile(req, "r")
-        zipped.extractall(path="data/")
+        zipped.extractall()
 
         req, _ = urllib.request.urlretrieve(
             "https://www2.census.gov/geo/tiger/TIGER2019/TRACT/" + tract_file + ".zip"
         )
         zipped = zipfile.ZipFile(req, "r")
-        zipped.extractall(path="data/")
+        zipped.extractall()
 
 
 def zip_to_tract(zip):
@@ -174,6 +189,9 @@ def tracts_to_puma(tracts, state_fip_code: str):
     Returns:
         series containing ratio of population for each PUMA
     """
+    global ALBERS_EPSG_ID
+    ALBERS_EPSG_ID = 5070
+
     intersection_gdf = get_state_intersections(state_fip_code)
     intersection_gdf["shape_area"] = intersection_gdf.area
     intersection_gdf["GEOID"] = intersection_gdf["GEOID"].astype("int")
@@ -196,6 +214,9 @@ def tracts_to_puma(tracts, state_fip_code: str):
     )
     joined["weighted_ratios"] = joined["ratios"] * joined[1]
     return joined.groupby("PUMACE10").sum()["weighted_ratios"]
+
+
+# def clear_tmp_files():
 
 
 # variables, null_val, type,
@@ -281,3 +302,7 @@ def get_acs_data(
         }
 
     return outer_dict
+
+ipums_df = pd.read_csv('acs_data/usa_00013.csv')
+pulled = data_by_zip(['02835', '79901','75204', '90210'],ipums_df, {"HHINCOME": {"null": 9999999, "type": 'household'}})
+print(pulled)

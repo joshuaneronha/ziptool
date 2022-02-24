@@ -19,3 +19,5 @@ dist
 
 # Mac cruft
 .DS_Store
+acs_data/usa_00013.csv
+acs_data/usa_00013.xml
