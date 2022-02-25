@@ -3,35 +3,49 @@ import tempfile
 import urllib
 from os.path import exists
 import zipfile
+import requests
+import geopandas as gpd
 
 shp_dir = tempfile.TemporaryDirectory()
+
+
+def download_file(url: str, output_filename):
+    """
+    Download the URL to `output_filename`
+    """
+
+    os.chdir(shp_dir.name)
+
+    with requests.get(url, stream=True) as response:
+        response.raise_for_status()
+        with open(output_filename, "wb") as outfile:
+            for chunk in response.iter_content(chunk_size=8192):
+                outfile.write(chunk)
+
+download_file("https://www2.census.gov/geo/tiger/TIGER2019/PUMA/tl_2019_44_puma10.zip", "tl_2019_44_puma10.zip")
+
+def get_state_intersections(state_fips_code: str) -> gpd.GeoDataFrame:
+
+    os.chdir(shp_dir.name)
+
+    ALBERS_EPSG_ID = 5760
+
+    puma_name = "tl_2019_44_puma10.zip"
+    tract_name = "tl_2019_44_puma10.zip"
+
+    puma = gpd.read_file(puma_name).to_crs(
+        epsg=ALBERS_EPSG_ID
+    )
+    tract = gpd.read_file(tract_name).to_crs(
+        epsg=ALBERS_EPSG_ID
+    )
+
+    return gpd.overlay(puma, tract, how="intersection", keep_geom_type=False)
+
+
 os.chdir(shp_dir.name)
 
-shp_dir
-
-tempfile.TemporaryFile()
-
-hi = tempfile.TemporaryFile()
-hi.write(b'yo')
-
-hi
-
-fp
-
-    with tempfile.TemporaryFile() as fp:
-        fp.write(b'Hello world!')
-
-shp_dir
-fp
-
-shp_dir
-
-shp_dir.TemporaryFile()
-shp_dir
-
-download_data('46')
-
-shp_data = tempfile.TemporaryDirectory()
+get_state_intersections('44')
 
 def download_data(state_fip_code):
     """
@@ -64,3 +78,7 @@ def download_data(state_fip_code):
         )
         zipped = zipfile.ZipFile(req, "r")
         zipped.extractall()
+
+download_data('01')
+
+shp_dir.cleanup()

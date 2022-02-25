@@ -1,7 +1,6 @@
 import json
 import shutil
 import urllib
-import zipfile
 from functools import lru_cache
 import os
 from os.path import exists
@@ -19,15 +18,7 @@ import wquantiles
 
 pd.options.mode.chained_assignment = None  # default='warn'
 
-
 FilenameType = Union[str, Path]
-
-## things I want to implement:
-"""
-2. try to infer invalid data? maybe try to implemet with ipumspy
-3. better integration over all
-"""
-
 
 def load_crosswalk():
     stream = pkg_resources.resource_stream(__name__, 'resources/ZIP_TRACT_122021.XLSX')
@@ -38,25 +29,30 @@ def get_state_intersections(state_fips_code: str) -> gpd.GeoDataFrame:
 
     os.chdir(shp_dir.name)
 
-    puma = gpd.read_file("tl_2019_" + state_fips_code + "_puma10.shp").to_crs(
+    puma_name = 'tl_2019_' + state_fips_code + "_puma10.zip"
+    tract_name = 'tl_2019_' + state_fips_code + "_tract.zip"
+
+    puma = gpd.read_file(puma_name).to_crs(
         epsg=ALBERS_EPSG_ID
     )
-    tract = gpd.read_file("tl_2019_" + state_fips_code + "_tract.shp").to_crs(
+    tract = gpd.read_file(tract_name).to_crs(
         epsg=ALBERS_EPSG_ID
     )
 
     return gpd.overlay(puma, tract, how="intersection", keep_geom_type=False)
 
+def download_file(url: str, output_filename: FilenameType):
+    """
+    Download the URL to `output_filename`
+    """
 
-# def download_file(url: str, output_filename: FilenameType):
-#     """
-#     Download the URL to `output_filename`
-#     """
-#     with requests.get(url, stream=True) as response:
-#         response.raise_for_status()
-#         with open(output_filename, "wb") as outfile:
-#             for chunk in response.iter_content(chunk_size=8192):
-#                 outfile.write(chunk
+    os.chdir(shp_dir.name)
+
+    with requests.get(url, stream=True) as response:
+        response.raise_for_status()
+        with open(output_filename, "wb") as outfile:
+            for chunk in response.iter_content(chunk_size=8192):
+                outfile.write(chunk)
 
 def get_fips_code_from_abbr(state: str) -> str:
     """
@@ -75,7 +71,6 @@ def get_fips_code_from_abbr(state: str) -> str:
         raise KeyError(f"No such abbreviation: {state}")
 
     return obj.fips
-
 
 # var_of_interest, null_val, type
 def data_by_zip(zips: List[str], acs_data, variables):
@@ -107,7 +102,7 @@ def data_by_zip(zips: List[str], acs_data, variables):
         if sum([x[1] for x in tracts]) < 1e-7:
             raise ValueError(f"{zip} is not a valid residential zip code!")
 
-        download_data(state_fips_code)
+        get_shape_files(state_fips_code)
         puma_ratios = tracts_to_puma(tracts, state_fips_code)
 
         ans = get_acs_data(acs_data, variables, int(state_fips_code), puma_ratios)
@@ -116,7 +111,7 @@ def data_by_zip(zips: List[str], acs_data, variables):
     return ans_dict
 
 
-def download_data(state_fip_code):
+def get_shape_files(state_fip_code):
     """
     For a given state (in particular its FIPS code), downloads its census tracts and PUMA shapefiles
     from the Census Bureau. The functions skips the download if the file already has been fetched!
@@ -128,26 +123,17 @@ def download_data(state_fip_code):
         Saves .shp files for both PUMA and census tracts within the data directory.
     """
 
-    os.chdir(shp_dir.name)
-
     tract_file = "tl_2019_" + state_fip_code + "_tract"
     puma_file = "tl_2019_" + state_fip_code + "_puma10"
 
     if exists(tract_file + ".shp"):
         pass
     else:
-        req, _ = urllib.request.urlretrieve(
-            "https://www2.census.gov/geo/tiger/TIGER2019/PUMA/" + puma_file + ".zip"
-        )
-        zipped = zipfile.ZipFile(req, "r")
-        zipped.extractall()
+            puma_url = "https://www2.census.gov/geo/tiger/TIGER2019/PUMA/" + puma_file + ".zip"
+            download_file(puma_url, puma_url.split('/')[-1])
 
-        req, _ = urllib.request.urlretrieve(
-            "https://www2.census.gov/geo/tiger/TIGER2019/TRACT/" + tract_file + ".zip"
-        )
-        zipped = zipfile.ZipFile(req, "r")
-        zipped.extractall()
-
+            tract_url = "https://www2.census.gov/geo/tiger/TIGER2019/TRACT/" + tract_file + ".zip"
+            download_file(tract_url, tract_url.split('/')[-1])
 
 def zip_to_tract(zip):
     """
