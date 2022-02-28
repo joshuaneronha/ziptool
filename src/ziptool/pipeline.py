@@ -129,11 +129,11 @@ def get_shape_files(state_fip_code):
     if exists(tract_file + ".shp"):
         pass
     else:
-            puma_url = "https://www2.census.gov/geo/tiger/TIGER2019/PUMA/" + puma_file + ".zip"
-            download_file(puma_url, puma_url.split('/')[-1])
+        puma_url = "https://www2.census.gov/geo/tiger/TIGER2019/PUMA/" + puma_file + ".zip"
+        download_file(puma_url, puma_url.split('/')[-1])
 
-            tract_url = "https://www2.census.gov/geo/tiger/TIGER2019/TRACT/" + tract_file + ".zip"
-            download_file(tract_url, tract_url.split('/')[-1])
+        tract_url = "https://www2.census.gov/geo/tiger/TIGER2019/TRACT/" + tract_file + ".zip"
+        download_file(tract_url, tract_url.split('/')[-1])
 
 def zip_to_tract(zip):
     """
@@ -182,24 +182,23 @@ def tracts_to_puma(tracts, state_fip_code: str):
     intersection_gdf["shape_area"] = intersection_gdf.area
     intersection_gdf["GEOID"] = intersection_gdf["GEOID"].astype("int")
 
-    # TODO(jn): Make this comprehensible
-    grouped_gdf = intersection_gdf.groupby("GEOID").agg(lambda x: list(x))[
-        ["PUMACE10", "shape_area"]
-    ]
-    grouped_gdf["ratios"] = grouped_gdf["shape_area"].apply(
-        lambda x: [y / sum(x) for y in x]
-    )
+    alpha = intersection_gdf[["GEOID", "PUMACE10", "shape_area"]].set_index("GEOID")
+    bravo = intersection_gdf[["GEOID", "PUMACE10", "shape_area"]].groupby('GEOID').sum()
 
-    sorted = grouped_gdf.loc[[int(x[0]) for x in tracts]][
-        ["PUMACE10", "ratios"]
-    ].explode(column=["PUMACE10", "ratios"])
-    sorted["ratios"] = sorted["ratios"].apply(lambda x: 1 if x > 0.99 else x)
-    out = sorted[sorted["ratios"] > (1 - 0.99)]
-    joined = out.join(
-        pd.DataFrame(tracts).astype({0: "int", 1: "float32"}).set_index(0)
-    )
-    joined["weighted_ratios"] = joined["ratios"] * joined[1]
-    return joined.groupby("PUMACE10").sum()["weighted_ratios"]
+    charlie = alpha.join(bravo,rsuffix='_total',how='inner')
+    charlie['ratio'] = charlie['shape_area'] / charlie['shape_area_total']
+
+    tracts_of_interest = [int(x[0]) for x in tracts]
+
+    delta = charlie[["PUMACE10", "ratio"]].loc[tracts_of_interest]
+    delta["rounded_ratio"] = delta["ratio"].apply(lambda x: 1 if x > 0.99 else x)
+    echo = delta[delta["rounded_ratio"] > (1 - 0.99)]
+    foxtrot =  echo.join(
+            pd.DataFrame(tracts, columns = ["GEOID", "PUMARAT"]).astype({"GEOID": "int", "PUMARAT": "float32"}).set_index("GEOID")
+        )
+    foxtrot["weighted_ratios"] = foxtrot["rounded_ratio"] * foxtrot["PUMARAT"]
+
+    return foxtrot.groupby("PUMACE10").sum()["weighted_ratios"]
 
 
 # def clear_tmp_files():
