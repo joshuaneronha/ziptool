@@ -182,8 +182,10 @@ def tracts_to_puma(tracts, state_fips_code: str):
     intersection_gdf["shape_area"] = intersection_gdf.area
     intersection_gdf["GEOID"] = intersection_gdf["GEOID"].astype("int")
 
-    intersection_gdf = intersection_gdf[["GEOID", "PUMACE10", "shape_area"]].set_index("GEOID")
+    intersection_gdf = intersection_gdf[["GEOID", "PUMACE10", "shape_area"]]
     tract_areas = intersection_gdf[["GEOID", "PUMACE10", "shape_area"]].groupby('GEOID').sum()
+
+    intersection_gdf = intersection_gdf.set_index("GEOID")
 
     joined = intersection_gdf.join(tract_areas,rsuffix='_total',how='inner')
     joined['ratio'] = joined['shape_area'] / joined['shape_area_total']
@@ -230,50 +232,31 @@ def get_acs_data(
         std_list = []
 
         # TODO(jn) something like this to DRY this out
-        # rel_df = df if var_type = "individual" else df[df["PERNUM"] == 1]
+
         for index, i in enumerate(pumas):
             this_puma = grouped.get_group(int(pumas.index[index]))
 
-            if var_type == "household":
-                this_puma[variable] = this_puma[variable].astype(float)
-                this_puma = this_puma[this_puma["PERNUM"] == 1]
-                this_puma = this_puma[this_puma[variable] != null_val]
+            rel_puma = this_puma if var_type == "individual" else this_puma[this_puma["PERNUM"] == 1]
+            chosen_weight = "PERWT" if var_type == "individual" else "HHWT"
 
-                this_puma["weighted"] = this_puma[variable] * this_puma["HHWT"]
-                avg = this_puma["weighted"].sum() / this_puma["HHWT"].sum()
-                avg_list.append(avg * i)
+            # rel_puma[variable] = rel_puma[variable].astype(float)
+            no_null = rel_puma[rel_puma[variable] != null_val]
 
-                median = wquantiles.median(this_puma[variable], this_puma["HHWT"])
-                median_list.append(median * i)
+            no_null["weighted"] = no_null[variable] * no_null[chosen_weight]
+            avg = no_null["weighted"].sum() / no_null[chosen_weight].sum()
+            avg_list.append(avg * i)
 
-                std = np.sqrt(
-                    (((this_puma[variable] - avg) ** 2) * this_puma["HHWT"]).sum()
+            median = wquantiles.median(no_null[variable], no_null[chosen_weight])
+            median_list.append(median * i)
+
+            std = np.sqrt(
+                    (((no_null[variable] - avg) ** 2) * no_null[chosen_weight]).sum()
                     / (
-                        ((len(this_puma["HHWT"]) - 1) / len(this_puma["HHWT"]))
-                        * this_puma["HHWT"].sum()
+                        ((len(no_null[chosen_weight]) - 1) / len(no_null[chosen_weight]))
+                        * no_null[chosen_weight].sum()
                     )
                 )
-                std_list.append(std * i)
-            elif var_type == "individual":
-                this_puma[variable] = this_puma[variable].astype("float")
-                this_puma["weighted"] = this_puma[variable] * this_puma["PERWT"]
-                avg = this_puma["weighted"].sum() / this_puma["PERWT"].sum()
-                avg_list.append(avg * i)
-
-                median = wquantiles.median(this_puma[variable], this_puma["PERWT"])
-                median_list.append(median * i)
-
-                std = np.sqrt(
-                    (((this_puma[variable] - avg) ** 2) * this_puma["PERWT"]).sum()
-                    / (
-                        ((len(this_puma["PERWT"]) - 1) / len(this_puma["PERWT"]))
-                        * this_puma["PERWT"].sum()
-                    )
-                )
-                std_list.append(std * i)
-
-            else:
-                raise ValueError(f"{var_type} is not a valid type was specified!")
+            std_list.append(std * i)
 
         outer_dict[variable] = {
             "mean": round(sum(avg_list), 2),
