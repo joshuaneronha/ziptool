@@ -22,3 +22,4 @@ dist
 acs_data/usa_00013.csv
 acs_data/usa_00013.xml
 component_testing.py
+src/ziptool/resources/usa_00013.csv

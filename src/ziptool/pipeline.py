@@ -15,6 +15,10 @@ import pandas as pd
 import requests
 import us
 import wquantiles
+from ziptool import shp_dir
+
+# global shp_dir
+# shp_dir = tempfile.TemporaryDirectory()
 
 pd.options.mode.chained_assignment = None  # default='warn'
 
@@ -23,6 +27,10 @@ FilenameType = Union[str, Path]
 def load_crosswalk():
     stream = pkg_resources.resource_stream(__name__, 'resources/ZIP_TRACT_122021.XLSX')
     return pd.read_excel(stream)
+
+def load_test_data():
+    stream = pkg_resources.resource_stream(__name__, 'resources/usa_00013.csv')
+    return pd.read_csv(stream)
 
 @lru_cache(maxsize=100)
 def get_state_intersections(state_fips_code: str) -> gpd.GeoDataFrame:
@@ -89,11 +97,6 @@ def data_by_zip(zips: List[str], acs_data, variables):
     ans_dict = {}
 
     global hud_crosswalk
-    global shp_dir
-
-    shp_dir = tempfile.TemporaryDirectory()
-
-    hud_crosswalk = load_crosswalk()
 
     # TODO(khw): zip is a keyword, change the name
     for zip in zips:
@@ -113,6 +116,7 @@ def data_by_zip(zips: List[str], acs_data, variables):
 
 def get_shape_files(state_fips_code):
     """
+
     For a given state (in particular its FIPS code), downloads its census tracts and PUMA shapefiles
     from the Census Bureau. The functions skips the download if the file already has been fetched!
 
@@ -123,10 +127,11 @@ def get_shape_files(state_fips_code):
         Saves .shp files for both PUMA and census tracts within the data directory.
     """
 
+
     tract_file = "tl_2019_" + state_fips_code + "_tract"
     puma_file = "tl_2019_" + state_fips_code + "_puma10"
 
-    if exists(tract_file + ".shp"):
+    if exists(tract_file + ".zip"):
         pass
     else:
         puma_url = "https://www2.census.gov/geo/tiger/TIGER2019/PUMA/" + puma_file + ".zip"
@@ -134,6 +139,8 @@ def get_shape_files(state_fips_code):
 
         tract_url = "https://www2.census.gov/geo/tiger/TIGER2019/TRACT/" + tract_file + ".zip"
         download_file(tract_url, tract_url.split('/')[-1])
+
+    return shp_dir.name
 
 def zip_to_tract(zip):
     """
@@ -147,6 +154,9 @@ def zip_to_tract(zip):
         List containing the same number of entries as census tracts within the ZIP code. Each entry is a list,
         entry 0 is the census tact and entry 1 is the residential ratio of the census tract within that ZIP.
     """
+
+    hud_crosswalk = load_crosswalk()
+
     try:
         zip_str = zip
         zip = int(zip)
@@ -238,6 +248,7 @@ def get_acs_data(
 
             rel_puma = this_puma if var_type == "individual" else this_puma[this_puma["PERNUM"] == 1]
             chosen_weight = "PERWT" if var_type == "individual" else "HHWT"
+            print(chosen_weight)
 
             # rel_puma[variable] = rel_puma[variable].astype(float)
             no_null = rel_puma[rel_puma[variable] != null_val]
@@ -266,6 +277,8 @@ def get_acs_data(
 
     return outer_dict
 
-ipums_df = pd.read_csv('acs_data/usa_00013.csv')
-pulled = data_by_zip(['02835', '79901','75204', '90210'],ipums_df, {"HHINCOME": {"null": 9999999, "type": 'household'}})
-print(pulled)
+# ipums_df = pd.read_csv('acs_data/usa_00013.csv')
+# # pulled = data_by_zip(['02835', '79901','75204', '90210'],ipums_df, {"HHINCOME": {"null": 9999999, "type": 'household'}})
+# # print(pulled)
+# pulled = data_by_zip(['96804'],ipums_df, {"HHINCOME": {"null": 9999999, "type": 'household'}})
+# print(pulled)
