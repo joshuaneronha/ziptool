@@ -30,6 +30,10 @@ def get_state_intersections(state_fips_code: str) -> gpd.GeoDataFrame:
     puma_name = 'tl_2019_' + state_fips_code + "_puma10.zip"
     tract_name = 'tl_2019_' + state_fips_code + "_tract.zip"
 
+    if not exists(puma_name):
+        from ziptool.fetch_data import get_shape_files
+        get_shape_files(state_fips_code)
+
     puma = gpd.read_file(puma_name).to_crs(
         epsg=ALBERS_EPSG_ID
     )
