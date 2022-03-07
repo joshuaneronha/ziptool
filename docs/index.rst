@@ -10,7 +10,7 @@ Welcome to Ziptool's documentation!
    :maxdepth: 2
    :caption: Contents:
    usage/installation
-   Usage/quickstart
+   usage/quickstart
 
 
 
