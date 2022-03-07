@@ -29,6 +29,29 @@ def get_acs_data(
     state_fips_code,
     pumas,
 ):
+    '''
+    Pulls ACS data from a given file and extracts the data pertraining to a particular ZIP code.
+    Can either return the full raw data or summary statistics.
+
+    Args:
+        file: a string representing the path of the datafile OR a dataframe containing ACS datafile
+        variables:
+            To extract summary statistics, pass a dictionary of the form:
+                {variable_of_interest_1: {"null": null_val, "type": type}, variable_of_interest_2: {"null": null_val, "type": type}}
+                    variable_of_interest: the variable name you wish to summarize
+                    null_val: the value, as a float or integer, of null values to filter out.
+                    type: "household" or "individual", depending on the variable type
+            To return the raw data, pass None.
+        state_fips_code: an integer representing the state of interest's FIPS codes
+        pumas: each PUMA of interest within the state and its ratio (returned by geo_conversion.tracts_to_puma)
+
+    Returns:
+        When variables of interest are passed:
+            A dictionary of the form: {zip_1: {var_1: {'mean': 46493.49, 'std': 57214.11, 'median': 29982.5}, var_2:...}, zip_2...}
+        When variables of interest are NOT passed:
+            A dictionary of the form: {zip_1: [[puma_1_df, puma_1_ratio], [puma_2_df, puma_2_ratio], ...], zip_2...}
+    '''
+
     if isinstance(file, (str, Path)):
         data = pd.read_csv(file)
     elif isinstance(file, pd.DataFrame):
@@ -42,47 +65,62 @@ def get_acs_data(
 
     outer_dict = {}
 
-    for entry in variables:
+    if variables is not None:
 
-        variable = entry
-        null_val = variables[variable]["null"]
-        var_type = variables[variable]["type"]
+        for entry in variables:
 
-        avg_list = []
-        median_list = []
-        std_list = []
+            variable = entry
+            null_val = variables[variable]["null"]
+            var_type = variables[variable]["type"]
 
-        # TODO(jn) something like this to DRY this out
+            avg_list = []
+            median_list = []
+            std_list = []
+            removed_list = []
 
-        for index, i in enumerate(pumas):
-            this_puma = grouped.get_group(int(pumas.index[index]))
+            for index, i in enumerate(pumas):
+                this_puma = grouped.get_group(int(pumas.index[index]))
 
-            rel_puma = this_puma if var_type == "individual" else this_puma[this_puma["PERNUM"] == 1]
-            chosen_weight = "PERWT" if var_type == "individual" else "HHWT"
+                rel_puma = this_puma if var_type == "individual" else this_puma[this_puma["PERNUM"] == 1]
+                chosen_weight = "PERWT" if var_type == "individual" else "HHWT"
 
-            # rel_puma[variable] = rel_puma[variable].astype(float)
-            no_null = rel_puma[rel_puma[variable] != null_val]
+                # rel_puma[variable] = rel_puma[variable].astype(float)
+                no_null = rel_puma[rel_puma[variable] != null_val]
+                removed = (len(rel_puma) - len(no_null)) / len(rel_puma)
+                removed_list.append(removed)
 
-            no_null["weighted"] = no_null[variable] * no_null[chosen_weight]
-            avg = no_null["weighted"].sum() / no_null[chosen_weight].sum()
-            avg_list.append(avg * i)
+                no_null["weighted"] = no_null[variable] * no_null[chosen_weight]
+                avg = no_null["weighted"].sum() / no_null[chosen_weight].sum()
+                avg_list.append(avg * i)
 
-            median = wquantiles.median(no_null[variable], no_null[chosen_weight])
-            median_list.append(median * i)
+                median = wquantiles.median(no_null[variable], no_null[chosen_weight])
+                median_list.append(median * i)
 
-            std = np.sqrt(
-                    (((no_null[variable] - avg) ** 2) * no_null[chosen_weight]).sum()
-                    / (
-                        ((len(no_null[chosen_weight]) - 1) / len(no_null[chosen_weight]))
-                        * no_null[chosen_weight].sum()
+                std = np.sqrt(
+                        (((no_null[variable] - avg) ** 2) * no_null[chosen_weight]).sum()
+                        / (
+                            ((len(no_null[chosen_weight]) - 1) / len(no_null[chosen_weight]))
+                            * no_null[chosen_weight].sum()
+                        )
                     )
-                )
-            std_list.append(std * i)
+                std_list.append(std * i)
 
-        outer_dict[variable] = {
-            "mean": round(sum(avg_list), 2),
-            "std": round(sum(std_list), 2),
-            "median": round(sum(median_list), 2),
-        }
+            print(str(np.round(np.mean(removed_list),2)) + '% of entries removed as null for variable ' + entry)
 
-    return outer_dict
+            outer_dict[variable] = {
+                "mean": round(sum(avg_list), 2),
+                "std": round(sum(std_list), 2),
+                "median": round(sum(median_list), 2),
+            }
+        return outer_dict
+
+    else:
+        if len(pumas) == 1:
+            this_puma = grouped.get_group(int(pumas.index[0]))
+            return this_puma
+        else:
+            puma_dict = {}
+            for index, i in enumerate(pumas):
+                this_puma = grouped.get_group(int(pumas.index[index]))
+                puma_dict[index] = [this_puma, i]
+            return puma_dict

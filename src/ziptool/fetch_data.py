@@ -25,7 +25,14 @@ FilenameType = Union[str, Path]
 
 def download_file(url: str, output_filename: FilenameType):
     """
-    Download the URL to `output_filename`
+    Downloads a file from the provided URL and saves it at the desired path.
+
+    Args:
+        url: a string representing the URL of the file you want to download
+        output_filename: a FilenameType representing the desired download path
+
+    Returns:
+        None
     """
 
     os.chdir(shp_dir.name)

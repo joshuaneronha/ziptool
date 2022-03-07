@@ -24,6 +24,15 @@ from functools import lru_cache
 
 @lru_cache(maxsize=100)
 def get_state_intersections(state_fips_code: str) -> gpd.GeoDataFrame:
+    '''
+    For a given state, computes the inteersections between Census tracts and PUMAs.
+
+    Args:
+        state_fips_code: a string representing the FIPS code of the state of interest.
+
+    Returns:
+        a geopandas dataframe detailing the intersections of tracts and PUMAS for a state
+    '''
 
     os.chdir(shp_dir.name)
 
