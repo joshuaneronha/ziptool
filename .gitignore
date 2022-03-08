@@ -19,6 +19,8 @@ dist
 
 # Mac cruft
 .DS_Store
+
+# Data
 acs_data/usa_00013.csv
 acs_data/usa_00013.xml
 component_testing.py

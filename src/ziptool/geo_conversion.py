@@ -1,30 +1,23 @@
-import tempfile
-import json
-import shutil
-import urllib
-from functools import lru_cache
 import os
+from functools import lru_cache
 from os.path import exists
-from pathlib import Path
-from typing import Dict, List, Union
-import pkg_resources
-import tempfile
+from typing import List, Tuple, Union
 
 import geopandas as gpd
-import numpy as np
 import pandas as pd
-import requests
-import us
-import wquantiles
 
-pd.options.mode.chained_assignment = None
+from ziptool import load, shp_dir
+from ziptool.utils import (
+    cast_zipcode,
+    get_fips_code_from_abbr,
+    puma_shapefile_name,
+    tract_shapefile_name,
+)
 
-from ziptool import shp_dir, load
-from functools import lru_cache
 
 @lru_cache(maxsize=100)
 def get_state_intersections(state_fips_code: str) -> gpd.GeoDataFrame:
-    '''
+    """
     For a given state, computes the inteersections between Census tracts and PUMAs.
 
     Args:
@@ -32,47 +25,27 @@ def get_state_intersections(state_fips_code: str) -> gpd.GeoDataFrame:
 
     Returns:
         a geopandas dataframe detailing the intersections of tracts and PUMAS for a state
-    '''
-
+    """
+    # TODO(khw): chdir remains problematic
     os.chdir(shp_dir.name)
-
-    puma_name = 'tl_2019_' + state_fips_code + "_puma10.zip"
-    tract_name = 'tl_2019_' + state_fips_code + "_tract.zip"
+    puma_name = puma_shapefile_name(state_fips_code)
+    tract_name = tract_shapefile_name(state_fips_code)
 
     if not exists(puma_name):
         from ziptool.fetch_data import get_shape_files
+
         get_shape_files(state_fips_code)
 
-    puma = gpd.read_file(puma_name).to_crs(
-        epsg=ALBERS_EPSG_ID
-    )
-    tract = gpd.read_file(tract_name).to_crs(
-        epsg=ALBERS_EPSG_ID
-    )
+    puma = gpd.read_file(puma_name).to_crs(epsg=ALBERS_EPSG_ID)
+    tract = gpd.read_file(tract_name).to_crs(epsg=ALBERS_EPSG_ID)
 
     return gpd.overlay(puma, tract, how="intersection", keep_geom_type=False)
 
-def get_fips_code_from_abbr(state: str) -> str:
+
+def zip_to_tract(zipcode: Union[str, int]) -> Tuple[Tuple[List[str], List[float]], str]:
     """
-    Given a state postal abbreviation, e.g., "RI", return its FIPS code, e.g., "44"
-
-    Args:
-        state: The abbreviation of the state
-
-    Returns:
-        The FIPS code of the state
-
-    Raises:
-    """
-    obj = us.states.lookup(state)
-    if not obj:
-        raise KeyError(f"No such abbreviation: {state}")
-
-    return obj.fips
-
-def zip_to_tract(zip):
-    """
-    For a given ZIP code, uses HUD Crosswalk data (https://www.huduser.gov/portal/datasets/usps_crosswalk.html)
+    For a given ZIP code, uses HUD Crosswalk data
+    (https://www.huduser.gov/portal/datasets/usps_crosswalk.html)
     to find the ratio of persons in each census tract for the given ZIP code.
 
     Args:
@@ -80,24 +53,20 @@ def zip_to_tract(zip):
 
     Returns:
         List containing the same number of entries as census tracts within the ZIP code. Each entry is a list,
-        entry 0 is the census tact and entry 1 is the residential ratio of the census tract within that ZIP.
+        entry 0 is the census tract and entry 1 is the residential ratio of the census tract within that ZIP.
     """
-
+    zipcode = cast_zipcode(zipcode)
     hud_crosswalk = load.load_crosswalk()
 
-    try:
-        zip_str = zip
-        zip = int(zip)
-    except ValueError:
-        pass
+    zipint = cast_zipcode(zipcode)
 
-    contained = hud_crosswalk[hud_crosswalk["zip"] == zip][["tract", "res_ratio"]]
+    contained = hud_crosswalk[hud_crosswalk["zip"] == zipint][["tract", "res_ratio"]]
     try:
-        state = hud_crosswalk[hud_crosswalk["zip"] == zip]["usps_zip_pref_state"].iloc[
-            0
-        ]
+        state = hud_crosswalk[hud_crosswalk["zip"] == zipint][
+            "usps_zip_pref_state"
+        ].iloc[0]
     except IndexError:
-        raise KeyError(zip_str + " is not a valid ZIP code!")
+        raise KeyError(f"{zipcode} is not a valid ZIP code!")
     return contained.values.tolist(), get_fips_code_from_abbr(state)
 
 
@@ -121,21 +90,25 @@ def tracts_to_puma(tracts, state_fips_code: str):
     intersection_gdf["GEOID"] = intersection_gdf["GEOID"].astype("int")
 
     intersection_gdf = intersection_gdf[["GEOID", "PUMACE10", "shape_area"]]
-    tract_areas = intersection_gdf[["GEOID", "PUMACE10", "shape_area"]].groupby('GEOID').sum()
+    tract_areas = (
+        intersection_gdf[["GEOID", "PUMACE10", "shape_area"]].groupby("GEOID").sum()
+    )
 
     intersection_gdf = intersection_gdf.set_index("GEOID")
 
-    joined = intersection_gdf.join(tract_areas,rsuffix='_total',how='inner')
-    joined['ratio'] = joined['shape_area'] / joined['shape_area_total']
+    joined = intersection_gdf.join(tract_areas, rsuffix="_total", how="inner")
+    joined["ratio"] = joined["shape_area"] / joined["shape_area_total"]
 
     tracts_of_interest = [int(x[0]) for x in tracts]
 
     sorted = joined[["PUMACE10", "ratio"]].loc[tracts_of_interest]
     sorted["rounded_ratio"] = sorted["ratio"].apply(lambda x: 1 if x > 0.99 else x)
     rounded = sorted[sorted["rounded_ratio"] > (1 - 0.99)]
-    summary =  rounded.join(
-            pd.DataFrame(tracts, columns = ["GEOID", "PUMARAT"]).astype({"GEOID": "int", "PUMARAT": "float32"}).set_index("GEOID")
-        )
+    summary = rounded.join(
+        pd.DataFrame(tracts, columns=["GEOID", "PUMARAT"])
+        .astype({"GEOID": "int", "PUMARAT": "float32"})
+        .set_index("GEOID")
+    )
     summary["weighted_ratios"] = summary["rounded_ratio"] * summary["PUMARAT"]
 
     return summary.groupby("PUMACE10").sum()["weighted_ratios"]

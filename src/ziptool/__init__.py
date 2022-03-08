@@ -1,31 +1,16 @@
 import tempfile
-import json
-import shutil
-import urllib
-from functools import lru_cache
-import os
-from os.path import exists
-from pathlib import Path
-from typing import Dict, List, Union
-import pkg_resources
-import tempfile
+from typing import List, Union
 
-import geopandas as gpd
-import numpy as np
 import pandas as pd
-import requests
-import us
-import wquantiles
-
-pd.options.mode.chained_assignment = None
 
 global shp_dir
 shp_dir = tempfile.TemporaryDirectory()
 
-from ziptool import geo_conversion, fetch_data, load, interface
+from . import fetch_data, geo_conversion, interface
 
-def data_by_zip(zips: List[str], acs_data, variables = None):
-    '''
+
+def data_by_zip(zips: List[str], acs_data, variables=None):
+    """
     Extracts data from the ACS pertraining to a particular ZIP code.
     Can either return the full raw data or summary statistics.
 
@@ -45,7 +30,7 @@ def data_by_zip(zips: List[str], acs_data, variables = None):
             A dictionary of the form: {zip_1: {var_1: {'mean': 46493.49, 'std': 57214.11, 'median': 29982.5}, var_2:...}, zip_2...}
         When variables of interest are NOT passed:
             A dictionary of the form: {zip_1: [[puma_1_df, puma_1_ratio], [puma_2_df, puma_2_ratio], ...], zip_2...}
-    '''
+    """
 
     ans_dict = {}
 
@@ -61,7 +46,9 @@ def data_by_zip(zips: List[str], acs_data, variables = None):
         fetch_data.get_shape_files(state_fips_code)
         puma_ratios = geo_conversion.tracts_to_puma(tracts, state_fips_code)
 
-        ans = interface.get_acs_data(acs_data, variables, int(state_fips_code), puma_ratios)
+        ans = interface.get_acs_data(
+            acs_data, variables, int(state_fips_code), puma_ratios
+        )
         ans_dict[zip] = ans
 
     return ans_dict

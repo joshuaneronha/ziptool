@@ -1,63 +1,93 @@
-import tempfile
-import json
-import shutil
-import urllib
-from functools import lru_cache
-import os
-from os.path import exists
 from pathlib import Path
-from typing import Dict, List, Union
-import pkg_resources
-import tempfile
+from typing import Dict, List, Optional, Union
 
-import geopandas as gpd
 import numpy as np
 import pandas as pd
-import requests
-import us
 import wquantiles
 
-pd.options.mode.chained_assignment = None
-
-from ziptool import shp_dir
+from .utils import cast_fips_code
 
 FilenameType = Union[str, Path]
 
+
 def get_acs_data(
     file: Union[FilenameType, pd.DataFrame],
-    variables: Dict[str, str],
-    state_fips_code,
-    pumas,
+    state_fips_code: Union[int, str],
+    pumas: List[str],
+    variables: Optional[Dict[str, str]] = None,
 ):
-    '''
-    Pulls ACS data from a given file and extracts the data pertraining to a particular ZIP code.
-    Can either return the full raw data or summary statistics.
+    """
+    Pulls ACS data from a given file and extracts the data pertraining to a
+    particular ZIP code. Can either return the full raw data or summary statistics.
 
     Args:
-        file: a string representing the path of the datafile OR a dataframe containing ACS datafile
-        variables:
-            To extract summary statistics, pass a dictionary of the form:
-                {variable_of_interest_1: {"null": null_val, "type": type}, variable_of_interest_2: {"null": null_val, "type": type}}
-                    variable_of_interest: the variable name you wish to summarize
-                    null_val: the value, as a float or integer, of null values to filter out.
-                    type: "household" or "individual", depending on the variable type
+        file: a path to a datafile OR a dataframe containing ACS datafile
+        variables: To extract summary statistics, pass a dictionary of the form::
+
+                {
+                    variable_of_interest_1: {
+                        "null": null_val,
+                        "type": type
+                    },
+                    variable_of_interest_2: {
+                        "null": null_val,
+                        "type": type
+                    }
+                }
+
+            variable_of_interest: the variable name you wish to summarize
+            null_val: the value, as a float or integer, of null values to filter out.
+            type: "household" or "individual", depending on the variable type
+
             To return the raw data, pass None.
-        state_fips_code: an integer representing the state of interest's FIPS codes
-        pumas: each PUMA of interest within the state and its ratio (returned by geo_conversion.tracts_to_puma)
+
+        state_fips_code: an integer (or two-digit representation thereof)
+            representing the state of interest's FIPS codes
+        pumas: each PUMA of interest within the state and its ratio
+            (returned by geo_conversion.tracts_to_puma)
 
     Returns:
-        When variables of interest are passed:
-            A dictionary of the form: {zip_1: {var_1: {'mean': 46493.49, 'std': 57214.11, 'median': 29982.5}, var_2:...}, zip_2...}
-        When variables of interest are NOT passed:
-            A dictionary of the form: {zip_1: [[puma_1_df, puma_1_ratio], [puma_2_df, puma_2_ratio], ...], zip_2...}
-    '''
+        When variables of interest are passed, a dictionary of the form::
+
+                {
+                    zip_1: {
+                        var_1: {
+                            "mean": 46493.49,
+                            "std": 57214.11,
+                            "median": 29982.5
+                        },
+                        var_2: ...
+                    },
+                    zip_2: ...
+                }
+
+        When variables of interest are NOT passed, a dictionary of the form::
+
+            {
+                zip_1: [
+                    [
+                        puma_1_df,
+                        puma_1_ratio
+                    ],
+                    [
+                        puma_2_df,
+                        puma_2_ratio
+                    ],
+                    ...,
+                ],
+                zip_2: ...
+            }
+    """
 
     if isinstance(file, (str, Path)):
         data = pd.read_csv(file)
     elif isinstance(file, pd.DataFrame):
         data = file
 
+    state_fips_code = cast_fips_code(state_fips_code)
+
     sub_state = data[data["STATEFIP"] == state_fips_code]
+
     # TODO(jn): Why is the cast to float necessary
     sub_state["HHWT"] = sub_state["HHWT"].astype(float)
     sub_state["PERWT"] = sub_state["PERWT"].astype(float)
@@ -81,10 +111,13 @@ def get_acs_data(
             for index, i in enumerate(pumas):
                 this_puma = grouped.get_group(int(pumas.index[index]))
 
-                rel_puma = this_puma if var_type == "individual" else this_puma[this_puma["PERNUM"] == 1]
+                rel_puma = (
+                    this_puma
+                    if var_type == "individual"
+                    else this_puma[this_puma["PERNUM"] == 1]
+                )
                 chosen_weight = "PERWT" if var_type == "individual" else "HHWT"
 
-                # rel_puma[variable] = rel_puma[variable].astype(float)
                 no_null = rel_puma[rel_puma[variable] != null_val]
                 removed = (len(rel_puma) - len(no_null)) / len(rel_puma)
                 removed_list.append(removed)
@@ -97,24 +130,30 @@ def get_acs_data(
                 median_list.append(median * i)
 
                 std = np.sqrt(
-                        (((no_null[variable] - avg) ** 2) * no_null[chosen_weight]).sum()
-                        / (
-                            ((len(no_null[chosen_weight]) - 1) / len(no_null[chosen_weight]))
-                            * no_null[chosen_weight].sum()
+                    (((no_null[variable] - avg) ** 2) * no_null[chosen_weight]).sum()
+                    / (
+                        (
+                            (len(no_null[chosen_weight]) - 1)
+                            / len(no_null[chosen_weight])
                         )
+                        * no_null[chosen_weight].sum()
                     )
+                )
                 std_list.append(std * i)
 
-            print(str(np.round(np.mean(removed_list),2)) + '% of entries removed as null for variable ' + entry)
+            print(
+                f"{np.mean(removed_list) * 100:0.2f}% of entries removed as null for variable {entry}"
+            )
 
             outer_dict[variable] = {
-                "mean": round(sum(avg_list), 2),
-                "std": round(sum(std_list), 2),
-                "median": round(sum(median_list), 2),
+                "mean": sum(avg_list),
+                "std": sum(std_list),
+                "median": sum(median_list),
             }
         return outer_dict
 
     else:
+        # variables is None
         if len(pumas) == 1:
             this_puma = grouped.get_group(int(pumas.index[0]))
             return this_puma
