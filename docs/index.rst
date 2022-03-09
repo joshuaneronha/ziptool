@@ -12,7 +12,7 @@ Welcome to Ziptool's documentation!
 
    	Installation <usage/installation>
    	Quick Start <usage/quickstart>
-	Testing <usage/test.md>
+	Testing <usage/test>
 
 
 
