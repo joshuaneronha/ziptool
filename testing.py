@@ -1,10 +1,13 @@
-from ziptool import data_by_zip
+# from ziptool import data_by_zip
+from ziptool.query_by_zip import data_by_zip
 
 # import ziptool
 #
-results = data_by_zip(['02835','79901'],'/Users/joshuaneronha/Documents/Brown/Policy Lab/ziptool/src/ziptool/resources/usa_00013.csv',None)
-
+results = data_by_zip(['02835','79901'], '/Users/joshuaneronha/Documents/Brown/Policy Lab/ziptool/src/ziptool/resources/usa_00013.csv',
+    {"HHINCOME": {"null": 9999999, "type":'household'},
+         "EDUC": {"null": 0, "type": 'individual'}})
 print(results)
+# print(results)
 #
 #
 #

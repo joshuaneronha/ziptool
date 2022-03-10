@@ -11,12 +11,12 @@ packages = [
 python = "^3.8"
 us = "^2.0.2"
 pandas = "^1.4.1"
-geopandas = "^0.10.2"
 Rtree = "^0.9.7"
 wquantiles = "^0.6"
 requests = "^2.27.1"
 pyarrow = "^7.0.0"
 fastparquet = "^0.8.0"
+geopandas = "^0.10.2"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.8.0"
