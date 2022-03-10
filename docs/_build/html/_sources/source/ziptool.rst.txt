@@ -1,0 +1,53 @@
+ziptool package
+===============
+
+Submodules
+----------
+
+ziptool.fetch\_data module
+--------------------------
+
+.. automodule:: ziptool.fetch_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ziptool.geo\_conversion module
+------------------------------
+
+.. automodule:: ziptool.geo_conversion
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ziptool.interface module
+------------------------
+
+.. automodule:: ziptool.interface
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ziptool.load module
+-------------------
+
+.. automodule:: ziptool.load
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+ziptool.utils module
+--------------------
+
+.. automodule:: ziptool.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: ziptool
+   :members:
+   :undoc-members:
+   :show-inheritance:

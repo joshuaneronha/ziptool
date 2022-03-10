@@ -2,6 +2,7 @@ import tempfile
 from typing import List, Union
 
 import pandas as pd
+import geopandas as pd
 
 pd.options.mode.chained_assignment = None
 
