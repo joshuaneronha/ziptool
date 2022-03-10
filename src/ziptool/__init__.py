@@ -3,6 +3,8 @@ from typing import List, Union
 
 import pandas as pd
 
+pd.options.mode.chained_assignment = None
+
 global shp_dir
 shp_dir = tempfile.TemporaryDirectory()
 
@@ -47,7 +49,7 @@ def data_by_zip(zips: List[str], acs_data, variables=None):
         puma_ratios = geo_conversion.tracts_to_puma(tracts, state_fips_code)
 
         ans = interface.get_acs_data(
-            acs_data, variables, int(state_fips_code), puma_ratios
+            acs_data, int(state_fips_code), puma_ratios, variables
         )
         ans_dict[zip] = ans
 

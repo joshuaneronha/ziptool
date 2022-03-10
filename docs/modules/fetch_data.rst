@@ -1,4 +1,5 @@
 Installation
 ************
 
-Yep this is the installation page.
+.. automodule:: ziptool.fetch_data
+    :members:

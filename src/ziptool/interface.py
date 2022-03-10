@@ -97,7 +97,9 @@ def get_acs_data(
 
     if variables is not None:
 
+
         for entry in variables:
+
 
             variable = entry
             null_val = variables[variable]["null"]
