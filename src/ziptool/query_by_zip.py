@@ -30,11 +30,12 @@ def data_by_zip(zips: List[str], acs_data, variables=None):
                     }
                 }
 
-            variable_of_interest: the variable name you wish to summarize
-            null_val: the value, as a float or integer, of null values to filter out.
-            type: "household" or "individual", depending on the variable type
+            where
+            -variable_of_interest: the variable name you wish to summarize
+            -null_val: the value, as a float or integer, of null values to filter out.
+            -type: "household" or "individual", depending on the variable type.
 
-            *To return the raw data:*
+            To return the raw data:
                 Pass None
 
     Returns:
