@@ -48,35 +48,17 @@ def get_acs_data(
 
     Returns:
         When variables of interest are passed, a dictionary of the form::
-
-                {
-                    zip_1: {
-                        var_1: {
-                            "mean": 46493.49,
-                            "std": 57214.11,
-                            "median": 29982.5
-                        },
-                        var_2: ...
+            {var_1: {
+                "mean": 46493.49,
+                "std": 57214.11,
+                "median": 29982.5
                     },
-                    zip_2: ...
-                }
+            var_2: ...
+                    },
 
         When variables of interest are NOT passed, a dictionary of the form::
 
-            {
-                zip_1: [
-                    [
-                        puma_1_df,
-                        puma_1_ratio
-                    ],
-                    [
-                        puma_2_df,
-                        puma_2_ratio
-                    ],
-                    ...,
-                ],
-                zip_2: ...
-            }
+            {puma_1: [puma1_df, ratio1], puma_2: [puma2_df, ratio2]...}
     """
 
     if isinstance(file, (str, Path)):
@@ -97,9 +79,7 @@ def get_acs_data(
 
     if variables is not None:
 
-
         for entry in variables:
-
 
             variable = entry
             null_val = variables[variable]["null"]
