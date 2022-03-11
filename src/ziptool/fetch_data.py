@@ -38,31 +38,29 @@ def download_file(
                 outfile.write(chunk)
 
 
-def get_shape_files(state_fips_code):
+def get_shape_files(state_fips_code, year):
     """
     For a given state (in particular its FIPS code), downloads its census tracts and
     PUMA shapefiles from the Census Bureau. The functions skips the download if the
     file already has been fetched!
 
-    Note that we are pulling the 2019 shapefiles. This function should be updated for
-    other years' shapefiles
-
     Args:
         state_fips_code: string representing the state of interest
+        year: string representing the year
 
     Returns:
         Saves .shp files for both PUMA and census tracts within the data directory.
     """
     state_fips_code = cast_fips_code(state_fips_code)
 
-    tract_file = f"tl_2019_{state_fips_code}_tract"
-    puma_file = f"tl_2019_{state_fips_code}_puma10"
+    tract_file = f"tl_{year}_{state_fips_code}_tract"
+    puma_file = f"tl_{year}_{state_fips_code}_puma10"
 
     if exists(tract_file + ".zip"):
         return
 
-    puma_url = f"https://www2.census.gov/geo/tiger/TIGER2019/PUMA/{puma_file}.zip"
+    puma_url = f"https://www2.census.gov/geo/tiger/TIGER{year}/PUMA/{puma_file}.zip"
     download_file(puma_url, puma_url.split("/")[-1])
 
-    tract_url = f"https://www2.census.gov/geo/tiger/TIGER2019/TRACT/{tract_file}.zip"
+    tract_url = f"https://www2.census.gov/geo/tiger/TIGER{year}/TRACT/{tract_file}.zip"
     download_file(tract_url, tract_url.split("/")[-1])

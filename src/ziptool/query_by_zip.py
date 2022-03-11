@@ -9,7 +9,7 @@ import geopandas as pd
 from . import fetch_data, geo_conversion, interface
 
 
-def data_by_zip(zips: List[str], acs_data, variables=None):
+def data_by_zip(zips: List[str], acs_data, variables=None, year="2019"):
     """
     Extracts data from the ACS pertraining to a particular ZIP code.
     Can either return the full raw data or summary statistics.
@@ -17,7 +17,7 @@ def data_by_zip(zips: List[str], acs_data, variables=None):
     Args:
         zips: a list of zipcodes, represented as strings i.e. ['02906', '72901', ...]
         acs_data: a string representing the path of the datafile OR a dataframe containing ACS datafile
-        variables: To return the raw data, pass None. To extract summary statistics, pass a dictionary of the form: ::
+        variables (optional): To return the raw data, pass None. To extract summary statistics, pass a dictionary of the form: ::
 
                 {
                     variable_of_interest_1: { #the variable name in IPUMS
@@ -29,7 +29,8 @@ def data_by_zip(zips: List[str], acs_data, variables=None):
                         "type": type
                     }
                 }
-
+        year (optional): a string representing the year of shapefiles to use for matching PUMAs to ZIPs.
+        Default is 2019.
 
 
     Returns:
@@ -76,7 +77,7 @@ def data_by_zip(zips: List[str], acs_data, variables=None):
         if sum([x[1] for x in tracts]) < 1e-7:
             raise ValueError(f"{zip} is not a valid residential zip code!")
 
-        fetch_data.get_shape_files(state_fips_code)
+        fetch_data.get_shape_files(state_fips_code, year)
         puma_ratios = geo_conversion.tracts_to_puma(tracts, state_fips_code)
 
         ans = interface.get_acs_data(
