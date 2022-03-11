@@ -30,8 +30,7 @@ def data_by_zip(zips: List[str], acs_data, variables=None):
                     }
                 }
 
-            To return the raw data,
-                Pass None
+        To return the raw data, pass None.
 
     Returns:
         When variables of interest are passed, a dictionary of the form::
