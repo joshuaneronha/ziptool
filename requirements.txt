@@ -147,7 +147,7 @@ jellyfish==0.6.1 \
 munch==2.5.0; python_version >= "3.7" \
     --hash=sha256:6f44af89a2ce4ed04ff8de41f70b226b984db10a91dcc7b9ac2efc1c77022fdd \
     --hash=sha256:2d735f6f24d4dba3417fa448cae40c6e896ec1fdab6cdb5e6510999758a4dbd2
-numpy==1.22.3 \
+numpy==1.22.3; python_version >= "3.8" \
     --hash=sha256:92bfa69cfbdf7dfc3040978ad09a48091143cffb778ec3b03fa170c494118d75 \
     --hash=sha256:8251ed96f38b47b4295b1ae51631de7ffa8260b5b087808ef09a39a9d66c97ab \
     --hash=sha256:48a3aecd3b997bf452a2dedb11f4e79bc5bfd21a1d4cc760e703c31d57c84b3e \
