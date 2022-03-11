@@ -20,20 +20,15 @@ def data_by_zip(zips: List[str], acs_data, variables=None):
         variables: To extract summary statistics, pass a dictionary of the form: ::
 
                 {
-                    variable_of_interest_1: {
-                        "null": null_val,
-                        "type": type
+                    variable_of_interest_1: { #the variable name in IPUMS
+                        "null": null_val, #the value (float or int) of null data
+                        "type": type # "household" or "individual"
                     },
                     variable_of_interest_2: {
                         "null": null_val,
                         "type": type
                     }
                 }
-
-            where
-            -variable_of_interest: the variable name you wish to summarize
-            -null_val: the value, as a float or integer, of null values to filter out.
-            -type: "household" or "individual", depending on the variable type.
 
             To return the raw data:
                 Pass None
