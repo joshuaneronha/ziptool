@@ -18,7 +18,7 @@ def data_by_zip(zips: List[str], acs_data, variables=None):
         zips: a list of zipcodes, represented as strings i.e. ['02906', '72901', ...]
         acs_data: a string representing the path of the datafile OR a dataframe containing ACS datafile
         variables:
-            *To extract summary statistics, pass a dictionary of the form:*
+            *To extract summary statistics, pass a dictionary of the form:*::
 
                 {
                     variable_of_interest_1: {
