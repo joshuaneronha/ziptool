@@ -29,8 +29,7 @@ def data_by_zip(zips: List[str], acs_data, variables=None, year="2019"):
                         "type": type
                     }
                 }
-        year (optional): a string representing the year of shapefiles to use for matching PUMAs to ZIPs.
-        Default is 2019.
+        year (optional): a string representing the year of shapefiles to use for matching PUMAs to ZIPs. Default is 2019.
 
 
     Returns:
