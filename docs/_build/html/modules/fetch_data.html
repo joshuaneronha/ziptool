@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Installation &#8212; Ziptool 0.1.0 documentation</title>
+    <title>fetch_data module &#8212; Ziptool 0.1.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -15,8 +15,8 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Installation" href="geo_conversion.html" />
-    <link rel="prev" title="Modules" href="modules.html" />
+    <link rel="next" title="geo_conversion module" href="geo_conversion.html" />
+    <link rel="prev" title="query_by_zip module" href="query_by_zip.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -33,81 +33,39 @@
 
           <div class="body" role="main">
             
-  <section id="module-ziptool.utils">
-<span id="installation"></span><h1>Installation<a class="headerlink" href="#module-ziptool.utils" title="Permalink to this headline">¶</a></h1>
-<p>Some simple utilitis for handling data interaction</p>
+  <section id="module-ziptool.fetch_data">
+<span id="fetch-data-module"></span><h1>fetch_data module<a class="headerlink" href="#module-ziptool.fetch_data" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
-<dt class="sig sig-object py" id="ziptool.utils.cast_fips_code">
-<span class="sig-prename descclassname"><span class="pre">ziptool.utils.</span></span><span class="sig-name descname"><span class="pre">cast_fips_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_fips_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#ziptool.utils.cast_fips_code" title="Permalink to this definition">¶</a></dt>
-<dd><p>FIPS codes are technically two-digit strings representing a number between 0 and 99,
-e.g., “01” and “44”. But it is very common that people pass them as integers.
-This guarantees they always appear as two-digit strings.</p>
+<dt class="sig sig-object py" id="ziptool.fetch_data.download_file">
+<span class="sig-prename descclassname"><span class="pre">ziptool.fetch_data.</span></span><span class="sig-name descname"><span class="pre">download_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">requests.sessions.Session</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ziptool.fetch_data.download_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads a file from the provided URL and saves it at the desired path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>state_fips_code</strong> – A FIPS code as either a string or an int</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> – a string representing the URL of the file you want to download</p></li>
+<li><p><strong>output_filename</strong> – a FilenameType representing the desired download path</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The appropriately styled version of the code</p>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="ziptool.utils.cast_zipcode">
-<span class="sig-prename descclassname"><span class="pre">ziptool.utils.</span></span><span class="sig-name descname"><span class="pre">cast_zipcode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zipcode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#ziptool.utils.cast_zipcode" title="Permalink to this definition">¶</a></dt>
-<dd><p>ZIP codes are five-digit strings, but it is very common that people pass them as
-integers. This guarantees that they always appear as five-digit strings</p>
+<dt class="sig sig-object py" id="ziptool.fetch_data.get_shape_files">
+<span class="sig-prename descclassname"><span class="pre">ziptool.fetch_data.</span></span><span class="sig-name descname"><span class="pre">get_shape_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_fips_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ziptool.fetch_data.get_shape_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a given state (in particular its FIPS code), downloads its census tracts and
+PUMA shapefiles from the Census Bureau. The functions skips the download if the
+file already has been fetched!</p>
+<p>Note that we are pulling the 2019 shapefiles. This function should be updated for
+other years’ shapefiles</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>zipcode</strong> – A ZIP code</p>
+<dd class="field-odd"><p><strong>state_fips_code</strong> – string representing the state of interest</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The appropriately styled version of the code</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ziptool.utils.get_fips_code_from_abbr">
-<span class="sig-prename descclassname"><span class="pre">ziptool.utils.</span></span><span class="sig-name descname"><span class="pre">get_fips_code_from_abbr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#ziptool.utils.get_fips_code_from_abbr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given a state postal abbreviation, e.g., “RI”, return its FIPS code, e.g., “44”</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>state</strong> – The abbreviation of the state</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The FIPS code of the state</p>
-</dd>
-</dl>
-<p>Raises:</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ziptool.utils.puma_shapefile_name">
-<span class="sig-prename descclassname"><span class="pre">ziptool.utils.</span></span><span class="sig-name descname"><span class="pre">puma_shapefile_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_fips_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#ziptool.utils.puma_shapefile_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the expected filename of the PUMA shapefile. Note that this assumes a 2019
-filename.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>code</strong> – The FIPS code for the state of interest</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The expected filename</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="ziptool.utils.tract_shapefile_name">
-<span class="sig-prename descclassname"><span class="pre">ziptool.utils.</span></span><span class="sig-name descname"><span class="pre">tract_shapefile_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_fips_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#ziptool.utils.tract_shapefile_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the expected filename of the tract shapefile. Note that this assumes a 2019
-filename.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>code</strong> – The FIPS code for the state of interest</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The expected filename</p>
+<dd class="field-even"><p>Saves .shp files for both PUMA and census tracts within the data directory.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -134,7 +92,8 @@ filename.</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html"> Getting Started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html"> Modules</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">     fetch_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="query_by_zip.html"> query_by_zip</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> fetch_data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="geo_conversion.html"> geo_conversion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interface.html"> interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html"> utils</a></li>
@@ -147,8 +106,8 @@ filename.</p>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="modules.html">Modules</a><ul>
-      <li>Previous: <a href="modules.html" title="previous chapter">Modules</a></li>
-      <li>Next: <a href="geo_conversion.html" title="next chapter">Installation</a></li>
+      <li>Previous: <a href="query_by_zip.html" title="previous chapter">query_by_zip module</a></li>
+      <li>Next: <a href="geo_conversion.html" title="next chapter">geo_conversion module</a></li>
   </ul></li>
   </ul></li>
 </ul>

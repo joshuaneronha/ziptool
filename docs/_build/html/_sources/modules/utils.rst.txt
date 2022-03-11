@@ -1,4 +1,5 @@
-Installation
+utils module
 ************
 
-Yep this is the installation page.
+.. automodule:: ziptool.utils
+    :members:

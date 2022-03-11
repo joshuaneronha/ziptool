@@ -1,4 +1,5 @@
-Installation
-************
+interface module
+****************
 
-Yep this is the installation page.
+.. automodule:: ziptool.interface
+    :members:

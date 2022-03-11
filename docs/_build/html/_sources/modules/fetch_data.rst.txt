@@ -1,5 +1,5 @@
-Installation
-************
+fetch_data module
+*****************
 
-.. automodule:: ziptool.utils
+.. automodule:: ziptool.fetch_data
     :members:
