@@ -22,7 +22,7 @@ def data_by_zip(zips: List[str], acs_data, variables=None):
                 {
                     variable_of_interest_1: { #the variable name in IPUMS
                         "null": null_val, #the value (float or int) of null data
-                        "type": type # "household" or "individual"
+                        "type": type #"household" or "individual"
                     },
                     variable_of_interest_2: {
                         "null": null_val,
@@ -30,7 +30,7 @@ def data_by_zip(zips: List[str], acs_data, variables=None):
                     }
                 }
 
-            To return the raw data:
+            To return the raw data,
                 Pass None
 
     Returns:
