@@ -32,7 +32,7 @@ def get_acs_data(
                     variable_of_interest_2: {
                         "null": null_val,
                         "type": type
-                    }
+                    }...
                 }
 
             variable_of_interest: the variable name you wish to summarize
@@ -47,15 +47,15 @@ def get_acs_data(
             (returned by geo_conversion.tracts_to_puma)
 
     Returns:
-    
         When variables of interest are passed, a dictionary of the form::
-            {var_1: {
-                "mean": 46493.49,
-                "std": 57214.11,
-                "median": 29982.5
-                    },
-            var_2: ...
-                    },
+
+            {
+                var_1: {
+                    "mean": 46493.49,
+                    "std": 57214.11,
+                    "median": 29982.5
+                }...
+            }
 
         When variables of interest are NOT passed, a dictionary of the form::
 
