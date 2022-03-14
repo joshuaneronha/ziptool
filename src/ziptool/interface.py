@@ -47,6 +47,7 @@ def get_acs_data(
             (returned by geo_conversion.tracts_to_puma)
 
     Returns:
+    
         When variables of interest are passed, a dictionary of the form::
             {var_1: {
                 "mean": 46493.49,

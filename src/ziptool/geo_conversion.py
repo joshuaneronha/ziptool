@@ -18,7 +18,8 @@ from ziptool.utils import (
 @lru_cache(maxsize=100)
 def get_state_intersections(state_fips_code: str) -> gpd.GeoDataFrame:
     """
-    For a given state, computes the inteersections between Census tracts and PUMAs.
+    For a given state, computes the intersections between Census tracts and PUMAs.
+    Note that you most run fetch_data.get_shape_files() before using this function.
 
     Args:
         state_fips_code: a string representing the FIPS code of the state of interest.
