@@ -1,6 +1,8 @@
 from pathlib import Path
 from config import your_api_key, your_download_dir
 from ziptool.query_by_zip import data_by_zip
+from ziptool.utils import convert_to_df
+import matplotlib.pyplot as plt
 
 import ipumspy
 from ipumspy import IpumsApiClient, UsaExtract, readers, ddi
@@ -29,12 +31,16 @@ ipums_df = ipumspy.readers.read_microdata(ddi, DOWNLOAD_DIR / ddi.file_descripti
 # Stonington, CT: 06355
 # Westerly, RI: 02804
 
-
 # income_data = data_by_zip(['02835','04046','02740','06355','02804'], ipums_df,
 #     {"HHINCOME": {"null": 9999999, "type":'household'}})
+income_data = data_by_zip(['02835','04046','02740','06355','02804'], '/Users/joshuaneronha/Documents/Brown/Policy Lab/ziptool/src/ziptool/resources/usa_00013.csv',
+    {"HHINCOME": {"null": 9999999, "type":'household'}})
+
+income_df = convert_to_df(income_data)
+plt.bar(income_df)
 
 # out = data_by_zip(['02835','04046','02740','06355','02804'], ipums_df)
 
-out = data_by_zip(['02835','04046','02740','06355','02804'], '/Users/joshuaneronha/Documents/Brown/Policy Lab/ziptool/src/ziptool/resources/usa_00013.csv')
-# income_data = data_by_zip(['02835','04046','02740','06355','02804'], '/Users/joshuaneronha/Documents/Brown/Policy Lab/ziptool/src/ziptool/resources/usa_00013.csv',
-#     {"HHINCOME": {"null": 9999999, "type":'household'}})
+# plt.bar
+
+# out = data_by_zip(['02835','04046','02740','06355','02804'], '/Users/joshuaneronha/Documents/Brown/Policy Lab/ziptool/src/ziptool/resources/usa_00013.csv')
