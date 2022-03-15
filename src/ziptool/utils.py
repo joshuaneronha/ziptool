@@ -6,7 +6,7 @@ from typing import Union
 import us
 
 
-def cast_fips_code(state_fips_code: Union[str, int]) -> int:
+def cast_fips_code(state_fips_code: Union[str, int]) -> str:
     """
     FIPS codes are technically two-digit strings representing a number between 0 and 99,
     e.g., "01" and "44". But it is very common that people pass them as integers.
@@ -19,11 +19,14 @@ def cast_fips_code(state_fips_code: Union[str, int]) -> int:
         The appropriately styled version of the code
     """
     if isinstance(state_fips_code, str):
-        return int(state_fips_code)
+        return state_fips_code
+    if isinstance(state_fips_code, int):
+        if state_fips_code <= 9:
+            return '0' + str(state_fips_code)
+        else:
+            return str(state_fips_code)
 
-    return state_fips_code
 
-cast_fips_code(44)
 
 
 

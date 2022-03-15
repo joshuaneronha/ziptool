@@ -25,3 +25,6 @@ acs_data/usa_00013.csv
 acs_data/usa_00013.xml
 component_testing.py
 src/ziptool/resources/usa_00013.csv
+docs/examples/config.py
+docs/examples/usa_00021.dat.gz
+docs/examples/usa_00021.xml

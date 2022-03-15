@@ -67,7 +67,7 @@ def get_acs_data(
     elif isinstance(file, pd.DataFrame):
         data = file
 
-    state_fips_code = cast_fips_code(state_fips_code)
+
 
     sub_state = data[data["STATEFIP"] == state_fips_code]
 
@@ -101,6 +101,7 @@ def get_acs_data(
                 )
                 chosen_weight = "PERWT" if var_type == "individual" else "HHWT"
 
+
                 no_null = rel_puma[rel_puma[variable] != null_val]
                 removed = (len(rel_puma) - len(no_null)) / len(rel_puma)
                 removed_list.append(removed)
@@ -109,7 +110,10 @@ def get_acs_data(
                 avg = no_null["weighted"].sum() / no_null[chosen_weight].sum()
                 avg_list.append(avg * i)
 
-                median = wquantiles.median(no_null[variable], no_null[chosen_weight])
+                no_null['for_median_var'] = no_null[variable].astype('float64')
+
+                median = wquantiles.median(no_null['for_median_var'], no_null[chosen_weight])
+
                 median_list.append(median * i)
 
                 std = np.sqrt(
