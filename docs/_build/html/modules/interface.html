@@ -33,9 +33,12 @@
 
           <div class="body" role="main">
             
-  <section id="module-ziptool.interface">
-<span id="interface-module"></span><h1>interface module<a class="headerlink" href="#module-ziptool.interface" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
+  <section id="interface-module">
+<h1>interface module<a class="headerlink" href="#interface-module" title="Permalink to this headline">¶</a></h1>
+<p>This module is how we connect the PUMAs and their ratios for a given ZIP code to
+the ACS dataset. It is called for each ZIP code to return the summary statistics
+or dataframe for that specific ZIP code.</p>
+<span class="target" id="module-ziptool.interface"></span><dl class="py function">
 <dt class="sig sig-object py" id="ziptool.interface.get_acs_data">
 <span class="sig-prename descclassname"><span class="pre">ziptool.interface.</span></span><span class="sig-name descname"><span class="pre">get_acs_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pandas.core.frame.DataFrame</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state_fips_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pumas</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ziptool.interface.get_acs_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pulls ACS data from a given file and extracts the data pertraining to a
@@ -53,7 +56,7 @@ particular ZIP code. Can either return the full raw data or summary statistics.<
     <span class="n">variable_of_interest_2</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">&quot;null&quot;</span><span class="p">:</span> <span class="n">null_val</span><span class="p">,</span>
         <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="nb">type</span>
-    <span class="p">}</span>
+    <span class="p">}</span><span class="o">...</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -71,33 +74,16 @@ representing the state of interest’s FIPS codes</p></li>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><p>When variables of interest are passed, a dictionary of the form:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="n">zip_1</span><span class="p">:</span> <span class="p">{</span>
-        <span class="n">var_1</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="mf">46493.49</span><span class="p">,</span>
-            <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="mf">57214.11</span><span class="p">,</span>
-            <span class="s2">&quot;median&quot;</span><span class="p">:</span> <span class="mf">29982.5</span>
-        <span class="p">},</span>
-        <span class="n">var_2</span><span class="p">:</span> <span class="o">...</span>
-    <span class="p">},</span>
-    <span class="n">zip_2</span><span class="p">:</span> <span class="o">...</span>
+    <span class="n">var_1</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="mf">46493.49</span><span class="p">,</span>
+        <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="mf">57214.11</span><span class="p">,</span>
+        <span class="s2">&quot;median&quot;</span><span class="p">:</span> <span class="mf">29982.5</span>
+    <span class="p">}</span><span class="o">...</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 <p>When variables of interest are NOT passed, a dictionary of the form:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="n">zip_1</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">[</span>
-            <span class="n">puma_1_df</span><span class="p">,</span>
-            <span class="n">puma_1_ratio</span>
-        <span class="p">],</span>
-        <span class="p">[</span>
-            <span class="n">puma_2_df</span><span class="p">,</span>
-            <span class="n">puma_2_ratio</span>
-        <span class="p">],</span>
-        <span class="o">...</span><span class="p">,</span>
-    <span class="p">],</span>
-    <span class="n">zip_2</span><span class="p">:</span> <span class="o">...</span>
-<span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">puma_1</span><span class="p">:</span> <span class="p">[</span><span class="n">puma1_df</span><span class="p">,</span> <span class="n">ratio1</span><span class="p">],</span> <span class="n">puma_2</span><span class="p">:</span> <span class="p">[</span><span class="n">puma2_df</span><span class="p">,</span> <span class="n">ratio2</span><span class="p">]</span><span class="o">...</span><span class="p">}</span>
 </pre></div>
 </div>
 </p>
@@ -134,6 +120,7 @@ representing the state of interest’s FIPS codes</p></li>
 <li class="toctree-l2"><a class="reference internal" href="utils.html"> utils</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html"> Examples</a></li>
 </ul>
 
 <div class="relations">

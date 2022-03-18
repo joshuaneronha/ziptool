@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Example using ipumspy &#8212; Ziptool 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Examples" href="../examples.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="example-using-ipumspy">
+<h1>Example using ipumspy<a class="headerlink" href="#example-using-ipumspy" title="Permalink to this headline">¶</a></h1>
+<p>Ziptool can be used with downloaded CSV files of ACS data, but it works best
+with ipumspy, a Python package that uses your IPUMS API key to pull data directly.
+The example below details a sample use case of ziptool for basic demographic
+research using ipumspy and both implementations of data_by_zip.</p>
+<p>In this example, we want to explore various demographic traits of five coastal
+New England towns throughout the region: Jamestown, RI (02835); Kennebunkport,
+ME (04046); New Bedford, MA (02740); Stonington, CT (06355); and Westerly, RI
+(02804). We are particularly interested in household income and ancestry.</p>
+<section id="pulling-data-with-ipumspy">
+<h2>Pulling Data with ipumspy<a class="headerlink" href="#pulling-data-with-ipumspy" title="Permalink to this headline">¶</a></h2>
+<p>First, import ipumspy, its readers, and other important dependencies.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">ipumspy</span>
+<span class="kn">from</span> <span class="nn">ipumspy</span> <span class="kn">import</span> <span class="n">IpumsApiClient</span><span class="p">,</span> <span class="n">UsaExtract</span><span class="p">,</span> <span class="n">readers</span><span class="p">,</span> <span class="n">ddi</span>
+</pre></div>
+</div>
+<p>Then, using the API key, we request the variable we are interested in (‘HHINCOME’
+and ‘ANCESTR1’) along with ‘PUMA’ and ‘STATEFIP’, both of which are required
+variables for usage with ziptool. We also would like to get data from the 2019
+ACS, which is labeled in ipums as ‘us2019a’. The request is then submitted and
+downloaded (note that this can take quite a while depending on how many variables
+you request.)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IPUMS_API_KEY</span> <span class="o">=</span> <span class="n">your_api_key</span>
+<span class="n">DOWNLOAD_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">your_download_dir</span><span class="p">)</span>
+
+<span class="n">ipums</span> <span class="o">=</span> <span class="n">IpumsApiClient</span><span class="p">(</span><span class="n">IPUMS_API_KEY</span><span class="p">)</span>
+
+<span class="n">extract</span> <span class="o">=</span> <span class="n">UsaExtract</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;us2019a&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;STATEFIP&quot;</span><span class="p">,</span><span class="s2">&quot;PUMA&quot;</span><span class="p">,</span><span class="s2">&quot;HHINCOME&quot;</span><span class="p">,</span><span class="s2">&quot;ANCESTR1&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">ipums</span><span class="o">.</span><span class="n">submit_extract</span><span class="p">(</span><span class="n">extract</span><span class="p">)</span>
+<span class="n">ipums</span><span class="o">.</span><span class="n">wait_for_extract</span><span class="p">(</span><span class="n">extract</span><span class="p">)</span>
+<span class="n">ipums</span><span class="o">.</span><span class="n">download_extract</span><span class="p">(</span><span class="n">extract</span><span class="p">,</span> <span class="n">download_dir</span><span class="o">=</span><span class="n">DOWNLOAD_DIR</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="continuous-variables">
+<h2>Continuous Variables<a class="headerlink" href="#continuous-variables" title="Permalink to this headline">¶</a></h2>
+<p>Now all the data needed for analysis is downloaded, and we can read it in as
+a pd.DataFrame along with the codebook that contains the information associated
+with each variable so that we can properly conduct our analysis.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ddi_file</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">DOWNLOAD_DIR</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.xml&quot;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ddi</span> <span class="o">=</span> <span class="n">ipumspy</span><span class="o">.</span><span class="n">readers</span><span class="o">.</span><span class="n">read_ipums_ddi</span><span class="p">(</span><span class="n">ddi_file</span><span class="p">)</span>
+
+<span class="n">ipums_df</span> <span class="o">=</span> <span class="n">ipumspy</span><span class="o">.</span><span class="n">readers</span><span class="o">.</span><span class="n">read_microdata</span><span class="p">(</span><span class="n">ddi</span><span class="p">,</span>
+            <span class="n">DOWNLOAD_DIR</span> <span class="o">/</span> <span class="n">ddi</span><span class="o">.</span><span class="n">file_description</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, we want to analyze two different traits for these communities:
+mean household income and reported ancestry. The former is a numerical ratio
+variable whereas the latter is categorical. That means that we can take advantage
+of ziptool’s built-in analysis functions for HHINCOME but will read in the raw
+data for the categorical data of ‘ANCESTR1’. We import the relevant modules of
+ziptool, data_by_zip (which will calculate the ZIP-level data) and convert_to_df
+(which will convert the returned data into a pd.DataFrame for easier analysis).
+Because we only want to analyze HHINCOME using summary statisticcs, we pass
+<em>only</em> ‘HHINCOME’ as a variable of interest. The null value comes from the
+codebook, as does the type (household vs. individual variable).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ziptool.query_by_zip</span> <span class="kn">import</span> <span class="n">data_by_zip</span>
+<span class="kn">from</span> <span class="nn">ziptool.utils</span> <span class="kn">import</span> <span class="n">convert_to_df</span>
+
+<span class="n">income_data</span> <span class="o">=</span> <span class="n">data_by_zip</span><span class="p">([</span><span class="s1">&#39;02835&#39;</span><span class="p">,</span><span class="s1">&#39;04046&#39;</span><span class="p">,</span><span class="s1">&#39;02740&#39;</span><span class="p">,</span><span class="s1">&#39;06355&#39;</span><span class="p">,</span><span class="s1">&#39;02804&#39;</span><span class="p">],</span> <span class="n">ipums_df</span><span class="p">,</span>
+    <span class="p">{</span><span class="s2">&quot;HHINCOME&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;null&quot;</span><span class="p">:</span> <span class="mi">9999999</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s1">&#39;household&#39;</span><span class="p">}})</span>
+<span class="n">income_df</span> <span class="o">=</span> <span class="n">convert_to_df</span><span class="p">(</span><span class="n">income_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We now have a pd.DataFrame that contains all of our data! We can easily generate
+a bar plot to visualize differences by income as an example of the easy analysis
+that we can now perform.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">ylgnbu</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#7fcdbb&#39;</span><span class="p">,</span> <span class="s1">&#39;#41b6c4&#39;</span><span class="p">,</span> <span class="s1">&#39;#225ea8&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;#0c2c84&#39;</span><span class="p">,</span> <span class="s1">&#39;#f29c33&#39;</span><span class="p">,</span> <span class="s1">&#39;#666462&#39;</span><span class="p">]</span>
+<span class="c1">#defining our colorscale</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">income_df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">income_df</span><span class="p">[</span><span class="s1">&#39;HHINCOME_mean&#39;</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="n">ylgnbu</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Household Income&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/ex1_cont.png"><img alt="../../_images/ex1_cont.png" src="../../_images/ex1_cont.png" style="width: 500pt;" /></a>
+</section>
+<section id="categorical-variables">
+<h2>Categorical Variables<a class="headerlink" href="#categorical-variables" title="Permalink to this headline">¶</a></h2>
+<p>Categorical variables like ANCESTR1 are not usefully summarized by summary
+statistics, so in this case, we can read in the raw data and perform our own
+analysis. We do this by simply not specifying any variables:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">raw_dfs</span> <span class="o">=</span> <span class="n">data_by_zip</span><span class="p">([</span><span class="s1">&#39;02835&#39;</span><span class="p">,</span><span class="s1">&#39;04046&#39;</span><span class="p">,</span><span class="s1">&#39;02740&#39;</span><span class="p">,</span><span class="s1">&#39;06355&#39;</span><span class="p">,</span><span class="s1">&#39;02804&#39;</span><span class="p">],</span> <span class="n">ipums_df</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We are particularly interested in four ancestral groups that often formed much
+of the populations of some coastal New England towns in the late 1800s : people of
+Portuguese, Irish, Italian, and English ancestry. However, countries are encoded
+as numbers in ‘ANCESTR1’ fron the ACS, so we must access the codebook to pull
+out the codes corresponding to the ancestries we are interested in.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ancestry_info</span> <span class="o">=</span> <span class="n">ddi</span><span class="o">.</span><span class="n">get_variable_info</span><span class="p">(</span><span class="s1">&#39;ANCESTR1&#39;</span><span class="p">)</span>
+<span class="n">ancestry_codes</span> <span class="o">=</span> <span class="n">ancestry_info</span><span class="o">.</span><span class="n">codes</span>
+<span class="n">top_codes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ancestry_codes</span><span class="p">[</span><span class="s1">&#39;Portuguese&#39;</span><span class="p">],</span>
+             <span class="n">ancestry_codes</span><span class="p">[</span><span class="s1">&#39;Irish, various subheads,&#39;</span><span class="p">],</span>
+             <span class="n">ancestry_codes</span><span class="p">[</span><span class="s1">&#39;Italian&#39;</span><span class="p">],</span>
+             <span class="n">ancestry_codes</span><span class="p">[</span><span class="s1">&#39;English&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>We can now plot a pie chart of each ZIP code’s ancestry demographics:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="nb">zip</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;02835&#39;</span><span class="p">,</span><span class="s1">&#39;04046&#39;</span><span class="p">,</span><span class="s1">&#39;02740&#39;</span><span class="p">,</span><span class="s1">&#39;06355&#39;</span><span class="p">,</span><span class="s1">&#39;02804&#39;</span><span class="p">]):</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>
+    <span class="n">column</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">raw_dfs</span><span class="p">[</span><span class="nb">zip</span><span class="p">]</span>
+    <span class="n">ancestry_data</span><span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;ANCESTR1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()[</span><span class="s1">&#39;PERWT&#39;</span><span class="p">]</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">ancestry_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">ancestry_data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_codes</span> <span class="o">+</span> <span class="p">[</span><span class="n">ancestry_codes</span><span class="p">[</span><span class="s1">&#39;Not Reported&#39;</span><span class="p">]])]</span><span class="o">.</span><span class="n">sum</span><span class="p">()],</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">to_plot</span> <span class="o">=</span> <span class="n">ancestry_data</span><span class="p">[</span><span class="n">top_codes</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">to_plot</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">ylgnbu</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">row</span><span class="p">,</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="nb">zip</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Portuguese&#39;</span><span class="p">,</span><span class="s1">&#39;Irish&#39;</span><span class="p">,</span><span class="s1">&#39;Italian&#39;</span><span class="p">,</span><span class="s1">&#39;English&#39;</span><span class="p">,</span><span class="s1">&#39;Other&#39;</span><span class="p">],</span> <span class="n">loc</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/ex1_disc.png"><img alt="../../_images/ex1_disc.png" src="../../_images/ex1_disc.png" style="width: 500pt;" /></a>
+<p>And just like that, we have analyzed our categorical variable! You can manipulate,
+analyze, and visualize display data like you normally would with the ZIP-level
+data in a standard pd.DataFrame!</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Ziptool</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started.html"> Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html"> Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html"> Examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> Example 1</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../examples.html">Examples</a><ul>
+      <li>Previous: <a href="../examples.html" title="previous chapter">Examples</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Joshua Neronha.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/examples/example1/example1.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

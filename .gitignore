@@ -28,3 +28,5 @@ src/ziptool/resources/usa_00013.csv
 docs/examples/config.py
 docs/examples/usa_00021.dat.gz
 docs/examples/usa_00021.xml
+*.gz
+docs/examples/usa_00023.xml

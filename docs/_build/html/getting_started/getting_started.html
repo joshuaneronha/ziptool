@@ -49,8 +49,8 @@ used:</p>
 <ol class="arabic simple">
 <li><p>Downloaded, rectangular CSV that contains your variables of interest. You
 can register at <a class="reference external" href="https://usa.ipums.org/">https://usa.ipums.org/</a> and download the data you would like.
-You must be sure to download rectangular data and include PUMA as a variable,
-as the analysis relies on PUMA to convert to ZIP code.</p></li>
+You must be sure to download rectangular data and include PUMA <em>and</em> STATEFIP,
+as variables, as the analysis relies on PUMA and state to convert to ZIP code.</p></li>
 <li><p>Alternatively, you could use <a class="reference external" href="https://ipumspy.readthedocs.io/en/latest/">ipumspy</a>!
 This very convenient package allows you to generate a pd.DataFrame for whatever
 data you would like and queries IPUMS directly using the API. This is the
@@ -148,6 +148,7 @@ your choice.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/modules.html"> Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html"> Examples</a></li>
 </ul>
 
 <div class="relations">

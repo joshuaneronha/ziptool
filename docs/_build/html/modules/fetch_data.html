@@ -33,9 +33,13 @@
 
           <div class="body" role="main">
             
-  <section id="module-ziptool.fetch_data">
-<span id="fetch-data-module"></span><h1>fetch_data module<a class="headerlink" href="#module-ziptool.fetch_data" title="Permalink to this headline">¶</a></h1>
-<dl class="py function">
+  <section id="fetch-data-module">
+<h1>fetch_data module<a class="headerlink" href="#fetch-data-module" title="Permalink to this headline">¶</a></h1>
+<p>This module contains helper functions used to obtain shape files required to
+determine the intersections of Census tracts, PUMAs, and ZIP codes. Downloaded
+data is stored in the computer’s temporary cache and should be deleted
+automatically at termination.</p>
+<span class="target" id="module-ziptool.fetch_data"></span><dl class="py function">
 <dt class="sig sig-object py" id="ziptool.fetch_data.download_file">
 <span class="sig-prename descclassname"><span class="pre">ziptool.fetch_data.</span></span><span class="sig-name descname"><span class="pre">download_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">pathlib.Path</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">requests.sessions.Session</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ziptool.fetch_data.download_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Downloads a file from the provided URL and saves it at the desired path.</p>
@@ -54,15 +58,16 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ziptool.fetch_data.get_shape_files">
-<span class="sig-prename descclassname"><span class="pre">ziptool.fetch_data.</span></span><span class="sig-name descname"><span class="pre">get_shape_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_fips_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ziptool.fetch_data.get_shape_files" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ziptool.fetch_data.</span></span><span class="sig-name descname"><span class="pre">get_shape_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_fips_code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ziptool.fetch_data.get_shape_files" title="Permalink to this definition">¶</a></dt>
 <dd><p>For a given state (in particular its FIPS code), downloads its census tracts and
 PUMA shapefiles from the Census Bureau. The functions skips the download if the
 file already has been fetched!</p>
-<p>Note that we are pulling the 2019 shapefiles. This function should be updated for
-other years’ shapefiles</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>state_fips_code</strong> – string representing the state of interest</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>state_fips_code</strong> – string representing the state of interest</p></li>
+<li><p><strong>year</strong> – string representing the year</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Saves .shp files for both PUMA and census tracts within the data directory.</p>
@@ -99,6 +104,7 @@ other years’ shapefiles</p>
 <li class="toctree-l2"><a class="reference internal" href="utils.html"> utils</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html"> Examples</a></li>
 </ul>
 
 <div class="relations">

@@ -25,3 +25,4 @@ However, many subfunctions are also documented and can be used standalone.
 
     Getting Started <getting_started/getting_started>
     Modules <modules/modules>
+    Examples <examples/examples>

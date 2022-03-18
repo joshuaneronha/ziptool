@@ -15,6 +15,7 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Examples" href="../examples/examples.html" />
     <link rel="prev" title="interface module" href="interface.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -32,12 +33,12 @@
 
           <div class="body" role="main">
             
-  <section id="module-ziptool.utils">
-<span id="utils-module"></span><h1>utils module<a class="headerlink" href="#module-ziptool.utils" title="Permalink to this headline">¶</a></h1>
-<p>Some simple utilitis for handling data interaction</p>
-<dl class="py function">
+  <section id="utils-module">
+<h1>utils module<a class="headerlink" href="#utils-module" title="Permalink to this headline">¶</a></h1>
+<p>Some simple utilities for handling data interaction.</p>
+<span class="target" id="module-ziptool.utils"></span><dl class="py function">
 <dt class="sig sig-object py" id="ziptool.utils.cast_fips_code">
-<span class="sig-prename descclassname"><span class="pre">ziptool.utils.</span></span><span class="sig-name descname"><span class="pre">cast_fips_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_fips_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#ziptool.utils.cast_fips_code" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">ziptool.utils.</span></span><span class="sig-name descname"><span class="pre">cast_fips_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">state_fips_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#ziptool.utils.cast_fips_code" title="Permalink to this definition">¶</a></dt>
 <dd><p>FIPS codes are technically two-digit strings representing a number between 0 and 99,
 e.g., “01” and “44”. But it is very common that people pass them as integers.
 This guarantees they always appear as two-digit strings.</p>
@@ -64,6 +65,21 @@ integers. This guarantees that they always appear as five-digit strings</p>
 <dd class="field-even"><p>The appropriately styled version of the code</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ziptool.utils.convert_to_df">
+<span class="sig-prename descclassname"><span class="pre">ziptool.utils.</span></span><span class="sig-name descname"><span class="pre">convert_to_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">pandas.core.frame.DataFrame</span></span></span><a class="headerlink" href="#ziptool.utils.convert_to_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts summary statistics returned by query_by_zip to a dataframe.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data_dict</strong> – the dictionary returned by query_by_zip</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>pd.DataFrame containing the summary statistics by ZIP code</p>
+</dd>
+</dl>
+<p>Raises:</p>
 </dd></dl>
 
 <dl class="py function">
@@ -133,12 +149,14 @@ filename.</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html"> Getting Started</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html"> Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="fetch_data.html">     fetch_data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="query_by_zip.html"> query_by_zip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fetch_data.html"> fetch_data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="geo_conversion.html"> geo_conversion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="interface.html"> interface</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#"> utils</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/examples.html"> Examples</a></li>
 </ul>
 
 <div class="relations">
@@ -147,6 +165,7 @@ filename.</p>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="modules.html">Modules</a><ul>
       <li>Previous: <a href="interface.html" title="previous chapter">interface module</a></li>
+      <li>Next: <a href="../examples/examples.html" title="next chapter">Examples</a></li>
   </ul></li>
   </ul></li>
 </ul>

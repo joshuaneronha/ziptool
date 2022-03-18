@@ -18,8 +18,8 @@ used:
 
 1. Downloaded, rectangular CSV that contains your variables of interest. You
    can register at https://usa.ipums.org/ and download the data you would like.
-   You must be sure to download rectangular data and include PUMA as a variable,
-   as the analysis relies on PUMA to convert to ZIP code.
+   You must be sure to download rectangular data and include PUMA *and* STATEFIP,
+   as variables, as the analysis relies on PUMA and state to convert to ZIP code.
 
 2. Alternatively, you could use `ipumspy <https://ipumspy.readthedocs.io/en/latest/>`_!
    This very convenient package allows you to generate a pd.DataFrame for whatever
