@@ -11,14 +11,43 @@ New England towns throughout the region: Jamestown, RI (02835); Kennebunkport,
 ME (04046); New Bedford, MA (02740); Stonington, CT (06355); and Westerly, RI
 (02804). We are particularly interested in household income and ancestry.
 
-Pulling Data with ipumspy
--------------------------
-First, import ipumspy, its readers, and other important dependencies.
+Setup
+-----
+First, import pandas, numpy, and some other important dependencies.
 ::
 
     import pandas as pd
     import numpy as np
     from pathlib import Path
+
+We give two options for pulling data. Using ipumspy is recommended as it is much
+easier to use, but importing CSVs is fully supported as well.
+
+Option 1: Manually Pulling Data
+-------------------------------
+1. Go to https://usa.ipums.org/usa/ and create a free account.
+2. Click the "Select Data" tab.
+3. Click "Select Samples" to select the year of ACS data you are interested in
+ (ziptool only supports one year at a time).
+4. Under the "Select Harmonized Variables" dropdown, choose the variables you
+would like. Be sure to add "PUMA" and "STATEFIP" under the Household ->
+Geographic tab
+5. Hit "View Cart" then select "Create Data Extract." Select .csv as the data
+format and rectangular under structure.
+6. Hit submit extract and wait until it is finished so you can download!
+
+Once you have the data downloaded, simply pass the path to the CSV as an argument
+in data_by_zip. Ziptool will handle the import for you.
+
+The rest of the tutorial will use the ipumspy option because of its ability
+to import and parse the associated codebook, which we need in this example
+
+
+Option 2: Pulling Data with ipumspy
+-------------------------
+Import ipumspy and the modules we need explicitly.
+::
+
     import ipumspy
     from ipumspy import IpumsApiClient, UsaExtract, readers, ddi
 
