@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Why does this tool exist? &#8212; Ziptool 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modules" href="modules/modules.html" />
+    <link rel="prev" title="Getting Started" href="getting_started/getting_started.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="why-does-this-tool-exist">
+<h1>Why does this tool exist?<a class="headerlink" href="#why-does-this-tool-exist" title="Permalink to this headline">¶</a></h1>
+<p>ZIP codes are ubiqitous in daily lives – mailing packages, verifying your ZIP
+code when using your credit card, using Google Maps, and so on. So you would
+think that the Census Bureau (which conducts, of course, the Census, but also
+supplemental surveys like the American Community Survey, or ACS) would report
+its data on a ZIP code basis. And to some degree, it does. You can
+<a class="reference external" href="https://data.census.gov/cedsci/all?q=02906">look up data</a> for any ZIP code
+you would like right on the Census Bureau’s website.</p>
+<p>However, this published data is all aggregated. Sometimes, as researchers, we
+want the microdata, which is the raw data collected from the ACS. However, by
+federal law, the Census Bureau must <a class="reference external" href="https://www.census.gov/about/policies/privacy/statistical_safeguards.html">take precautions</a>
+to avoid publishing potentially identifying information for 72 years after data
+collection. So while they do helpfully publish microdata from the ACS, they
+do not identify the ZIP code of the respondent. This is because some ZIP codes
+are extremely small – 05141, for example, represents Cambridgeport, Vermont,
+a town of only 112 people! And since the American Community Survey literally
+collects every piece of demographic information you can imagine (ancestry, how
+many cars you have, what kind of broadband you have, etc.) it wouldn’t be too
+hard to figure out exactly the identity of a respondent.</p>
+<p>The other reason the Census Bureau doesn’t publish data on a ZIP code basis is
+that ZIP codes actually are not geographical areas – they represent mail routes.
+They’ve sort of been retooled and misused for geographic areas, the same way
+Social Security numbers have ended up being used as federal identifiers despite
+that not at all being the intention. Because of this, ZIP codes aren’t quite as
+geographically clean as we think they are. For example, some ZIP codes refer not
+to locations but mail routes – 02912, for example, simply represents Brown
+University’s central mail room from which mail is distributed across the
+university by Brown itself and not the postal service. And some ZIP codes even
+span multiple states, as shown below!</p>
+<a class="reference internal image-reference" href="_images/download-3.png"><img alt="_images/download-3.png" src="_images/download-3.png" style="width: 500pt;" /></a>
+<p>For both of the above reasons, the Census Bureau publishes microdata not by
+ZIP code, but by Public Use Microdata Areas, commonly known as PUMAs. These
+are actual geographic regions that are designed to have 100,000 residents each,
+which the Census Bureau deems large enough to main anonymity. That means that we
+can obtain approximate microdata data for a ZIP code by querying its PUMA –
+should be easy, right?</p>
+<p>Well, not quite. As we discussed before, ZIP codes are not geographic areas, but
+mail routes, so it’s not like there’s a one-to-one conversion between PUMA
+and ZIP. Thankfully, the U.S. Department of Housing and Urban Development (HUD)
+publishes the <a class="reference external" href="https://www.huduser.gov/portal/datasets/usps_crosswalk.html">HUD-USPS ZIP Code Crosswalk</a>
+which allows us to convert ZIP codes to census tracts. This is good because we
+now have actual geographical boundaries for a given ZIP code, but census tracts
+are distinct from PUMAs and again are not 1:1 related. That means the final step
+is computing the geographical intersection between census tracts and PUMA using
+shape files provided by the Census Bureau. At this point, we can query approximate
+data by ZIP code from the American Community Survey.</p>
+<p>So, in summary, what does this tool actually do? It works through these messy
+geographical conversions (ZIP -&gt; census tract -&gt; PUMA) to pull out approximate
+data from the ACS on a ZIP code level.</p>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Ziptool</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started/getting_started.html"> Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"> Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules/modules.html"> Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/examples.html"> Examples</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="getting_started/getting_started.html" title="previous chapter">Getting Started</a></li>
+      <li>Next: <a href="modules/modules.html" title="next chapter">Modules</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Joshua Neronha.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/why.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

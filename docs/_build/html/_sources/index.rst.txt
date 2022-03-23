@@ -24,5 +24,6 @@ However, many subfunctions are also documented and can be used standalone.
    :maxdepth: 2
 
     Getting Started <getting_started/getting_started>
+    Background <why>
     Modules <modules/modules>
     Examples <examples/examples>

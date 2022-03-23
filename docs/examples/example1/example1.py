@@ -52,6 +52,7 @@ top_codes = [ancestry_codes['Portuguese'], ancestry_codes['Irish, various subhea
 # Westerly, RI: 02804
 
 
+
 raw_dfs = data_by_zip(['02835','04046','02740','06355','02804'], ipums_df)
 
 fig, ax = plt.subplots(2,3)
