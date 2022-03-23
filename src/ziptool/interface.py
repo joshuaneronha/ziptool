@@ -133,9 +133,9 @@ def get_acs_data(
             )
 
             outer_dict[variable] = {
-                "mean": sum(avg_list),
-                "std": sum(std_list),
-                "median": sum(median_list),
+                "mean": np.round(sum(avg_list),2),
+                "std": np.round(sum(std_list),2),
+                "median": np.round(sum(median_list),2)
             }
         return outer_dict
 

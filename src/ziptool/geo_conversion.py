@@ -113,7 +113,7 @@ def tracts_to_puma(tracts, state_fips_code: str):
     summary["weighted_ratios"] = summary["rounded_ratio"] * summary["PUMARAT"]
     summary_top = summary.groupby("PUMACE10").sum()["weighted_ratios"]
 
-    filtered = summary_top[summary_top > 0.99]
+    filtered = summary_top[summary_top > 0.01]
     rounded = filtered.apply(lambda x: 1.0 if x > 0.99 else x)
 
     return rounded
