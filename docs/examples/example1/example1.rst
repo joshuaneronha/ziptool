@@ -40,7 +40,7 @@ Once you have the data downloaded, simply pass the path to the CSV as an argumen
 in data_by_zip. Ziptool will handle the import for you.
 
 The rest of the tutorial will use the ipumspy option because of its ability
-to import and parse the associated codebook, which we need in this example
+to import and parse the associated codebook, which we need in this example.
 
 
 Option 2: Pulling Data with ipumspy
