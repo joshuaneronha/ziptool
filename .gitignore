@@ -16,20 +16,7 @@ dist
 .env
 .env.test
 .Rproj.user
+docs/examples/example1/configuration.py
 
 # Mac cruft
 .DS_Store
-
-# Data
-acs_data/usa_00013.csv
-acs_data/usa_00013.xml
-component_testing.py
-src/ziptool/resources/usa_00013.csv
-docs/examples/config.py
-docs/examples/usa_00021.dat.gz
-docs/examples/usa_00021.xml
-*.gz
-docs/examples/usa_00023.xml
-tests/usa_00013.csv
-docs/examples/example1/config.py
-docs/examples/example1/config.py

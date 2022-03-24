@@ -10,8 +10,8 @@ from ziptool.query_by_zip import data_by_zip
 
 @pytest.fixture
 def test_data() -> pd.DataFrame:
-    stream = pkg_resources.resource_stream(__name__, "usa_00013.csv")
-    return pd.read_csv(stream)
+    stream = pkg_resources.resource_stream(__name__, "usa_00013.csv.zip")
+    return pd.read_csv(stream, compression = "zip")
 
 
 def test_zip_to_tract():
