@@ -31,3 +31,5 @@ docs/examples/usa_00021.xml
 *.gz
 docs/examples/usa_00023.xml
 tests/usa_00013.csv
+docs/examples/example1/config.py
+docs/examples/example1/config.py
