@@ -67,8 +67,6 @@ def get_acs_data(
     elif isinstance(file, pd.DataFrame):
         data = file
 
-
-
     sub_state = data[data["STATEFIP"] == state_fips_code]
 
     grouped = sub_state.groupby("PUMA")
@@ -98,7 +96,6 @@ def get_acs_data(
                 )
                 chosen_weight = "PERWT" if var_type == "individual" else "HHWT"
 
-
                 no_null = rel_puma[rel_puma[variable] != null_val]
                 removed = (len(rel_puma) - len(no_null)) / len(rel_puma)
                 removed_list.append(removed)
@@ -107,9 +104,11 @@ def get_acs_data(
                 avg = no_null["weighted"].sum() / no_null[chosen_weight].sum()
                 avg_list.append(avg * i)
 
-                no_null['for_median_var'] = no_null[variable].astype('float64')
+                no_null["for_median_var"] = no_null[variable].astype("float64")
 
-                median = wquantiles.median(no_null['for_median_var'], no_null[chosen_weight])
+                median = wquantiles.median(
+                    no_null["for_median_var"], no_null[chosen_weight]
+                )
 
                 median_list.append(median * i)
 
@@ -130,9 +129,9 @@ def get_acs_data(
             )
 
             outer_dict[variable] = {
-                "mean": np.round(sum(avg_list),2),
-                "std": np.round(sum(std_list),2),
-                "median": np.round(sum(median_list),2)
+                "mean": np.round(sum(avg_list), 2),
+                "std": np.round(sum(std_list), 2),
+                "median": np.round(sum(median_list), 2),
             }
         return outer_dict
 

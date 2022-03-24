@@ -3,8 +3,8 @@
 """
 from typing import Union
 
-import us
 import pandas as pd
+import us
 
 
 def cast_fips_code(state_fips_code: Union[str, int]) -> str:
@@ -23,7 +23,7 @@ def cast_fips_code(state_fips_code: Union[str, int]) -> str:
         return state_fips_code
     if isinstance(state_fips_code, int):
         if state_fips_code <= 9:
-            return '0' + str(state_fips_code)
+            return "0" + str(state_fips_code)
         else:
             return str(state_fips_code)
 
@@ -91,6 +91,7 @@ def get_fips_code_from_abbr(state: str) -> str:
 
     return obj.fips
 
+
 def convert_to_df(data_dict: dict) -> pd.DataFrame:
     """
     Converts summary statistics returned by query_by_zip to a dataframe.
@@ -104,11 +105,11 @@ def convert_to_df(data_dict: dict) -> pd.DataFrame:
     Raises:
     """
 
-    df = pd.DataFrame.from_dict(data_dict,orient='index')
+    df = pd.DataFrame.from_dict(data_dict, orient="index")
     for col in df:
         df[col + "_mean"] = df[col].apply(lambda x: x["mean"])
         df[col + "_median"] = df[col].apply(lambda x: x["median"])
         df[col + "_std"] = df[col].apply(lambda x: x["std"])
-        df.drop([col],axis=1, inplace=True)
+        df.drop([col], axis=1, inplace=True)
 
     return df
