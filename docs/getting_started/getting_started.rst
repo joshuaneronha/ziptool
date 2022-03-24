@@ -5,6 +5,7 @@ Installation
 ------------
 
 Ziptool requires Python >= 3.8.0. Install using :code:`pip`:
+*Not yet active!*
 
 ::
 

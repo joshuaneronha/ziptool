@@ -71,9 +71,6 @@ def get_acs_data(
 
     sub_state = data[data["STATEFIP"] == state_fips_code]
 
-    # TODO(jn): Why is the cast to float necessary
-    sub_state["HHWT"] = sub_state["HHWT"].astype(float)
-    sub_state["PERWT"] = sub_state["PERWT"].astype(float)
     grouped = sub_state.groupby("PUMA")
 
     outer_dict = {}

@@ -70,11 +70,11 @@ def data_by_zip(zips: List[str], acs_data, variables=None, year="2019"):
     global hud_crosswalk
 
     # TODO(khw): zip is a keyword, change the name
-    for zip in zips:
-        tracts, state_fips_code = geo_conversion.zip_to_tract(zip)
+    for this_zip in zips:
+        tracts, state_fips_code = geo_conversion.zip_to_tract(this_zip)
 
         if sum([x[1] for x in tracts]) < 1e-7:
-            raise ValueError(f"{zip} is not a valid residential zip code!")
+            raise ValueError(f"{this_zip} is not a valid residential zip code!")
 
         fetch_data.get_shape_files(state_fips_code, year)
         puma_ratios = geo_conversion.tracts_to_puma(tracts, state_fips_code)
@@ -82,6 +82,6 @@ def data_by_zip(zips: List[str], acs_data, variables=None, year="2019"):
         ans = interface.get_acs_data(
             acs_data, int(state_fips_code), puma_ratios, variables
         )
-        ans_dict[zip] = ans
+        ans_dict[this_zip] = ans
 
     return ans_dict

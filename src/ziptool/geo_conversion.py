@@ -27,18 +27,17 @@ def get_state_intersections(state_fips_code: str) -> gpd.GeoDataFrame:
     Returns:
         a geopandas dataframe detailing the intersections of tracts and PUMAS for a state
     """
-    # TODO(khw): chdir remains problematic
-    os.chdir(shp_dir.name)
+
     puma_name = puma_shapefile_name(state_fips_code)
     tract_name = tract_shapefile_name(state_fips_code)
 
-    if not exists(puma_name):
+    if not exists(os.path.join(shp_dir.name,puma_name)):
         from ziptool.fetch_data import get_shape_files
 
         get_shape_files(state_fips_code)
 
-    puma = gpd.read_file(puma_name).to_crs(epsg=ALBERS_EPSG_ID)
-    tract = gpd.read_file(tract_name).to_crs(epsg=ALBERS_EPSG_ID)
+    puma = gpd.read_file(os.path.join(shp_dir.name,puma_name)).to_crs(epsg=ALBERS_EPSG_ID)
+    tract = gpd.read_file(os.path.join(shp_dir.name,tract_name)).to_crs(epsg=ALBERS_EPSG_ID)
 
     return gpd.overlay(puma, tract, how="intersection", keep_geom_type=False)
 

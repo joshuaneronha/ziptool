@@ -1,6 +1,6 @@
 from os.path import exists
 import pytest
-from ziptool import fetch_data, geo_conversion
+from ziptool import fetch_data, geo_conversion, shp_dir
 from ziptool.query_by_zip import data_by_zip
 import pkg_resources
 import pandas as pd
@@ -67,7 +67,7 @@ def test_data_by_zip(test_data):
 def test_get_shape_files():
     fetch_data.get_shape_files("44","2019")
     fetch_data.get_shape_files("01","2019")
-    assert exists("tl_2019_44_tract.zip")
-    assert exists("tl_2019_44_puma10.zip")
-    assert exists("tl_2019_01_tract.zip")
-    assert exists("tl_2019_01_puma10.zip")
+    assert exists(shp_dir.name + '/' + "tl_2019_44_tract.zip")
+    assert exists(shp_dir.name + '/' + "tl_2019_44_puma10.zip")
+    assert exists(shp_dir.name + '/' + "tl_2019_01_tract.zip")
+    assert exists(shp_dir.name + '/' + "tl_2019_01_puma10.zip")

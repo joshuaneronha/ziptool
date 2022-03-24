@@ -28,9 +28,6 @@ def cast_fips_code(state_fips_code: Union[str, int]) -> str:
             return str(state_fips_code)
 
 
-
-
-
 def cast_zipcode(zipcode: Union[str, int]) -> str:
     """
     ZIP codes are five-digit strings, but it is very common that people pass them as

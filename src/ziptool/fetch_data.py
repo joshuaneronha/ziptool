@@ -1,5 +1,4 @@
-import os
-from os.path import exists
+from os.path import exists, join
 from pathlib import Path
 from typing import Optional, Union
 
@@ -26,14 +25,11 @@ def download_file(
         None
     """
 
-    # TODO (khw): Generally a very bad idea to call chdir, especially from a library
-    os.chdir(shp_dir.name)
-
     session = session or requests
 
     with session.get(url, stream=True) as response:
         response.raise_for_status()
-        with open(output_filename, "wb") as outfile:
+        with open(join(shp_dir.name, output_filename), "wb") as outfile:
             for chunk in response.iter_content(chunk_size=8192):
                 outfile.write(chunk)
 
