@@ -5,9 +5,54 @@ import numpy as np
 import pandas as pd
 import wquantiles
 
-from .utils import cast_fips_code
-
 FilenameType = Union[str, Path]
+
+
+def _group_weighted_mean(df, group_col, val_col, weight_col):
+    df = df[[group_col, val_col, weight_col]].dropna()
+    tmp_df = pd.DataFrame(
+        {
+            group_col: df[group_col],
+            val_col: df[val_col] * df[weight_col],
+        }
+    )
+
+    weighted_sums = tmp_df.groupby(group_col)[val_col].sum()
+    total_weights = df.groupby(group_col)[weight_col].sum()
+    return weighted_sums / total_weights
+
+
+def _group_weighted_std(df, group_col, val_col, weight_col):
+    df = df[[group_col, val_col, weight_col]].dropna()
+    tmp_df = pd.DataFrame(
+        {
+            group_col: df[group_col],
+            val_col: df[val_col] * df[weight_col],
+            f"{val_col}2": (df[val_col] ** 2) * df[weight_col],
+        }
+    )
+
+    weighted_sums = tmp_df.groupby(group_col)[val_col].sum()
+    weighted_squares = tmp_df.groupby(group_col)[f"{val_col}2"].sum()
+    total_weights = df.groupby(group_col)[weight_col].sum()
+    num_in_group = df[group_col].size()
+
+    return (
+        (weighted_squares / total_weights - (weighted_sums / total_weights) ** 2)
+        / (num_in_group - 1 + 1e-10)
+        * num_in_group
+    )
+
+
+def _group_weighted_median(df, group_col, val_col, weight_col):
+    df = df[[group_col, val_col, weight_col]].dropna()
+    df = df.sort_values(by=["group_col", "val_col"])
+    cum_weight_high = df.groupby(group_col)[weight_col].cumsum() >= 0.5
+    first_in_group = df["group_col"] != df["group_col"].shift(periods=1)
+    return df[
+        (first_in_group & cum_weight_high)
+        | cum_weight_high & ~(cum_weight_high.shift(periods=1, fill_value=False))
+    ].set_index(group_col)
 
 
 def get_acs_data(
@@ -66,83 +111,34 @@ def get_acs_data(
         data = pd.read_csv(file)
     elif isinstance(file, pd.DataFrame):
         data = file
-
-    sub_state = data[data["STATEFIP"] == state_fips_code]
-
-    grouped = sub_state.groupby("PUMA")
-
-    outer_dict = {}
-
-    if variables is not None:
-
-        for entry in variables:
-
-            variable = entry
-            null_val = variables[variable]["null"]
-            var_type = variables[variable]["type"]
-
-            avg_list = []
-            median_list = []
-            std_list = []
-            removed_list = []
-
-            for index, i in enumerate(pumas):
-                this_puma = grouped.get_group(int(pumas.index[index]))
-
-                rel_puma = (
-                    this_puma
-                    if var_type == "individual"
-                    else this_puma[this_puma["PERNUM"] == 1]
-                )
-                chosen_weight = "PERWT" if var_type == "individual" else "HHWT"
-
-                no_null = rel_puma[rel_puma[variable] != null_val]
-                removed = (len(rel_puma) - len(no_null)) / len(rel_puma)
-                removed_list.append(removed)
-
-                no_null["weighted"] = no_null[variable] * no_null[chosen_weight]
-                avg = no_null["weighted"].sum() / no_null[chosen_weight].sum()
-                avg_list.append(avg * i)
-
-                no_null["for_median_var"] = no_null[variable].astype("float64")
-
-                median = wquantiles.median(
-                    no_null["for_median_var"], no_null[chosen_weight]
-                )
-
-                median_list.append(median * i)
-
-                std = np.sqrt(
-                    (((no_null[variable] - avg) ** 2) * no_null[chosen_weight]).sum()
-                    / (
-                        (
-                            (len(no_null[chosen_weight]) - 1)
-                            / len(no_null[chosen_weight])
-                        )
-                        * no_null[chosen_weight].sum()
-                    )
-                )
-                std_list.append(std * i)
-
-            print(
-                f"{np.mean(removed_list) * 100:0.2f}% of entries removed as null for variable {entry}"
-            )
-
-            outer_dict[variable] = {
-                "mean": np.round(sum(avg_list), 2),
-                "std": np.round(sum(std_list), 2),
-                "median": np.round(sum(median_list), 2),
-            }
-        return outer_dict
-
     else:
-        # variables is None
-        if len(pumas) == 1:
-            this_puma = grouped.get_group(int(pumas.index[0]))
-            return this_puma
-        else:
-            puma_dict = {}
-            for index, i in enumerate(pumas):
-                this_puma = grouped.get_group(int(pumas.index[index]))
-                puma_dict[index] = [this_puma, i]
-            return puma_dict
+        raise TypeError(f"file must be a str, Path, or pd.DataFrame, not {type(file)}")
+
+    sub_state = data[data["STATEFIP"] == state_fips_code].copy()
+
+    dfs = []
+    for key, value in variables.items():
+        # Transform the null value to a pandas null value
+        sub_state.loc[sub_state[key] == value["null"], key] = pd.NA
+
+        # For household variables, put null values in extra rows
+        if value["type"] != "individual":
+            sub_state.loc[sub_state["PERNUM"] > 1, key] = pd.NA
+
+        mean = _group_weighted_mean(
+            sub_state, "PUMA", key, "PERWT" if value["type"] == "individual" else "HHWT"
+        )
+        std = _group_weighted_std(
+            sub_state, "PUMA", key, "PERWT" if value["type"] == "individual" else "HHWT"
+        )
+        median = _group_weighted_median(
+            sub_state, "PUMA", key, "PERWT" if value["type"] == "individual" else "HHWT"
+        )
+        dfs.append(
+            pd.DataFrame(
+                {f"{key}_mean": mean, f"{key}_std": std, f"{key}_median": median},
+                index=mean.index,
+            )
+        )
+
+    return pd.concat(dfs, axis=1)
