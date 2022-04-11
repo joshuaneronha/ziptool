@@ -35,24 +35,29 @@ def _group_weighted_std(df, group_col, val_col, weight_col):
     weighted_sums = tmp_df.groupby(group_col)[val_col].sum()
     weighted_squares = tmp_df.groupby(group_col)[f"{val_col}2"].sum()
     total_weights = df.groupby(group_col)[weight_col].sum()
-    num_in_group = df[group_col].size()
+    num_in_group = len(df[group_col])
+
 
     return (
-        (weighted_squares / total_weights - (weighted_sums / total_weights) ** 2)
+        ((weighted_squares / total_weights - (weighted_sums / total_weights) ** 2)
         / (num_in_group - 1 + 1e-10)
-        * num_in_group
+        * num_in_group) ** (1/2)
     )
+
 
 
 def _group_weighted_median(df, group_col, val_col, weight_col):
     df = df[[group_col, val_col, weight_col]].dropna()
-    df = df.sort_values(by=["group_col", "val_col"])
-    cum_weight_high = df.groupby(group_col)[weight_col].cumsum() >= 0.5
-    first_in_group = df["group_col"] != df["group_col"].shift(periods=1)
+    df = df.sort_values(by=[group_col, val_col])
+
+    cum_weight_high = df.groupby(group_col)[weight_col].cumsum() >= (0.5 * df.groupby(group_col)[weight_col].sum().repeat(df.groupby(group_col)[weight_col].count()).values)
+
+    first_in_group = df[group_col] != df[group_col].shift(periods=1)
+
     return df[
         (first_in_group & cum_weight_high)
         | cum_weight_high & ~(cum_weight_high.shift(periods=1, fill_value=False))
-    ].set_index(group_col)
+    ].set_index(group_col)[val_col]
 
 
 def get_acs_data(
@@ -92,18 +97,10 @@ def get_acs_data(
             (returned by geo_conversion.tracts_to_puma)
 
     Returns:
-        When variables of interest are passed, a dictionary of the form::
-
-            {
-                var_1: {
-                    "mean": 46493.49,
-                    "std": 57214.11,
-                    "median": 29982.5
-                }...
-            }
+        When variables of interest are passed, a pd.DataFrame containing
+        the summary statistics.
 
         When variables of interest are NOT passed, a dictionary of the form::
-
             {puma_1: [puma1_df, ratio1], puma_2: [puma2_df, ratio2]...}
     """
 
@@ -114,31 +111,57 @@ def get_acs_data(
     else:
         raise TypeError(f"file must be a str, Path, or pd.DataFrame, not {type(file)}")
 
-    sub_state = data[data["STATEFIP"] == state_fips_code].copy()
+    sub_state = data[data["STATEFIP"] == int(state_fips_code)].copy()
 
     dfs = []
-    for key, value in variables.items():
-        # Transform the null value to a pandas null value
-        sub_state.loc[sub_state[key] == value["null"], key] = pd.NA
 
-        # For household variables, put null values in extra rows
-        if value["type"] != "individual":
-            sub_state.loc[sub_state["PERNUM"] > 1, key] = pd.NA
+    if variables is not None:
 
-        mean = _group_weighted_mean(
-            sub_state, "PUMA", key, "PERWT" if value["type"] == "individual" else "HHWT"
-        )
-        std = _group_weighted_std(
-            sub_state, "PUMA", key, "PERWT" if value["type"] == "individual" else "HHWT"
-        )
-        median = _group_weighted_median(
-            sub_state, "PUMA", key, "PERWT" if value["type"] == "individual" else "HHWT"
-        )
-        dfs.append(
-            pd.DataFrame(
-                {f"{key}_mean": mean, f"{key}_std": std, f"{key}_median": median},
-                index=mean.index,
-            )
-        )
+        for key, value in variables.items():
 
-    return pd.concat(dfs, axis=1)
+
+            # Transform the null value to a pandas null value
+                sub_state.loc[sub_state[key] == value["null"], key] = pd.NA
+
+                # For household variables, put null values in extra rows
+                if value["type"] != "individual":
+                    sub_state.loc[sub_state["PERNUM"] > 1, key] = pd.NA
+
+                mean = _group_weighted_mean(
+                    sub_state, "PUMA", key, "PERWT" if value["type"] == "individual" else "HHWT"
+                )
+                std = _group_weighted_std(
+                    sub_state, "PUMA", key, "PERWT" if value["type"] == "individual" else "HHWT"
+                )
+                median = _group_weighted_median(
+                    sub_state, "PUMA", key, "PERWT" if value["type"] == "individual" else "HHWT"
+                )
+
+
+                dfs.append(
+                    pd.DataFrame(
+                        {f"{key}_mean": mean, f"{key}_std": std, f"{key}_median": median},
+                        index=mean.index,
+                    )
+                )
+
+        all_pumas =  pd.concat(dfs, axis=1)
+
+        our_indices = [int(x) for x in pumas.index]
+
+        return all_pumas.loc[our_indices].multiply(pumas.values,axis=0).sum().astype(float)
+
+    else:
+
+        grouped = sub_state.groupby("PUMA")
+
+        # variables is None
+        if len(pumas) == 1:
+            this_puma = grouped.get_group(int(pumas.index[0]))
+            return this_puma
+        else:
+            puma_dict = {}
+            for index, i in enumerate(pumas):
+                this_puma = grouped.get_group(int(pumas.index[index]))
+                puma_dict[index] = [this_puma, i]
+            return puma_dict

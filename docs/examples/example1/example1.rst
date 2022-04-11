@@ -105,9 +105,8 @@ codebook, as does the type (household vs. individual variable).
 
     income_data = data_by_zip(['02835','04046','02740','06355','02804'], ipums_df,
         {"HHINCOME": {"null": 9999999, "type":'household'}})
-    income_df = convert_to_df(income_data)
 
-We now have a pd.DataFrame that contains all of our data! We can easily generate
+We now have a pd.DataFrame, income_data, that contains all of our data! We can easily generate
 a bar plot to visualize differences by income as an example of the easy analysis
 that we can now perform.
 

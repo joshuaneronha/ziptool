@@ -1,0 +1,6081 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ipums-ddi-xslt.xsl"?>
+<codeBook ID="ddi2-96ca6a20-62b2-013a-48a2-0242c0a82007-usa_00028.dat-usa.ipums.org" version="2.5" xmlns="ddi:codebook:2_5" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="ddi:codebook:2_5 http://www.ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd">
+  <docDscr>
+    <citation>
+      <titlStmt>
+        <titl>Codebook for an IPUMS-USA Data Extract</titl>
+        <subTitl>DDI 2.5 metadata describing the extract file  'usa_00028.dat'</subTitl>
+        <IDNo>ddi2-96ca6a20-62b2-013a-48a2-0242c0a82007-usa_00028.dat-usa.ipums.org</IDNo>
+      </titlStmt>
+      <rspStmt>
+        <AuthEnty affiliation="University of Minnesota">IPUMS</AuthEnty>
+      </rspStmt>
+      <prodStmt>
+        <producer abbr="IPUMS" affiliation="University of Minnesota" role="Documentation">IPUMS</producer>
+        <prodDate date="2022-04-08">April 8, 2022</prodDate>
+        <prodPlac>IPUMS, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</prodPlac>
+      </prodStmt>
+      <distStmt>
+        <contact URI="https://ipums.org" affiliation="University of Minnesota">IPUMS</contact>
+      </distStmt>
+    </citation>
+  </docDscr>
+  <stdyDscr>
+    <citation>
+      <titlStmt>
+        <titl>User Extract usa_00028.dat</titl>
+      </titlStmt>
+      <rspStmt>
+        <AuthEnty affiliation="University of Minnesota">IPUMS</AuthEnty>
+      </rspStmt>
+      <prodStmt>
+        <producer abbr="IPUMS" affiliation="University of Minnesota" role="Documentation">IPUMS</producer>
+        <prodDate date="2022-04-08">April 8, 2022</prodDate>
+        <prodPlac>IPUMS, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</prodPlac>
+      </prodStmt>
+      <distStmt>
+        <contact URI="https://ipums.org" affiliation="University of Minnesota">IPUMS</contact>
+      </distStmt>
+      <serStmt>
+        <serName abbr="usa">IPUMS USA</serName>
+        <serInfo>DOI:10.18128/D010.V11.0</serInfo>
+      </serStmt>
+      <verStmt>
+        <version date="2022-04-08"/>
+      </verStmt>
+    </citation>
+    <stdyInfo>
+      <subject>
+        <topcClas vocab="IPUMS">Technical Variables -- HOUSEHOLD</topcClas>
+        <topcClas vocab="IPUMS">Geographic Variables -- HOUSEHOLD</topcClas>
+        <topcClas vocab="IPUMS">Group Quarters Variables -- HOUSEHOLD</topcClas>
+        <topcClas vocab="IPUMS">Economic Characteristic Variables -- HOUSEHOLD</topcClas>
+        <topcClas vocab="IPUMS">Technical Variables -- PERSON</topcClas>
+        <topcClas vocab="IPUMS">Race, Ethnicity, and Nativity Variables -- PERSON</topcClas>
+      </subject>
+      <sumDscr ID="sdatref-2710">
+        <timePrd date="2019" event="single">2019</timePrd>
+        <nation abbr="us">United States</nation>
+      </sumDscr>
+      <notes><![CDATA[Additional notes on a sample that is part of this study:  2019 ACS
+]]></notes>
+    </stdyInfo>
+    <dataAccs>
+      <useStmt>
+        <confDec required="no"><![CDATA[None]]></confDec>
+        <contact URI="http://usa.ipums.org" affiliation="IPUMS">IPUMS-USA</contact>
+        <citReq><![CDATA[Publications and research reports based on the IPUMS-USA database must cite it appropriately. The citation should include the following:
+
+Steven Ruggles, Sarah Flood, Sophia Foster, Ronald Goeken, Jose Pacas, Megan Schouweiler and Matthew Sobek. IPUMS USA: Version 11.0 [dataset]. Minneapolis, MN: IPUMS, 2021. https://doi.org/10.18128/D010.V11.0
+
+The licensing agreement for use of IPUMS-USA data requires that users supply us with the title and full citation for any publications, research reports, or educational materials making use of the data or documentation. Please add your citation to the IPUMS bibliography at http://bibliography.ipums.org/.]]></citReq>
+        <conditions><![CDATA[Users of IPUMS-USA data must agree to abide by the conditions of use. A user's license is valid for one year and may be renewed.  Users must agree to the following conditions:
+
+(1) No fees may be charged for use or distribution of the data.
+
+(2) Cite IPUMS appropriately.  For information on proper citation,  refer to the citation requirement section of this DDI document.
+
+(3) Tell us about any work you do using the IPUMS.  Publications, research  reports, or presentations making use of IPUMS-USA should be added to our  Bibliography. Continued funding for the IPUMS depends on our ability to  show our sponsor agencies that researchers are using the data for productive  purposes.
+
+(4) The IPUMS cannot be used for genealogical research
+
+(5) It is difficult to use the IPUMS to study small geographic areas.  In the  IPUMS census samples for years 1940-present, no places having a population  of fewer than 100,000 persons can be identified.
+
+(6) Use it for GOOD -- never for EVIL.
+
+(7) Please notify ipums@umn.edu regarding errors in the data or documentation.]]></conditions>
+        <disclaimer>The user of the data acknowledges that the original collector of the data, the authorized distributor of the data, and the relevant funding agency bear no responsibility for use of the data or for interpretations or inferences based upon such uses.</disclaimer>
+      </useStmt>
+    </dataAccs>
+    <notes><![CDATA[User-provided description:  My IPUMS extract]]></notes>
+  </stdyDscr>
+  <fileDscr ID="ExtractData">
+    <fileTxt>
+      <fileName>usa_00028.dat</fileName>
+      <fileCont>Microdata records</fileCont>
+      <fileStrc type="rectangular"/>
+      <fileType charset="ISO-8859-1">ISO-8859-1 data file</fileType>
+      <format>fixed length fields</format>
+      <filePlac>IPUMS, 50 Willey Hall, 225 - 19th Avenue South, Minneapolis, MN 55455</filePlac>
+    </fileTxt>
+  </fileDscr>
+  <dataDscr>
+    <var ID="YEAR" dcml="0" files="ExtractData" intrvl="discrete" name="YEAR">
+      <location EndPos="4" StartPos="1" width="4"/>
+      <labl>Census year</labl>
+      <txt><![CDATA[YEAR reports the four-digit year when the household was enumerated or included in the census, the ACS, and the PRCS.
+
+For the multi-year ACS/PRCS samples, YEAR indicates the last year of data included (e.g., 2007 for the 2005-2007 3-year ACS/PRCS; 2008 for the 2006-2008 3-year ACS/PRCS; and so on).  For the actual year of survey in these multi-year data, see MULTYEAR.]]></txt>
+      <catgry>
+        <catValu>1850</catValu>
+        <labl>1850</labl>
+      </catgry>
+      <catgry>
+        <catValu>1860</catValu>
+        <labl>1860</labl>
+      </catgry>
+      <catgry>
+        <catValu>1870</catValu>
+        <labl>1870</labl>
+      </catgry>
+      <catgry>
+        <catValu>1880</catValu>
+        <labl>1880</labl>
+      </catgry>
+      <catgry>
+        <catValu>1900</catValu>
+        <labl>1900</labl>
+      </catgry>
+      <catgry>
+        <catValu>1910</catValu>
+        <labl>1910</labl>
+      </catgry>
+      <catgry>
+        <catValu>1920</catValu>
+        <labl>1920</labl>
+      </catgry>
+      <catgry>
+        <catValu>1930</catValu>
+        <labl>1930</labl>
+      </catgry>
+      <catgry>
+        <catValu>1940</catValu>
+        <labl>1940</labl>
+      </catgry>
+      <catgry>
+        <catValu>1950</catValu>
+        <labl>1950</labl>
+      </catgry>
+      <catgry>
+        <catValu>1960</catValu>
+        <labl>1960</labl>
+      </catgry>
+      <catgry>
+        <catValu>1970</catValu>
+        <labl>1970</labl>
+      </catgry>
+      <catgry>
+        <catValu>1980</catValu>
+        <labl>1980</labl>
+      </catgry>
+      <catgry>
+        <catValu>1990</catValu>
+        <labl>1990</labl>
+      </catgry>
+      <catgry>
+        <catValu>2000</catValu>
+        <labl>2000</labl>
+      </catgry>
+      <catgry>
+        <catValu>2001</catValu>
+        <labl>2001</labl>
+      </catgry>
+      <catgry>
+        <catValu>2002</catValu>
+        <labl>2002</labl>
+      </catgry>
+      <catgry>
+        <catValu>2003</catValu>
+        <labl>2003</labl>
+      </catgry>
+      <catgry>
+        <catValu>2004</catValu>
+        <labl>2004</labl>
+      </catgry>
+      <catgry>
+        <catValu>2005</catValu>
+        <labl>2005</labl>
+      </catgry>
+      <catgry>
+        <catValu>2006</catValu>
+        <labl>2006</labl>
+      </catgry>
+      <catgry>
+        <catValu>2007</catValu>
+        <labl>2007</labl>
+      </catgry>
+      <catgry>
+        <catValu>2008</catValu>
+        <labl>2008</labl>
+      </catgry>
+      <catgry>
+        <catValu>2009</catValu>
+        <labl>2009</labl>
+      </catgry>
+      <catgry>
+        <catValu>2010</catValu>
+        <labl>2010</labl>
+      </catgry>
+      <catgry>
+        <catValu>2011</catValu>
+        <labl>2011</labl>
+      </catgry>
+      <catgry>
+        <catValu>2012</catValu>
+        <labl>2012</labl>
+      </catgry>
+      <catgry>
+        <catValu>2013</catValu>
+        <labl>2013</labl>
+      </catgry>
+      <catgry>
+        <catValu>2014</catValu>
+        <labl>2014</labl>
+      </catgry>
+      <catgry>
+        <catValu>2015</catValu>
+        <labl>2015</labl>
+      </catgry>
+      <catgry>
+        <catValu>2016</catValu>
+        <labl>2016</labl>
+      </catgry>
+      <catgry>
+        <catValu>2017</catValu>
+        <labl>2017</labl>
+      </catgry>
+      <catgry>
+        <catValu>2018</catValu>
+        <labl>2018</labl>
+      </catgry>
+      <catgry>
+        <catValu>2019</catValu>
+        <labl>2019</labl>
+      </catgry>
+      <catgry>
+        <catValu>2020</catValu>
+        <labl>2020</labl>
+      </catgry>
+      <concept vocab="IPUMS">Technical Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SAMPLE" dcml="0" files="ExtractData" intrvl="discrete" name="SAMPLE">
+      <location EndPos="10" StartPos="5" width="6"/>
+      <labl>IPUMS sample identifier</labl>
+      <txt><![CDATA[SAMPLE identifies the IPUMS sample from which the case is drawn. Each sample receives a unique 6-digit code. The codes are structured as follows:
+
+The first four digits are the year of the census/survey.
+
+The next two digits identify the sample within the year.
+For most censuses, IPUMS has multiple datasets which were constructed using different sampling techniques (i.e. size/demographic of the sample population, geographic coverage level or location, or duration of the sampling period for the ACS/PRCS samples).  
+
+The availability table for each variable indicates whether that variable is available in only certain samples for a given year. For further discussion of sample differences, see "Sample Designs.".
+
+Note: SAMPLE replaces DATANUM. Though the last two digits in SAMPLE do not correlate exactly with the now-deprecated DATANUM, the variable serves the same purpose of assigning a unique id to all cases that belong to the same dataset.]]></txt>
+      <catgry>
+        <catValu>202001</catValu>
+        <labl>2020 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201904</catValu>
+        <labl>2015-2019, PRCS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201903</catValu>
+        <labl>2015-2019, ACS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201902</catValu>
+        <labl>2019 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201901</catValu>
+        <labl>2019 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201804</catValu>
+        <labl>2014-2018, PRCS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201803</catValu>
+        <labl>2014-2018, ACS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201802</catValu>
+        <labl>2018 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201801</catValu>
+        <labl>2018 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201704</catValu>
+        <labl>2013-2017, PRCS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201703</catValu>
+        <labl>2013-2017, ACS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201702</catValu>
+        <labl>2017 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201701</catValu>
+        <labl>2017 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201604</catValu>
+        <labl>2012-2016, PRCS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201603</catValu>
+        <labl>2012-2016, ACS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201602</catValu>
+        <labl>2016 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201601</catValu>
+        <labl>2016 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201504</catValu>
+        <labl>2011-2015, PRCS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201503</catValu>
+        <labl>2011-2015, ACS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201502</catValu>
+        <labl>2015 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201501</catValu>
+        <labl>2015 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201404</catValu>
+        <labl>2010-2014, PRCS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201403</catValu>
+        <labl>2010-2014, ACS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201402</catValu>
+        <labl>2014 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201401</catValu>
+        <labl>2014 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201306</catValu>
+        <labl>2009-2013, PRCS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201305</catValu>
+        <labl>2009-2013, ACS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201304</catValu>
+        <labl>2011-2013, PRCS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201303</catValu>
+        <labl>2011-2013, ACS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201302</catValu>
+        <labl>2013 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201301</catValu>
+        <labl>2013 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201206</catValu>
+        <labl>2008-2012, PRCS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201205</catValu>
+        <labl>2008-2012, ACS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201204</catValu>
+        <labl>2010-2012, PRCS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201203</catValu>
+        <labl>2010-2012, ACS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201202</catValu>
+        <labl>2012 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201201</catValu>
+        <labl>2012 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201106</catValu>
+        <labl>2007-2011, PRCS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201105</catValu>
+        <labl>2007-2011, ACS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201104</catValu>
+        <labl>2009-2011, PRCS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201103</catValu>
+        <labl>2009-2011, ACS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201102</catValu>
+        <labl>2011 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201101</catValu>
+        <labl>2011 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201008</catValu>
+        <labl>2010 Puerto Rico 10%</labl>
+      </catgry>
+      <catgry>
+        <catValu>201007</catValu>
+        <labl>2010 10%</labl>
+      </catgry>
+      <catgry>
+        <catValu>201006</catValu>
+        <labl>2006-2010, PRCS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201005</catValu>
+        <labl>2006-2010, ACS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201004</catValu>
+        <labl>2008-2010, PRCS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201003</catValu>
+        <labl>2008-2010, ACS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>201002</catValu>
+        <labl>2010 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>201001</catValu>
+        <labl>2010 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200906</catValu>
+        <labl>2005-2009, PRCS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>200905</catValu>
+        <labl>2005-2009, ACS 5-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>200904</catValu>
+        <labl>2007-2009, PRCS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>200903</catValu>
+        <labl>2007-2009, ACS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>200902</catValu>
+        <labl>2009 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200901</catValu>
+        <labl>2009 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200804</catValu>
+        <labl>2006-2008, PRCS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>200803</catValu>
+        <labl>2006-2008, ACS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>200802</catValu>
+        <labl>2008 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200801</catValu>
+        <labl>2008 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200704</catValu>
+        <labl>2005-2007, PRCS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>200703</catValu>
+        <labl>2005-2007, ACS 3-year</labl>
+      </catgry>
+      <catgry>
+        <catValu>200702</catValu>
+        <labl>2007 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200701</catValu>
+        <labl>2007 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200602</catValu>
+        <labl>2006 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200601</catValu>
+        <labl>2006 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200502</catValu>
+        <labl>2005 PRCS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200501</catValu>
+        <labl>2005 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200401</catValu>
+        <labl>2004 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200301</catValu>
+        <labl>2003 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200201</catValu>
+        <labl>2002 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200101</catValu>
+        <labl>2001 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200008</catValu>
+        <labl>2000 Puerto Rico 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>200007</catValu>
+        <labl>2000 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>200006</catValu>
+        <labl>2000 Puerto Rico 1% sample (old version)</labl>
+      </catgry>
+      <catgry>
+        <catValu>200005</catValu>
+        <labl>2000 Puerto Rico 5%</labl>
+      </catgry>
+      <catgry>
+        <catValu>200004</catValu>
+        <labl>2000 ACS</labl>
+      </catgry>
+      <catgry>
+        <catValu>200003</catValu>
+        <labl>2000 Unweighted 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>200002</catValu>
+        <labl>2000 1% sample (old version)</labl>
+      </catgry>
+      <catgry>
+        <catValu>200001</catValu>
+        <labl>2000 5%</labl>
+      </catgry>
+      <catgry>
+        <catValu>199007</catValu>
+        <labl>1990 Puerto Rico 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>199006</catValu>
+        <labl>1990 Puerto Rico 5%</labl>
+      </catgry>
+      <catgry>
+        <catValu>199005</catValu>
+        <labl>1990 Labor Market Area</labl>
+      </catgry>
+      <catgry>
+        <catValu>199004</catValu>
+        <labl>1990 Elderly</labl>
+      </catgry>
+      <catgry>
+        <catValu>199003</catValu>
+        <labl>1990 Unweighted 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>199002</catValu>
+        <labl>1990 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>199001</catValu>
+        <labl>1990 5%</labl>
+      </catgry>
+      <catgry>
+        <catValu>198007</catValu>
+        <labl>1980 Puerto Rico 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>198006</catValu>
+        <labl>1980 Puerto Rico 5%</labl>
+      </catgry>
+      <catgry>
+        <catValu>198005</catValu>
+        <labl>1980 Detailed metro/non-metro</labl>
+      </catgry>
+      <catgry>
+        <catValu>198004</catValu>
+        <labl>1980 Labor Market Area</labl>
+      </catgry>
+      <catgry>
+        <catValu>198003</catValu>
+        <labl>1980 Urban/Rural</labl>
+      </catgry>
+      <catgry>
+        <catValu>198002</catValu>
+        <labl>1980 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>198001</catValu>
+        <labl>1980 5%</labl>
+      </catgry>
+      <catgry>
+        <catValu>197009</catValu>
+        <labl>1970 Puerto Rico Neighborhood</labl>
+      </catgry>
+      <catgry>
+        <catValu>197008</catValu>
+        <labl>1970 Puerto Rico Municipio</labl>
+      </catgry>
+      <catgry>
+        <catValu>197007</catValu>
+        <labl>1970 Puerto Rico State</labl>
+      </catgry>
+      <catgry>
+        <catValu>197006</catValu>
+        <labl>1970 Form 2 Neighborhood</labl>
+      </catgry>
+      <catgry>
+        <catValu>197005</catValu>
+        <labl>1970 Form 1 Neighborhood</labl>
+      </catgry>
+      <catgry>
+        <catValu>197004</catValu>
+        <labl>1970 Form 2 Metro</labl>
+      </catgry>
+      <catgry>
+        <catValu>197003</catValu>
+        <labl>1970 Form 1 Metro</labl>
+      </catgry>
+      <catgry>
+        <catValu>197002</catValu>
+        <labl>1970 Form 2 State</labl>
+      </catgry>
+      <catgry>
+        <catValu>197001</catValu>
+        <labl>1970 Form 1 State</labl>
+      </catgry>
+      <catgry>
+        <catValu>196002</catValu>
+        <labl>1960 5%</labl>
+      </catgry>
+      <catgry>
+        <catValu>196001</catValu>
+        <labl>1960 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>195001</catValu>
+        <labl>1950 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>194002</catValu>
+        <labl>1940 100% database</labl>
+      </catgry>
+      <catgry>
+        <catValu>194001</catValu>
+        <labl>1940 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>193004</catValu>
+        <labl>1930 100% database</labl>
+      </catgry>
+      <catgry>
+        <catValu>193003</catValu>
+        <labl>1930 Puerto Rico</labl>
+      </catgry>
+      <catgry>
+        <catValu>193002</catValu>
+        <labl>1930 5%</labl>
+      </catgry>
+      <catgry>
+        <catValu>193001</catValu>
+        <labl>1930 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>192003</catValu>
+        <labl>1920 100% database</labl>
+      </catgry>
+      <catgry>
+        <catValu>192002</catValu>
+        <labl>1920 Puerto Rico sample</labl>
+      </catgry>
+      <catgry>
+        <catValu>192001</catValu>
+        <labl>1920 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>191004</catValu>
+        <labl>1910 100% database</labl>
+      </catgry>
+      <catgry>
+        <catValu>191003</catValu>
+        <labl>1910 1.4% sample with oversamples</labl>
+      </catgry>
+      <catgry>
+        <catValu>191002</catValu>
+        <labl>1910 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>191001</catValu>
+        <labl>1910 Puerto Rico</labl>
+      </catgry>
+      <catgry>
+        <catValu>190004</catValu>
+        <labl>1900 100% database</labl>
+      </catgry>
+      <catgry>
+        <catValu>190003</catValu>
+        <labl>1900 1% sample with oversamples</labl>
+      </catgry>
+      <catgry>
+        <catValu>190002</catValu>
+        <labl>1900 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>190001</catValu>
+        <labl>1900 5%</labl>
+      </catgry>
+      <catgry>
+        <catValu>188003</catValu>
+        <labl>1880 100% database</labl>
+      </catgry>
+      <catgry>
+        <catValu>188002</catValu>
+        <labl>1880 10%</labl>
+      </catgry>
+      <catgry>
+        <catValu>188001</catValu>
+        <labl>1880 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>187003</catValu>
+        <labl>1870 100% database</labl>
+      </catgry>
+      <catgry>
+        <catValu>187002</catValu>
+        <labl>1870 1% sample with black oversample</labl>
+      </catgry>
+      <catgry>
+        <catValu>187001</catValu>
+        <labl>1870 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>186003</catValu>
+        <labl>1860 100% database</labl>
+      </catgry>
+      <catgry>
+        <catValu>186002</catValu>
+        <labl>1860 1% sample with black oversample</labl>
+      </catgry>
+      <catgry>
+        <catValu>186001</catValu>
+        <labl>1860 1%</labl>
+      </catgry>
+      <catgry>
+        <catValu>185002</catValu>
+        <labl>1850 100% database</labl>
+      </catgry>
+      <catgry>
+        <catValu>185001</catValu>
+        <labl>1850 1%</labl>
+      </catgry>
+      <concept vocab="IPUMS">Technical Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="SERIAL" dcml="0" files="ExtractData" intrvl="contin" name="SERIAL">
+      <location EndPos="18" StartPos="11" width="8"/>
+      <labl>Household serial number</labl>
+      <txt><![CDATA[SERIAL is an identifying number unique to each household record in a given sample. All person records are assigned the same serial number as the household record that they follow. (Person records also have their own unique identifiers - see PERNUM.) A combination of SAMPLE and SERIAL provides a unique identifier for every household in the IPUMS; the combination of SAMPLE, SERIAL, and PERNUM uniquely identifies every person in the database.
+
+For 1850-1930, households that are part of a multi-household dwelling can be identified by using the DWELLING and DWSEQ variables. See "Sample Designs" for further discussion of sampling from within multi-household dwellings.]]></txt>
+      <codInstr><![CDATA[CodesSERIAL is an 8-digit numeric variable which assigns a unique identification number to each household record in a given sample (See PERNUM for the analogous person record identifier). A combination of SAMPLE and SERIAL provides a unique identifier for every household in the IPUMS; the combination of SAMPLE, SERIAL, and PERNUM uniquely identifies every person in the database. SERIAL specific variable codes for missing, edited, or unidentified observations, observations not applicable (N/A), observations not in universe (NIU), top and bottom value coding, etc. are provided below if applicable by Census year (and data sample if specified).
+
+SERIAL Specific Variable Codes]]></codInstr>
+      <concept vocab="IPUMS">Technical Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="CBSERIAL" dcml="0" files="ExtractData" intrvl="contin" name="CBSERIAL">
+      <location EndPos="31" StartPos="19" width="13"/>
+      <labl>Original Census Bureau household serial number</labl>
+      <txt><![CDATA[CBSERIAL is the unique, original identification number assigned to each household record in a given sample by the Census Bureau. All person records are assigned the same serial number as the household record that they follow. (The original person record unique identification numbers assigned by the Census Bureau are provided by CBPERNUM.) 
+
+A combination of SAMPLE and CBSERIAL provides a unique identifier for every household in the IPUMS; the combination of SAMPLE, CBSERIAL, and CBPERNUM uniquely identifies every person in the database.]]></txt>
+      <codInstr><![CDATA[CodesCBSERIAL is an 8-digit numeric variable which assigns a unique identification number to each household record in a given sample (See CBPERNUM for the analogous person record identifier). CBSERIAL specific variable codes for missing, edited, or unidentified observations, observations not applicable (N/A), observations not in universe (NIU), top and bottom value coding, etc. are provided below if applicable by Census year (and data sample if specified).
+
+CBSERIAL Specific Variable Codes]]></codInstr>
+      <concept vocab="IPUMS">Technical Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="HHWT" dcml="2" files="ExtractData" intrvl="contin" name="HHWT">
+      <location EndPos="41" StartPos="32" width="10"/>
+      <labl>Household weight</labl>
+      <txt><![CDATA[HHWT indicates how many households in the U.S. population are represented by a given household in an IPUMS sample. 
+
+It is generally a good idea to use HHWT when conducting a household-level analysis of any IPUMS sample. The use of HHWT is optional when analyzing one of the "flat" or unweighted IPUMS samples. Flat IPUMS samples include the 1% samples from 1850-1930, all samples from 1960, 1970, and 1980, the 1% unweighted samples from 1990 and 2000, the 10% 2010 sample, and any of the full count 100% census datasets. HHWT must be used to obtain nationally representative statistics for household-level analyses of any sample other than those.
+
+Users should also be sure to select one person (e.g., PERNUM = 1) to represent the entire household.
+
+For further explanation of the sample weights, see "Sample Designs" and "Sample Weights". See also PERWT for a corresponding variable at the person level, and SLWT for a weight variable used with sample-line records in 1940 1% and 1950.]]></txt>
+      <codInstr><![CDATA[CodesHHWT is a 6-digit numeric variable which indicates how many households in the U.S. population are represented by a given household in an IPUMS sample and has two implied decimals. For example, a HHWT value of 010461 should be interpreted as 104.61. HHWT specific variable codes for missing, edited, or unidentified observations, observations not applicable (N/A), observations not in universe (NIU), top and bottom value coding, etc. are provided below if applicable by Census year (and data sample if specified).
+
+User Note: Users should also be sure to select one person (e.g., PERNUM = 1) to represent the entire household when using HHWT.
+
+HHWT Specific Variable Codes]]></codInstr>
+      <concept vocab="IPUMS">Technical Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="CLUSTER" dcml="0" files="ExtractData" intrvl="contin" name="CLUSTER">
+      <location EndPos="54" StartPos="42" width="13"/>
+      <labl>Household cluster for variance estimation</labl>
+      <txt><![CDATA[CLUSTER is designed for use with STRATA in Taylor series linear approximation for correction of complex sample design characteristics. See the STRATA variable description for more details.]]></txt>
+      <codInstr><![CDATA[CodesCLUSTER is an 11-digit numeric variable designed for use with STRATA in Taylor series linear approximation for correction of complex sample design characteristics (See the Description of STRATA for more details). CLUSTER specific variable codes for missing, edited, or unidentified observations, observations not applicable (N/A), observations not in universe (NIU), top and bottom value coding, etc. are provided below if applicable by Census year (and data sample if specified).
+
+CLUSTER Specific Variable Codes]]></codInstr>
+      <concept vocab="IPUMS">Technical Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="STATEFIP" dcml="0" files="ExtractData" intrvl="discrete" name="STATEFIP">
+      <location EndPos="56" StartPos="55" width="2"/>
+      <labl>State (FIPS code)</labl>
+      <txt><![CDATA[STATEFIP reports the state in which the household was located, using the Federal Information Processing Standards (FIPS) coding scheme, which orders the states alphabetically.
+
+In the 1980 Urban/Rural sample, STATEFIP identifies state groups that are not available in STATEICP; these state groups (codes 61-68) are only available for that particular sample. 
+
+See "Geographic Coding and Comparability" for more information on the geographic detail available in particular samples.]]></txt>
+      <catgry>
+        <catValu>01</catValu>
+        <labl>Alabama</labl>
+      </catgry>
+      <catgry>
+        <catValu>02</catValu>
+        <labl>Alaska</labl>
+      </catgry>
+      <catgry>
+        <catValu>04</catValu>
+        <labl>Arizona</labl>
+      </catgry>
+      <catgry>
+        <catValu>05</catValu>
+        <labl>Arkansas</labl>
+      </catgry>
+      <catgry>
+        <catValu>06</catValu>
+        <labl>California</labl>
+      </catgry>
+      <catgry>
+        <catValu>08</catValu>
+        <labl>Colorado</labl>
+      </catgry>
+      <catgry>
+        <catValu>09</catValu>
+        <labl>Connecticut</labl>
+      </catgry>
+      <catgry>
+        <catValu>10</catValu>
+        <labl>Delaware</labl>
+      </catgry>
+      <catgry>
+        <catValu>11</catValu>
+        <labl>District of Columbia</labl>
+      </catgry>
+      <catgry>
+        <catValu>12</catValu>
+        <labl>Florida</labl>
+      </catgry>
+      <catgry>
+        <catValu>13</catValu>
+        <labl>Georgia</labl>
+      </catgry>
+      <catgry>
+        <catValu>15</catValu>
+        <labl>Hawaii</labl>
+      </catgry>
+      <catgry>
+        <catValu>16</catValu>
+        <labl>Idaho</labl>
+      </catgry>
+      <catgry>
+        <catValu>17</catValu>
+        <labl>Illinois</labl>
+      </catgry>
+      <catgry>
+        <catValu>18</catValu>
+        <labl>Indiana</labl>
+      </catgry>
+      <catgry>
+        <catValu>19</catValu>
+        <labl>Iowa</labl>
+      </catgry>
+      <catgry>
+        <catValu>20</catValu>
+        <labl>Kansas</labl>
+      </catgry>
+      <catgry>
+        <catValu>21</catValu>
+        <labl>Kentucky</labl>
+      </catgry>
+      <catgry>
+        <catValu>22</catValu>
+        <labl>Louisiana</labl>
+      </catgry>
+      <catgry>
+        <catValu>23</catValu>
+        <labl>Maine</labl>
+      </catgry>
+      <catgry>
+        <catValu>24</catValu>
+        <labl>Maryland</labl>
+      </catgry>
+      <catgry>
+        <catValu>25</catValu>
+        <labl>Massachusetts</labl>
+      </catgry>
+      <catgry>
+        <catValu>26</catValu>
+        <labl>Michigan</labl>
+      </catgry>
+      <catgry>
+        <catValu>27</catValu>
+        <labl>Minnesota</labl>
+      </catgry>
+      <catgry>
+        <catValu>28</catValu>
+        <labl>Mississippi</labl>
+      </catgry>
+      <catgry>
+        <catValu>29</catValu>
+        <labl>Missouri</labl>
+      </catgry>
+      <catgry>
+        <catValu>30</catValu>
+        <labl>Montana</labl>
+      </catgry>
+      <catgry>
+        <catValu>31</catValu>
+        <labl>Nebraska</labl>
+      </catgry>
+      <catgry>
+        <catValu>32</catValu>
+        <labl>Nevada</labl>
+      </catgry>
+      <catgry>
+        <catValu>33</catValu>
+        <labl>New Hampshire</labl>
+      </catgry>
+      <catgry>
+        <catValu>34</catValu>
+        <labl>New Jersey</labl>
+      </catgry>
+      <catgry>
+        <catValu>35</catValu>
+        <labl>New Mexico</labl>
+      </catgry>
+      <catgry>
+        <catValu>36</catValu>
+        <labl>New York</labl>
+      </catgry>
+      <catgry>
+        <catValu>37</catValu>
+        <labl>North Carolina</labl>
+      </catgry>
+      <catgry>
+        <catValu>38</catValu>
+        <labl>North Dakota</labl>
+      </catgry>
+      <catgry>
+        <catValu>39</catValu>
+        <labl>Ohio</labl>
+      </catgry>
+      <catgry>
+        <catValu>40</catValu>
+        <labl>Oklahoma</labl>
+      </catgry>
+      <catgry>
+        <catValu>41</catValu>
+        <labl>Oregon</labl>
+      </catgry>
+      <catgry>
+        <catValu>42</catValu>
+        <labl>Pennsylvania</labl>
+      </catgry>
+      <catgry>
+        <catValu>44</catValu>
+        <labl>Rhode Island</labl>
+      </catgry>
+      <catgry>
+        <catValu>45</catValu>
+        <labl>South Carolina</labl>
+      </catgry>
+      <catgry>
+        <catValu>46</catValu>
+        <labl>South Dakota</labl>
+      </catgry>
+      <catgry>
+        <catValu>47</catValu>
+        <labl>Tennessee</labl>
+      </catgry>
+      <catgry>
+        <catValu>48</catValu>
+        <labl>Texas</labl>
+      </catgry>
+      <catgry>
+        <catValu>49</catValu>
+        <labl>Utah</labl>
+      </catgry>
+      <catgry>
+        <catValu>50</catValu>
+        <labl>Vermont</labl>
+      </catgry>
+      <catgry>
+        <catValu>51</catValu>
+        <labl>Virginia</labl>
+      </catgry>
+      <catgry>
+        <catValu>53</catValu>
+        <labl>Washington</labl>
+      </catgry>
+      <catgry>
+        <catValu>54</catValu>
+        <labl>West Virginia</labl>
+      </catgry>
+      <catgry>
+        <catValu>55</catValu>
+        <labl>Wisconsin</labl>
+      </catgry>
+      <catgry>
+        <catValu>56</catValu>
+        <labl>Wyoming</labl>
+      </catgry>
+      <catgry>
+        <catValu>61</catValu>
+        <labl>Maine-New Hampshire-Vermont</labl>
+      </catgry>
+      <catgry>
+        <catValu>62</catValu>
+        <labl>Massachusetts-Rhode Island</labl>
+      </catgry>
+      <catgry>
+        <catValu>63</catValu>
+        <labl>Minnesota-Iowa-Missouri-Kansas-Nebraska-S.Dakota-N.Dakota</labl>
+      </catgry>
+      <catgry>
+        <catValu>64</catValu>
+        <labl>Maryland-Delaware</labl>
+      </catgry>
+      <catgry>
+        <catValu>65</catValu>
+        <labl>Montana-Idaho-Wyoming</labl>
+      </catgry>
+      <catgry>
+        <catValu>66</catValu>
+        <labl>Utah-Nevada</labl>
+      </catgry>
+      <catgry>
+        <catValu>67</catValu>
+        <labl>Arizona-New Mexico</labl>
+      </catgry>
+      <catgry>
+        <catValu>68</catValu>
+        <labl>Alaska-Hawaii</labl>
+      </catgry>
+      <catgry>
+        <catValu>72</catValu>
+        <labl>Puerto Rico</labl>
+      </catgry>
+      <catgry>
+        <catValu>97</catValu>
+        <labl>Military/Mil. Reservation</labl>
+      </catgry>
+      <catgry>
+        <catValu>99</catValu>
+        <labl>State not identified</labl>
+      </catgry>
+      <concept vocab="IPUMS">Geographic Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="PUMA" dcml="0" files="ExtractData" intrvl="contin" name="PUMA">
+      <location EndPos="61" StartPos="57" width="5"/>
+      <labl>Public Use Microdata Area</labl>
+      <txt><![CDATA[PUMA identifies the Public Use Microdata Area (PUMA) where the housing unit was located. In the 1990 State sample, PUMAs generally follow the boundaries of county groups, single counties, or census-defined "places". If these areas exceed 200,000 residents, they are divided into as many PUMAs of 100,000+ residents as possible. None of the 1990 State sample PUMAs cross state lines. For the 1990 Metro sample, PUMAs generally follow the boundaries of whole central cities, Metropolitan Statistical Areas, Primary Metropolitan Statistical Areas, or non-metropolitan places (See METAREA for definitions of these terms). If these areas exceed 200,000 residents, they are divided into as many PUMAs of 100,000+ residents as possible. 1990 Metro sample PUMAs sometimes cross state lines; when they do, STATEFIP and STATEICP codes are not available for households in those PUMAs. PUMAs in the 2000 census, 2010 census, and the 2005-onward ACS/PRCS also consist of 100,000+ residents, and they do not cross state lines.
+
+Note that PUMA is state-dependent. The codes must be read in combination with one of the STATE variables (STATEFIP or STATEICP). PUMAs are categorized by type (e.g., metropolitan, mixed metro/nonmetro, non-metropolitan) in the variable PUMATYPE. PUMA is similar to the county group variables, CNTYGP97 (1970) and CNTYGP98 (1980), and the State Economic Area variable (SEA) for 1940 and 1950.
+
+Note Regarding Multi-Year Samples: The Census Bureau redraws PUMA boundaries every 10 years based on population information gathered from the most recent decennial census. ACS samples incorporate the new PUMAs within a few years of the Decennial Census. See the comparability statement to see which PUMAs are used in each sample. In Multi-Year ACS files, PUMA boundaries depend on the original year the respondent was interviewed (see MULTYEAR). For example in the 2010-2012 3-year ACS sample, respondents from 2010 and 2011 correspond to the Census 2000 based PUMAs, while respondents from 2012 correspond to the Census 2010 based PUMAs.]]></txt>
+      <codInstr><![CDATA[CodesPUMA is a 5-digit numeric variable identifying the Public Use Microdata Area (PUMA) where the housing unit was located. PUMAs are categorized by type (e.g., metropolitan, mixed metro/nonmetro, non-metropolitan) in the variable PUMATYPE. PUMA is similar to the county group variables, CNTYGP97 (1970) and CNTYGP98 (1980), and the State Economic Area variable (SEA) for 1940 and 1950. PUMA specific variable codes for missing, edited, or unidentified observations, observations not applicable (N/A), observations not in universe (NIU), top and bottom value coding, etc. are provided below by Census year (and data sample if specified).
+
+User Note: PUMAs are drawn and coded differently for the 1990 State and Metro samples. In the 1990 State sample, PUMAs generally follow the boundaries of groups of counties, single counties, or census-defined "places". If such areas exceed 200,000 residents, they are divided into as many PUMAs of 100,000+ residents as possible. None of the 1990 State sample PUMAs cross state lines. In the 1990 Metro sample, PUMAs generally follow the boundaries of whole central cities, Metropolitan Statistical Areas, Primary Metropolitan Statistical Areas, or non-metropolitan places (See METAREA for definitions of these terms). If these areas exceed 200,000 residents, they are divided into as many PUMAs of 100,000+ residents as possible. 1990 Metro sample PUMAs sometimes cross state lines; when they do, STATEFIP and STATEICP codes are not available for households in those PUMAs. PUMAs in the 2000 census, 2010 census, and the 2005-onward ACS/PRCS also consist of 100,000+ residents, and they do not cross state lines.
+
+User Note: PUMA is state-dependent, therefore the codes must be read in combination with one of the STATE variables: STATEFIP or STATEICP.
+
+PUMA Specific Variable Codes
+See links for details regarding PUMA codes:
+Census 2010 based PUMA map and Boundary files
+Census 2000 based PUMA and Super-PUMA Maps, Boundary files and Detailed Composition
+1990 PUMA Maps, Boundary files and Detailed Composition
+1990 PUMAs crossing state lines, 1 percent Metro sample
+
+User Note: In the 2006-2011 ACS, persons living in Louisiana PUMAs 01801, 01802, and 01905 were all coded as living in Louisiana PUMA 77777. This is because these three PUMAs no longer had sufficient population to be included as separate entities due the effects of hurricane Katrina.]]></codInstr>
+      <concept vocab="IPUMS">Geographic Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="STRATA" dcml="0" files="ExtractData" intrvl="contin" name="STRATA">
+      <location EndPos="73" StartPos="62" width="12"/>
+      <labl>Household strata for variance estimation</labl>
+      <txt><![CDATA[STRATA is designed for use with CLUSTER in Taylor series linear approximation for correction of complex sample design characteristics.
+
+While appropriate use of the sampling weights PERWT and HHWT allow users to produce correct point estimates (such as means and proportions), many researchers believe that additional statistical techniques are also necessary to produce correct standard errors and statistical tests that account for complex sample design. 
+
+For further information on why and how to use STRATA and CLUSTER, see  Analysis and Variance Estimation with the IPUMS . For more details on the mathematics behind this method, see  Issues Concerning the Calculation of Standard Errors Using IPUMS Data Products .]]></txt>
+      <codInstr><![CDATA[CodesSTRATA is a 12-digit numeric variable designed for use with CLUSTER in Taylor series linear approximation for correction of complex sample design characteristics. While appropriate use of the sampling weights PERWT and HHWT allow users to produce correct point estimates (such as means and proportions), many researchers believe that additional statistical techniques are also necessary to produce correct standard errors and statistical tests that account for complex sample design. STRATA specific variable codes for missing, edited, or unidentified observations, observations not applicable (N/A), observations not in universe (NIU), top and bottom value coding, etc. are provided below if applicable by Census year (and data sample if specified).
+
+User Note: For further information on why and how to use STRATA and CLUSTER, see Analysis and Variance Estimation with the IPUMS. For more details on the mathematics behind this method, see Issues Concerning the Calculation of Standard Errors Using IPUMS Data Products.  
+
+STRATA Specific Variable Codes]]></codInstr>
+      <concept vocab="IPUMS">Technical Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="GQ" dcml="0" files="ExtractData" intrvl="discrete" name="GQ">
+      <location EndPos="74" StartPos="74" width="1"/>
+      <labl>Group quarters status</labl>
+      <txt><![CDATA[GQ classifies all housing units as falling into one of three main categories: households, group quarters, or vacant units. It also identifies fragmentary sample units for 1850-1930 (see below). In all years, the data available about a person and their co-residents depend on whether the person lives in a household or in group quarters. Households are sampled as units, meaning that everyone in the household is included in the sample, and most household-level variables are available. People living in group quarters are generally sampled as individuals; other people in their unit may or may not be included in the sample, and there is no way of linking co-residents' records to one another. If, however, a sampled person in group quarters was living with relatives, the related group was sampled for 1850-1930. Most household-level variables are not available for group quarters or for vacant units.
+
+Group quarters are largely institutions and other group living arrangements, such as rooming houses and military barracks. The definitions vary from year to year, but the pre-1940 samples have generally used a definition of group quarters that includes units with 10 or more individuals unrelated to the householder. See the comparability discussion below and "Sample Designs" for more details about changing definitions of group quarters.  Group-quarters types are identified in further detail by GQTYPE and GQFUNDS.]]></txt>
+      <catgry>
+        <catValu>0</catValu>
+        <labl>Vacant unit</labl>
+      </catgry>
+      <catgry>
+        <catValu>1</catValu>
+        <labl>Households under 1970 definition</labl>
+      </catgry>
+      <catgry>
+        <catValu>2</catValu>
+        <labl>Additional households under 1990 definition</labl>
+      </catgry>
+      <catgry>
+        <catValu>3</catValu>
+        <labl>Group quarters--Institutions</labl>
+      </catgry>
+      <catgry>
+        <catValu>4</catValu>
+        <labl>Other group quarters</labl>
+      </catgry>
+      <catgry>
+        <catValu>5</catValu>
+        <labl>Additional households under 2000 definition</labl>
+      </catgry>
+      <catgry>
+        <catValu>6</catValu>
+        <labl>Fragment</labl>
+      </catgry>
+      <concept vocab="IPUMS">Group Quarters Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="HHINCOME" dcml="0" files="ExtractData" intrvl="contin" name="HHINCOME">
+      <location EndPos="81" StartPos="75" width="7"/>
+      <labl>Total household income </labl>
+      <txt><![CDATA[HHINCOME reports the total money income of all household members age 15+ during the previous year. The amount should equal the sum of all household members' individual incomes, as recorded in the person-record variable INCTOT. The persons included were those present in the household at the time of the census or survey. People who lived in the household during the previous year but who were no longer present at census time are not included, and members who did not live in the household during the previous year but who had joined the household by the time of the census or survey, are included. For the census, the reference period is the previous calendar year; for the ACS and the PRCS, it is the previous 12 months. 
+
+Note that household income differs from family income, which is reported in FTOTINC. The family income variable only reports the incomes of household members related to the head, while HHINCOME includes the incomes of all household members. 
+
+Amounts are expressed in contemporary dollars, and users studying change over time must adjust for inflation (See INCTOT for Consumer Price Index adjustment factors).  The exception is the ACS/PRCS multi-year files, where all dollar amounts have been standardized to dollars as valued in the final year of data included in the file (e.g., 2007 dollars for the 2005-2007 3-year file). Additionally, more detail may be available than exists in the original ACS samples.  
+
+User Note: ACS respondents are surveyed throughout the year, and amounts do not reflect calendar year dollars. While the Census Bureau provides an adjustment factor (available in ADJUST), this is an imperfect solution. See the ACS income variables note for further details.]]></txt>
+      <codInstr><![CDATA[CodesHHINCOME is a 7-digit numeric code which reports the total money income of all household members age 15+ during the previous year. The amount should equal the sum of all household members' individual incomes, as recorded in the person-record variable INCTOT. The persons included were those present in the household at the time of the census or survey. People who lived in the household during the previous year but who were no longer present at census time are not included, and members who did not live in the household during the previous year but who had joined the household by the time of the census or survey, are included. For the census, the reference period is the previous calendar year; for the ACS and the PRCS, it is the previous 12 months. Note that household income differs from family income, which is reported in FTOTINC. The family income variable only reports the incomes of household members related to the head, while HHINCOME includes the incomes of all household members. HHINCOME specific variable codes for missing, edited, or unidentified observations, observations not applicable (N/A), observations not in universe (NIU), top and bottom value coding, etc. are provided below by Census year (and data sample if specified).
+
+User Note: Amounts are expressed in contemporary dollars, and users studying change over time must adjust for inflation (See Description).
+
+HHINCOME Specific Variable Codes
+9999999 = N/A 
+
+
+* .indent {
+  text-indent: 10px;
+}
+
+
+* .lrgindent {
+  text-indent: 90px;
+}
+
+
+
+	
+		HHINCOME
+	
+		Census 
+		Bottom Code
+		Top Code
+	
+		1980 (US)
+		-$9,995
+		$75,000
+	
+		1980 (PR)
+		-
+		$50,000
+	
+		1990 (US)
+		$0
+		&nbsp;By State*
+	
+		1990 (PR)
+		-$59,999
+		-
+	
+		2000 (US)
+		-$19,998
+		-
+	
+		2000 (PR)
+		-
+		-
+	
+		ACS
+		-$19,998
+		-
+	
+		PRCS
+		-
+		-
+	
+	
+	
+	]]></codInstr>
+      <concept vocab="IPUMS">Economic Characteristic Variables -- HOUSEHOLD</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="PERNUM" dcml="0" files="ExtractData" intrvl="contin" name="PERNUM">
+      <location EndPos="85" StartPos="82" width="4"/>
+      <labl>Person number in sample unit</labl>
+      <txt><![CDATA[PERNUM numbers all persons within each household consecutively in the order in which they appear on the original census or survey form. When combined with SAMPLE and SERIAL, PERNUM uniquely identifies each person within the IPUMS.]]></txt>
+      <codInstr><![CDATA[CodesPERNUM is a 4-digit numeric variable which numbers all persons within each household consecutively in the order in which they appear on the original census or survey form. PERNUM specific variable codes for missing, edited, or unidentified observations, observations not applicable (N/A), observations not in universe (NIU), top and bottom value coding, etc. are provided below if applicable by Census year (and data sample if specified).]]></codInstr>
+      <concept vocab="IPUMS">Technical Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="PERWT" dcml="2" files="ExtractData" intrvl="contin" name="PERWT">
+      <location EndPos="95" StartPos="86" width="10"/>
+      <labl>Person weight</labl>
+      <txt><![CDATA[PERWT indicates how many persons in the U.S. population are represented by a given person in an IPUMS sample. 
+
+It is generally a good idea to use PERWT when conducting a person-level analysis of any IPUMS sample. The use of PERWT is optional when analyzing one of the "flat" or unweighted IPUMS samples. Flat IPUMS samples include the 1% samples from 1850-1930, all samples from 1960, 1970, and 1980, the 1% unweighted samples from 1990 and 2000, the 10% 2010 sample, and any of the full count 100% census datasets. PERWT must be used to obtain nationally representative statistics for person-level analyses of any sample other than those.
+
+For further explanation of the sample weights, see "Sample Designs" and "Sample Weights". See also HHWT for a corresponding variable at the household level, and SLWT for a weight variable used with sample-line records in 1940 and 1950.]]></txt>
+      <codInstr><![CDATA[CodesPERWT is a 6-digit numeric variable which indicates how many persons in the U.S. population are represented by a given person in an IPUMS sample and has two implied decimals. For example, a PERWT value of 010461 should be interpreted as 104.61. PERWT specific variable codes for missing, edited, or unidentified observations, observations not applicable (N/A), observations not in universe (NIU), top and bottom value coding, etc. are provided below if applicable by Census year (and data sample if specified).
+
+PERWT Specific Variable Codes]]></codInstr>
+      <concept vocab="IPUMS">Technical Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="ANCESTR1" dcml="0" files="ExtractData" intrvl="discrete" name="ANCESTR1">
+      <location EndPos="98" StartPos="96" width="3"/>
+      <labl>Ancestry, first response [general version]</labl>
+      <txt><![CDATA[ANCESTR1 provides the respondent's self-reported ancestry or ethnic origin. In all years except 1990 and 2000, respondents could give as many ancestries as they saw fit. ANCESTR1 records the first response, while ANCESTR2 records the second response, if one exists. Additional responses were ignored, with the exception of 17 "three-origin" combination codes retained in the 1980 samples; these are described in section A of the comparability discussion below. Some compound responses such as "Pennsylvania Dutch" or "French Canadian" were treated as a single response. Respondents could give virtually any response, though they were instructed not to give a religion (the census is not allowed to collect information on religion).  A few responses were not categorized in the samples and were instead coded "Uncodable," "Deferred Cases," or "Other." These uncategorized responses were usually religions. 
+
+If a respondent listed both a broad category and a subset of that category, such as "German-Bavarian," the Census Bureau used only the subset and ignored the broad category. 
+
+The IPUMS generally follows the Census Bureau's practice of coding responses alphabetically within geographic regions. Note that some responses, especially within the NORTH AMERICAN (NON-HISPANIC) geographic region, denote people such as "African-American," "French-Canadian," or "American" whose responses indicate origins outside of the geographical region within which coding schemes have placed them. Some similar responses might therefore appear in separate places.
+
+User Caution: The labels associated with each IPUMS ancestry value do not contain all of the possible responses included within each ancestry code. To ensure that they use all codes that are necessary to their research, users are advised to examine the codes and frequencies table and the detailed components of the ancestry values (see Supplemental Code Information below).]]></txt>
+      <catgry>
+        <catValu>001</catValu>
+        <labl>Alsatian, Alsace-Lorraine</labl>
+      </catgry>
+      <catgry>
+        <catValu>002</catValu>
+        <labl>Andorran</labl>
+      </catgry>
+      <catgry>
+        <catValu>003</catValu>
+        <labl>Austrian</labl>
+      </catgry>
+      <catgry>
+        <catValu>004</catValu>
+        <labl>Tirolean</labl>
+      </catgry>
+      <catgry>
+        <catValu>005</catValu>
+        <labl>Basque</labl>
+      </catgry>
+      <catgry>
+        <catValu>006</catValu>
+        <labl>French Basque</labl>
+      </catgry>
+      <catgry>
+        <catValu>008</catValu>
+        <labl>Belgian</labl>
+      </catgry>
+      <catgry>
+        <catValu>009</catValu>
+        <labl>Flemish</labl>
+      </catgry>
+      <catgry>
+        <catValu>010</catValu>
+        <labl>Walloon</labl>
+      </catgry>
+      <catgry>
+        <catValu>011</catValu>
+        <labl>British</labl>
+      </catgry>
+      <catgry>
+        <catValu>012</catValu>
+        <labl>British Isles</labl>
+      </catgry>
+      <catgry>
+        <catValu>013</catValu>
+        <labl>Channel Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>014</catValu>
+        <labl>Gibraltan</labl>
+      </catgry>
+      <catgry>
+        <catValu>015</catValu>
+        <labl>Cornish</labl>
+      </catgry>
+      <catgry>
+        <catValu>016</catValu>
+        <labl>Corsican</labl>
+      </catgry>
+      <catgry>
+        <catValu>017</catValu>
+        <labl>Cypriot</labl>
+      </catgry>
+      <catgry>
+        <catValu>018</catValu>
+        <labl>Greek Cypriote</labl>
+      </catgry>
+      <catgry>
+        <catValu>019</catValu>
+        <labl>Turkish Cypriote</labl>
+      </catgry>
+      <catgry>
+        <catValu>020</catValu>
+        <labl>Danish</labl>
+      </catgry>
+      <catgry>
+        <catValu>021</catValu>
+        <labl>Dutch</labl>
+      </catgry>
+      <catgry>
+        <catValu>022</catValu>
+        <labl>English</labl>
+      </catgry>
+      <catgry>
+        <catValu>023</catValu>
+        <labl>Faeroe Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>024</catValu>
+        <labl>Finnish</labl>
+      </catgry>
+      <catgry>
+        <catValu>025</catValu>
+        <labl>Karelian</labl>
+      </catgry>
+      <catgry>
+        <catValu>026</catValu>
+        <labl>French</labl>
+      </catgry>
+      <catgry>
+        <catValu>027</catValu>
+        <labl>Lorrainian</labl>
+      </catgry>
+      <catgry>
+        <catValu>028</catValu>
+        <labl>Breton</labl>
+      </catgry>
+      <catgry>
+        <catValu>029</catValu>
+        <labl>Frisian</labl>
+      </catgry>
+      <catgry>
+        <catValu>030</catValu>
+        <labl>Friulian</labl>
+      </catgry>
+      <catgry>
+        <catValu>032</catValu>
+        <labl>German</labl>
+      </catgry>
+      <catgry>
+        <catValu>033</catValu>
+        <labl>Bavarian</labl>
+      </catgry>
+      <catgry>
+        <catValu>034</catValu>
+        <labl>Berliner</labl>
+      </catgry>
+      <catgry>
+        <catValu>035</catValu>
+        <labl>Hamburger</labl>
+      </catgry>
+      <catgry>
+        <catValu>036</catValu>
+        <labl>Hanoverian</labl>
+      </catgry>
+      <catgry>
+        <catValu>037</catValu>
+        <labl>Hessian</labl>
+      </catgry>
+      <catgry>
+        <catValu>038</catValu>
+        <labl>Lubecker</labl>
+      </catgry>
+      <catgry>
+        <catValu>039</catValu>
+        <labl>Pomeranian</labl>
+      </catgry>
+      <catgry>
+        <catValu>040</catValu>
+        <labl>Prussian</labl>
+      </catgry>
+      <catgry>
+        <catValu>041</catValu>
+        <labl>Saxon</labl>
+      </catgry>
+      <catgry>
+        <catValu>042</catValu>
+        <labl>Sudetenlander</labl>
+      </catgry>
+      <catgry>
+        <catValu>043</catValu>
+        <labl>Westphalian</labl>
+      </catgry>
+      <catgry>
+        <catValu>046</catValu>
+        <labl>Greek</labl>
+      </catgry>
+      <catgry>
+        <catValu>047</catValu>
+        <labl>Cretan</labl>
+      </catgry>
+      <catgry>
+        <catValu>048</catValu>
+        <labl>Cycladic Islander, Dodecanese Islander, Peloponnesian</labl>
+      </catgry>
+      <catgry>
+        <catValu>049</catValu>
+        <labl>Icelander</labl>
+      </catgry>
+      <catgry>
+        <catValu>050</catValu>
+        <labl>Irish, various subheads,</labl>
+      </catgry>
+      <catgry>
+        <catValu>051</catValu>
+        <labl>Italian</labl>
+      </catgry>
+      <catgry>
+        <catValu>053</catValu>
+        <labl>Abruzzi</labl>
+      </catgry>
+      <catgry>
+        <catValu>054</catValu>
+        <labl>Apulian</labl>
+      </catgry>
+      <catgry>
+        <catValu>055</catValu>
+        <labl>Basilicata</labl>
+      </catgry>
+      <catgry>
+        <catValu>056</catValu>
+        <labl>Calabrian</labl>
+      </catgry>
+      <catgry>
+        <catValu>057</catValu>
+        <labl>Amalfin</labl>
+      </catgry>
+      <catgry>
+        <catValu>058</catValu>
+        <labl>Emilia Romagna</labl>
+      </catgry>
+      <catgry>
+        <catValu>059</catValu>
+        <labl>Rome</labl>
+      </catgry>
+      <catgry>
+        <catValu>060</catValu>
+        <labl>Ligurian</labl>
+      </catgry>
+      <catgry>
+        <catValu>061</catValu>
+        <labl>Lombardian</labl>
+      </catgry>
+      <catgry>
+        <catValu>062</catValu>
+        <labl>Marches</labl>
+      </catgry>
+      <catgry>
+        <catValu>063</catValu>
+        <labl>Molise</labl>
+      </catgry>
+      <catgry>
+        <catValu>064</catValu>
+        <labl>Neapolitan</labl>
+      </catgry>
+      <catgry>
+        <catValu>065</catValu>
+        <labl>Piedmontese</labl>
+      </catgry>
+      <catgry>
+        <catValu>066</catValu>
+        <labl>Puglia</labl>
+      </catgry>
+      <catgry>
+        <catValu>067</catValu>
+        <labl>Sardinian</labl>
+      </catgry>
+      <catgry>
+        <catValu>068</catValu>
+        <labl>Sicilian</labl>
+      </catgry>
+      <catgry>
+        <catValu>069</catValu>
+        <labl>Tuscan</labl>
+      </catgry>
+      <catgry>
+        <catValu>070</catValu>
+        <labl>Trentino</labl>
+      </catgry>
+      <catgry>
+        <catValu>071</catValu>
+        <labl>Umbrian</labl>
+      </catgry>
+      <catgry>
+        <catValu>072</catValu>
+        <labl>Valle dAosta</labl>
+      </catgry>
+      <catgry>
+        <catValu>073</catValu>
+        <labl>Venetian</labl>
+      </catgry>
+      <catgry>
+        <catValu>075</catValu>
+        <labl>Lapp</labl>
+      </catgry>
+      <catgry>
+        <catValu>076</catValu>
+        <labl>Liechtensteiner</labl>
+      </catgry>
+      <catgry>
+        <catValu>077</catValu>
+        <labl>Luxemburger</labl>
+      </catgry>
+      <catgry>
+        <catValu>078</catValu>
+        <labl>Maltese</labl>
+      </catgry>
+      <catgry>
+        <catValu>079</catValu>
+        <labl>Manx</labl>
+      </catgry>
+      <catgry>
+        <catValu>080</catValu>
+        <labl>Monegasque</labl>
+      </catgry>
+      <catgry>
+        <catValu>081</catValu>
+        <labl>Northern Irelander</labl>
+      </catgry>
+      <catgry>
+        <catValu>082</catValu>
+        <labl>Norwegian</labl>
+      </catgry>
+      <catgry>
+        <catValu>084</catValu>
+        <labl>Portuguese</labl>
+      </catgry>
+      <catgry>
+        <catValu>085</catValu>
+        <labl>Azorean</labl>
+      </catgry>
+      <catgry>
+        <catValu>086</catValu>
+        <labl>Madeiran</labl>
+      </catgry>
+      <catgry>
+        <catValu>087</catValu>
+        <labl>Scotch Irish</labl>
+      </catgry>
+      <catgry>
+        <catValu>088</catValu>
+        <labl>Scottish</labl>
+      </catgry>
+      <catgry>
+        <catValu>089</catValu>
+        <labl>Swedish</labl>
+      </catgry>
+      <catgry>
+        <catValu>090</catValu>
+        <labl>Aland Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>091</catValu>
+        <labl>Swiss</labl>
+      </catgry>
+      <catgry>
+        <catValu>092</catValu>
+        <labl>Suisse</labl>
+      </catgry>
+      <catgry>
+        <catValu>095</catValu>
+        <labl>Romansch</labl>
+      </catgry>
+      <catgry>
+        <catValu>096</catValu>
+        <labl>Suisse Romane</labl>
+      </catgry>
+      <catgry>
+        <catValu>097</catValu>
+        <labl>Welsh</labl>
+      </catgry>
+      <catgry>
+        <catValu>098</catValu>
+        <labl>Scandinavian, Nordic</labl>
+      </catgry>
+      <catgry>
+        <catValu>100</catValu>
+        <labl>Albanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>101</catValu>
+        <labl>Azerbaijani</labl>
+      </catgry>
+      <catgry>
+        <catValu>102</catValu>
+        <labl>Belorussian</labl>
+      </catgry>
+      <catgry>
+        <catValu>103</catValu>
+        <labl>Bulgarian</labl>
+      </catgry>
+      <catgry>
+        <catValu>105</catValu>
+        <labl>Carpathian</labl>
+      </catgry>
+      <catgry>
+        <catValu>108</catValu>
+        <labl>Cossack</labl>
+      </catgry>
+      <catgry>
+        <catValu>109</catValu>
+        <labl>Croatian</labl>
+      </catgry>
+      <catgry>
+        <catValu>111</catValu>
+        <labl>Czechoslovakian</labl>
+      </catgry>
+      <catgry>
+        <catValu>112</catValu>
+        <labl>Bohemian</labl>
+      </catgry>
+      <catgry>
+        <catValu>115</catValu>
+        <labl>Estonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>116</catValu>
+        <labl>Livonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>117</catValu>
+        <labl>Finno Ugrian</labl>
+      </catgry>
+      <catgry>
+        <catValu>118</catValu>
+        <labl>Mordovian</labl>
+      </catgry>
+      <catgry>
+        <catValu>119</catValu>
+        <labl>Voytak</labl>
+      </catgry>
+      <catgry>
+        <catValu>120</catValu>
+        <labl>Georgian</labl>
+      </catgry>
+      <catgry>
+        <catValu>122</catValu>
+        <labl>Germans from Russia</labl>
+      </catgry>
+      <catgry>
+        <catValu>123</catValu>
+        <labl>Gruziia</labl>
+      </catgry>
+      <catgry>
+        <catValu>124</catValu>
+        <labl>Rom</labl>
+      </catgry>
+      <catgry>
+        <catValu>125</catValu>
+        <labl>Hungarian</labl>
+      </catgry>
+      <catgry>
+        <catValu>126</catValu>
+        <labl>Magyar</labl>
+      </catgry>
+      <catgry>
+        <catValu>128</catValu>
+        <labl>Latvian</labl>
+      </catgry>
+      <catgry>
+        <catValu>129</catValu>
+        <labl>Lithuanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>130</catValu>
+        <labl>Macedonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>132</catValu>
+        <labl>North Caucasian</labl>
+      </catgry>
+      <catgry>
+        <catValu>133</catValu>
+        <labl>North Caucasian Turkic</labl>
+      </catgry>
+      <catgry>
+        <catValu>140</catValu>
+        <labl>Ossetian</labl>
+      </catgry>
+      <catgry>
+        <catValu>142</catValu>
+        <labl>Polish</labl>
+      </catgry>
+      <catgry>
+        <catValu>143</catValu>
+        <labl>Kashubian</labl>
+      </catgry>
+      <catgry>
+        <catValu>144</catValu>
+        <labl>Romanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>145</catValu>
+        <labl>Bessarabian</labl>
+      </catgry>
+      <catgry>
+        <catValu>146</catValu>
+        <labl>Moldavian</labl>
+      </catgry>
+      <catgry>
+        <catValu>147</catValu>
+        <labl>Wallachian</labl>
+      </catgry>
+      <catgry>
+        <catValu>148</catValu>
+        <labl>Russian</labl>
+      </catgry>
+      <catgry>
+        <catValu>150</catValu>
+        <labl>Muscovite</labl>
+      </catgry>
+      <catgry>
+        <catValu>152</catValu>
+        <labl>Serbian</labl>
+      </catgry>
+      <catgry>
+        <catValu>153</catValu>
+        <labl>Slovak</labl>
+      </catgry>
+      <catgry>
+        <catValu>154</catValu>
+        <labl>Slovene</labl>
+      </catgry>
+      <catgry>
+        <catValu>155</catValu>
+        <labl>Sorb/Wend</labl>
+      </catgry>
+      <catgry>
+        <catValu>156</catValu>
+        <labl>Soviet Turkic</labl>
+      </catgry>
+      <catgry>
+        <catValu>157</catValu>
+        <labl>Bashkir</labl>
+      </catgry>
+      <catgry>
+        <catValu>158</catValu>
+        <labl>Chevash</labl>
+      </catgry>
+      <catgry>
+        <catValu>159</catValu>
+        <labl>Gagauz</labl>
+      </catgry>
+      <catgry>
+        <catValu>160</catValu>
+        <labl>Mesknetian</labl>
+      </catgry>
+      <catgry>
+        <catValu>163</catValu>
+        <labl>Yakut</labl>
+      </catgry>
+      <catgry>
+        <catValu>164</catValu>
+        <labl>Soviet Union, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>165</catValu>
+        <labl>Tatar</labl>
+      </catgry>
+      <catgry>
+        <catValu>169</catValu>
+        <labl>Uzbek</labl>
+      </catgry>
+      <catgry>
+        <catValu>171</catValu>
+        <labl>Ukrainian</labl>
+      </catgry>
+      <catgry>
+        <catValu>176</catValu>
+        <labl>Yugoslavian</labl>
+      </catgry>
+      <catgry>
+        <catValu>178</catValu>
+        <labl>Slav</labl>
+      </catgry>
+      <catgry>
+        <catValu>179</catValu>
+        <labl>Slavonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>181</catValu>
+        <labl>Central European, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>183</catValu>
+        <labl>Northern European, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>185</catValu>
+        <labl>Southern European, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>187</catValu>
+        <labl>Western European, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>190</catValu>
+        <labl>Eastern European, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>195</catValu>
+        <labl>European, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>200</catValu>
+        <labl>Spaniard</labl>
+      </catgry>
+      <catgry>
+        <catValu>201</catValu>
+        <labl>Andalusian</labl>
+      </catgry>
+      <catgry>
+        <catValu>202</catValu>
+        <labl>Astorian</labl>
+      </catgry>
+      <catgry>
+        <catValu>204</catValu>
+        <labl>Catalonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>205</catValu>
+        <labl>Balearic Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>206</catValu>
+        <labl>Galician</labl>
+      </catgry>
+      <catgry>
+        <catValu>210</catValu>
+        <labl>Mexican</labl>
+      </catgry>
+      <catgry>
+        <catValu>211</catValu>
+        <labl>Mexican American</labl>
+      </catgry>
+      <catgry>
+        <catValu>213</catValu>
+        <labl>Chicano/Chicana</labl>
+      </catgry>
+      <catgry>
+        <catValu>218</catValu>
+        <labl>Nuevo Mexicano</labl>
+      </catgry>
+      <catgry>
+        <catValu>219</catValu>
+        <labl>Californio</labl>
+      </catgry>
+      <catgry>
+        <catValu>221</catValu>
+        <labl>Costa Rican</labl>
+      </catgry>
+      <catgry>
+        <catValu>222</catValu>
+        <labl>Guatemalan</labl>
+      </catgry>
+      <catgry>
+        <catValu>223</catValu>
+        <labl>Honduran</labl>
+      </catgry>
+      <catgry>
+        <catValu>224</catValu>
+        <labl>Nicaraguan</labl>
+      </catgry>
+      <catgry>
+        <catValu>225</catValu>
+        <labl>Panamanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>226</catValu>
+        <labl>Salvadoran</labl>
+      </catgry>
+      <catgry>
+        <catValu>227</catValu>
+        <labl>Latin American</labl>
+      </catgry>
+      <catgry>
+        <catValu>231</catValu>
+        <labl>Argentinean</labl>
+      </catgry>
+      <catgry>
+        <catValu>232</catValu>
+        <labl>Bolivian</labl>
+      </catgry>
+      <catgry>
+        <catValu>233</catValu>
+        <labl>Chilean</labl>
+      </catgry>
+      <catgry>
+        <catValu>234</catValu>
+        <labl>Colombian</labl>
+      </catgry>
+      <catgry>
+        <catValu>235</catValu>
+        <labl>Ecuadorian</labl>
+      </catgry>
+      <catgry>
+        <catValu>236</catValu>
+        <labl>Paraguayan</labl>
+      </catgry>
+      <catgry>
+        <catValu>237</catValu>
+        <labl>Peruvian</labl>
+      </catgry>
+      <catgry>
+        <catValu>238</catValu>
+        <labl>Uruguayan</labl>
+      </catgry>
+      <catgry>
+        <catValu>239</catValu>
+        <labl>Venezuelan</labl>
+      </catgry>
+      <catgry>
+        <catValu>248</catValu>
+        <labl>South American</labl>
+      </catgry>
+      <catgry>
+        <catValu>261</catValu>
+        <labl>Puerto Rican</labl>
+      </catgry>
+      <catgry>
+        <catValu>271</catValu>
+        <labl>Cuban</labl>
+      </catgry>
+      <catgry>
+        <catValu>275</catValu>
+        <labl>Dominican</labl>
+      </catgry>
+      <catgry>
+        <catValu>290</catValu>
+        <labl>Hispanic</labl>
+      </catgry>
+      <catgry>
+        <catValu>291</catValu>
+        <labl>Spanish</labl>
+      </catgry>
+      <catgry>
+        <catValu>295</catValu>
+        <labl>Spanish American</labl>
+      </catgry>
+      <catgry>
+        <catValu>296</catValu>
+        <labl>Other Spanish/Hispanic</labl>
+      </catgry>
+      <catgry>
+        <catValu>300</catValu>
+        <labl>Bahamian</labl>
+      </catgry>
+      <catgry>
+        <catValu>301</catValu>
+        <labl>Barbadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>302</catValu>
+        <labl>Belizean</labl>
+      </catgry>
+      <catgry>
+        <catValu>303</catValu>
+        <labl>Bermudan</labl>
+      </catgry>
+      <catgry>
+        <catValu>304</catValu>
+        <labl>Cayman Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>308</catValu>
+        <labl>Jamaican</labl>
+      </catgry>
+      <catgry>
+        <catValu>310</catValu>
+        <labl>Dutch West Indies</labl>
+      </catgry>
+      <catgry>
+        <catValu>311</catValu>
+        <labl>Aruba Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>312</catValu>
+        <labl>St Maarten Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>314</catValu>
+        <labl>Trinidadian/Tobagonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>315</catValu>
+        <labl>Trinidadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>316</catValu>
+        <labl>Tobagonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>317</catValu>
+        <labl>U.S. Virgin Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>321</catValu>
+        <labl>British Virgin Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>322</catValu>
+        <labl>British West Indian</labl>
+      </catgry>
+      <catgry>
+        <catValu>323</catValu>
+        <labl>Turks and Caicos Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>324</catValu>
+        <labl>Anguilla Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>328</catValu>
+        <labl>Dominica Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>329</catValu>
+        <labl>Grenadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>331</catValu>
+        <labl>St Lucia Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>332</catValu>
+        <labl>French West Indies</labl>
+      </catgry>
+      <catgry>
+        <catValu>333</catValu>
+        <labl>Guadeloupe Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>334</catValu>
+        <labl>Cayenne</labl>
+      </catgry>
+      <catgry>
+        <catValu>335</catValu>
+        <labl>West Indian</labl>
+      </catgry>
+      <catgry>
+        <catValu>336</catValu>
+        <labl>Haitian</labl>
+      </catgry>
+      <catgry>
+        <catValu>337</catValu>
+        <labl>Other West Indian</labl>
+      </catgry>
+      <catgry>
+        <catValu>360</catValu>
+        <labl>Brazilian</labl>
+      </catgry>
+      <catgry>
+        <catValu>365</catValu>
+        <labl>San Andres</labl>
+      </catgry>
+      <catgry>
+        <catValu>370</catValu>
+        <labl>Guyanese/British Guiana</labl>
+      </catgry>
+      <catgry>
+        <catValu>375</catValu>
+        <labl>Providencia</labl>
+      </catgry>
+      <catgry>
+        <catValu>380</catValu>
+        <labl>Surinam/Dutch Guiana</labl>
+      </catgry>
+      <catgry>
+        <catValu>400</catValu>
+        <labl>Algerian</labl>
+      </catgry>
+      <catgry>
+        <catValu>402</catValu>
+        <labl>Egyptian</labl>
+      </catgry>
+      <catgry>
+        <catValu>404</catValu>
+        <labl>Libyan</labl>
+      </catgry>
+      <catgry>
+        <catValu>406</catValu>
+        <labl>Moroccan</labl>
+      </catgry>
+      <catgry>
+        <catValu>407</catValu>
+        <labl>Ifni</labl>
+      </catgry>
+      <catgry>
+        <catValu>408</catValu>
+        <labl>Tunisian</labl>
+      </catgry>
+      <catgry>
+        <catValu>411</catValu>
+        <labl>North African</labl>
+      </catgry>
+      <catgry>
+        <catValu>412</catValu>
+        <labl>Alhucemas</labl>
+      </catgry>
+      <catgry>
+        <catValu>413</catValu>
+        <labl>Berber</labl>
+      </catgry>
+      <catgry>
+        <catValu>414</catValu>
+        <labl>Rio de Oro</labl>
+      </catgry>
+      <catgry>
+        <catValu>415</catValu>
+        <labl>Bahraini</labl>
+      </catgry>
+      <catgry>
+        <catValu>416</catValu>
+        <labl>Iranian</labl>
+      </catgry>
+      <catgry>
+        <catValu>417</catValu>
+        <labl>Iraqi</labl>
+      </catgry>
+      <catgry>
+        <catValu>419</catValu>
+        <labl>Israeli</labl>
+      </catgry>
+      <catgry>
+        <catValu>421</catValu>
+        <labl>Jordanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>423</catValu>
+        <labl>Kuwaiti</labl>
+      </catgry>
+      <catgry>
+        <catValu>425</catValu>
+        <labl>Lebanese</labl>
+      </catgry>
+      <catgry>
+        <catValu>427</catValu>
+        <labl>Saudi Arabian</labl>
+      </catgry>
+      <catgry>
+        <catValu>429</catValu>
+        <labl>Syrian</labl>
+      </catgry>
+      <catgry>
+        <catValu>431</catValu>
+        <labl>Armenian</labl>
+      </catgry>
+      <catgry>
+        <catValu>434</catValu>
+        <labl>Turkish</labl>
+      </catgry>
+      <catgry>
+        <catValu>435</catValu>
+        <labl>Yemeni</labl>
+      </catgry>
+      <catgry>
+        <catValu>436</catValu>
+        <labl>Omani</labl>
+      </catgry>
+      <catgry>
+        <catValu>437</catValu>
+        <labl>Muscat</labl>
+      </catgry>
+      <catgry>
+        <catValu>438</catValu>
+        <labl>Trucial Oman</labl>
+      </catgry>
+      <catgry>
+        <catValu>439</catValu>
+        <labl>Qatar</labl>
+      </catgry>
+      <catgry>
+        <catValu>442</catValu>
+        <labl>Kurdish</labl>
+      </catgry>
+      <catgry>
+        <catValu>444</catValu>
+        <labl>Kuria Muria Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>465</catValu>
+        <labl>Palestinian</labl>
+      </catgry>
+      <catgry>
+        <catValu>466</catValu>
+        <labl>Gazan</labl>
+      </catgry>
+      <catgry>
+        <catValu>467</catValu>
+        <labl>West Bank</labl>
+      </catgry>
+      <catgry>
+        <catValu>470</catValu>
+        <labl>South Yemeni</labl>
+      </catgry>
+      <catgry>
+        <catValu>471</catValu>
+        <labl>Aden</labl>
+      </catgry>
+      <catgry>
+        <catValu>480</catValu>
+        <labl>United Arab Emirates</labl>
+      </catgry>
+      <catgry>
+        <catValu>482</catValu>
+        <labl>Assyrian/Chaldean/Syriac</labl>
+      </catgry>
+      <catgry>
+        <catValu>490</catValu>
+        <labl>Middle Eastern</labl>
+      </catgry>
+      <catgry>
+        <catValu>495</catValu>
+        <labl>Arab</labl>
+      </catgry>
+      <catgry>
+        <catValu>496</catValu>
+        <labl>Other Arab</labl>
+      </catgry>
+      <catgry>
+        <catValu>500</catValu>
+        <labl>Angolan</labl>
+      </catgry>
+      <catgry>
+        <catValu>502</catValu>
+        <labl>Benin</labl>
+      </catgry>
+      <catgry>
+        <catValu>504</catValu>
+        <labl>Botswana</labl>
+      </catgry>
+      <catgry>
+        <catValu>506</catValu>
+        <labl>Burundian</labl>
+      </catgry>
+      <catgry>
+        <catValu>508</catValu>
+        <labl>Cameroonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>510</catValu>
+        <labl>Cape Verdean</labl>
+      </catgry>
+      <catgry>
+        <catValu>513</catValu>
+        <labl>Chadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>515</catValu>
+        <labl>Congolese</labl>
+      </catgry>
+      <catgry>
+        <catValu>516</catValu>
+        <labl>Congo-Brazzaville</labl>
+      </catgry>
+      <catgry>
+        <catValu>519</catValu>
+        <labl>Djibouti</labl>
+      </catgry>
+      <catgry>
+        <catValu>520</catValu>
+        <labl>Equatorial Guinea</labl>
+      </catgry>
+      <catgry>
+        <catValu>522</catValu>
+        <labl>Ethiopian</labl>
+      </catgry>
+      <catgry>
+        <catValu>523</catValu>
+        <labl>Eritrean</labl>
+      </catgry>
+      <catgry>
+        <catValu>525</catValu>
+        <labl>Gabonese</labl>
+      </catgry>
+      <catgry>
+        <catValu>527</catValu>
+        <labl>Gambian</labl>
+      </catgry>
+      <catgry>
+        <catValu>529</catValu>
+        <labl>Ghanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>530</catValu>
+        <labl>Guinean</labl>
+      </catgry>
+      <catgry>
+        <catValu>531</catValu>
+        <labl>Guinea Bissau</labl>
+      </catgry>
+      <catgry>
+        <catValu>532</catValu>
+        <labl>Ivory Coast</labl>
+      </catgry>
+      <catgry>
+        <catValu>534</catValu>
+        <labl>Kenyan</labl>
+      </catgry>
+      <catgry>
+        <catValu>538</catValu>
+        <labl>Lesotho</labl>
+      </catgry>
+      <catgry>
+        <catValu>541</catValu>
+        <labl>Liberian</labl>
+      </catgry>
+      <catgry>
+        <catValu>543</catValu>
+        <labl>Madagascan</labl>
+      </catgry>
+      <catgry>
+        <catValu>545</catValu>
+        <labl>Malawian</labl>
+      </catgry>
+      <catgry>
+        <catValu>546</catValu>
+        <labl>Malian</labl>
+      </catgry>
+      <catgry>
+        <catValu>549</catValu>
+        <labl>Mozambican</labl>
+      </catgry>
+      <catgry>
+        <catValu>550</catValu>
+        <labl>Namibian</labl>
+      </catgry>
+      <catgry>
+        <catValu>551</catValu>
+        <labl>Niger</labl>
+      </catgry>
+      <catgry>
+        <catValu>553</catValu>
+        <labl>Nigerian</labl>
+      </catgry>
+      <catgry>
+        <catValu>554</catValu>
+        <labl>Fulani</labl>
+      </catgry>
+      <catgry>
+        <catValu>555</catValu>
+        <labl>Hausa</labl>
+      </catgry>
+      <catgry>
+        <catValu>556</catValu>
+        <labl>Ibo</labl>
+      </catgry>
+      <catgry>
+        <catValu>557</catValu>
+        <labl>Tiv</labl>
+      </catgry>
+      <catgry>
+        <catValu>561</catValu>
+        <labl>Rwandan</labl>
+      </catgry>
+      <catgry>
+        <catValu>564</catValu>
+        <labl>Senegalese</labl>
+      </catgry>
+      <catgry>
+        <catValu>566</catValu>
+        <labl>Sierra Leonean</labl>
+      </catgry>
+      <catgry>
+        <catValu>568</catValu>
+        <labl>Somalian</labl>
+      </catgry>
+      <catgry>
+        <catValu>569</catValu>
+        <labl>Swaziland</labl>
+      </catgry>
+      <catgry>
+        <catValu>570</catValu>
+        <labl>South African</labl>
+      </catgry>
+      <catgry>
+        <catValu>571</catValu>
+        <labl>Union of South Africa</labl>
+      </catgry>
+      <catgry>
+        <catValu>572</catValu>
+        <labl>Afrikaner</labl>
+      </catgry>
+      <catgry>
+        <catValu>573</catValu>
+        <labl>Natalian</labl>
+      </catgry>
+      <catgry>
+        <catValu>574</catValu>
+        <labl>Zulu</labl>
+      </catgry>
+      <catgry>
+        <catValu>576</catValu>
+        <labl>Sudanese</labl>
+      </catgry>
+      <catgry>
+        <catValu>577</catValu>
+        <labl>Dinka</labl>
+      </catgry>
+      <catgry>
+        <catValu>578</catValu>
+        <labl>Nuer</labl>
+      </catgry>
+      <catgry>
+        <catValu>579</catValu>
+        <labl>Fur</labl>
+      </catgry>
+      <catgry>
+        <catValu>582</catValu>
+        <labl>Tanzanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>583</catValu>
+        <labl>Tanganyikan</labl>
+      </catgry>
+      <catgry>
+        <catValu>584</catValu>
+        <labl>Zanzibar Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>586</catValu>
+        <labl>Togo</labl>
+      </catgry>
+      <catgry>
+        <catValu>588</catValu>
+        <labl>Ugandan</labl>
+      </catgry>
+      <catgry>
+        <catValu>589</catValu>
+        <labl>Upper Voltan</labl>
+      </catgry>
+      <catgry>
+        <catValu>591</catValu>
+        <labl>Zairian</labl>
+      </catgry>
+      <catgry>
+        <catValu>592</catValu>
+        <labl>Zambian</labl>
+      </catgry>
+      <catgry>
+        <catValu>593</catValu>
+        <labl>Zimbabwean</labl>
+      </catgry>
+      <catgry>
+        <catValu>594</catValu>
+        <labl>African Islands</labl>
+      </catgry>
+      <catgry>
+        <catValu>595</catValu>
+        <labl>Other Subsaharan Africa</labl>
+      </catgry>
+      <catgry>
+        <catValu>596</catValu>
+        <labl>Central African</labl>
+      </catgry>
+      <catgry>
+        <catValu>597</catValu>
+        <labl>East African</labl>
+      </catgry>
+      <catgry>
+        <catValu>598</catValu>
+        <labl>West African</labl>
+      </catgry>
+      <catgry>
+        <catValu>599</catValu>
+        <labl>African</labl>
+      </catgry>
+      <catgry>
+        <catValu>600</catValu>
+        <labl>Afghan</labl>
+      </catgry>
+      <catgry>
+        <catValu>601</catValu>
+        <labl>Baluchi</labl>
+      </catgry>
+      <catgry>
+        <catValu>602</catValu>
+        <labl>Pathan</labl>
+      </catgry>
+      <catgry>
+        <catValu>603</catValu>
+        <labl>Bengali</labl>
+      </catgry>
+      <catgry>
+        <catValu>607</catValu>
+        <labl>Bhutanese</labl>
+      </catgry>
+      <catgry>
+        <catValu>609</catValu>
+        <labl>Nepali</labl>
+      </catgry>
+      <catgry>
+        <catValu>615</catValu>
+        <labl>Asian Indian</labl>
+      </catgry>
+      <catgry>
+        <catValu>622</catValu>
+        <labl>Andaman Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>624</catValu>
+        <labl>Andhra Pradesh</labl>
+      </catgry>
+      <catgry>
+        <catValu>626</catValu>
+        <labl>Assamese</labl>
+      </catgry>
+      <catgry>
+        <catValu>628</catValu>
+        <labl>Goanese</labl>
+      </catgry>
+      <catgry>
+        <catValu>630</catValu>
+        <labl>Gujarati</labl>
+      </catgry>
+      <catgry>
+        <catValu>632</catValu>
+        <labl>Karnatakan</labl>
+      </catgry>
+      <catgry>
+        <catValu>634</catValu>
+        <labl>Keralan</labl>
+      </catgry>
+      <catgry>
+        <catValu>638</catValu>
+        <labl>Maharashtran</labl>
+      </catgry>
+      <catgry>
+        <catValu>640</catValu>
+        <labl>Madrasi</labl>
+      </catgry>
+      <catgry>
+        <catValu>642</catValu>
+        <labl>Mysore</labl>
+      </catgry>
+      <catgry>
+        <catValu>644</catValu>
+        <labl>Naga</labl>
+      </catgry>
+      <catgry>
+        <catValu>648</catValu>
+        <labl>Pondicherry</labl>
+      </catgry>
+      <catgry>
+        <catValu>650</catValu>
+        <labl>Punjabi</labl>
+      </catgry>
+      <catgry>
+        <catValu>656</catValu>
+        <labl>Tamil</labl>
+      </catgry>
+      <catgry>
+        <catValu>675</catValu>
+        <labl>East Indies</labl>
+      </catgry>
+      <catgry>
+        <catValu>680</catValu>
+        <labl>Pakistani</labl>
+      </catgry>
+      <catgry>
+        <catValu>690</catValu>
+        <labl>Sri Lankan</labl>
+      </catgry>
+      <catgry>
+        <catValu>691</catValu>
+        <labl>Singhalese</labl>
+      </catgry>
+      <catgry>
+        <catValu>692</catValu>
+        <labl>Veddah</labl>
+      </catgry>
+      <catgry>
+        <catValu>695</catValu>
+        <labl>Maldivian</labl>
+      </catgry>
+      <catgry>
+        <catValu>700</catValu>
+        <labl>Burmese</labl>
+      </catgry>
+      <catgry>
+        <catValu>702</catValu>
+        <labl>Shan</labl>
+      </catgry>
+      <catgry>
+        <catValu>703</catValu>
+        <labl>Cambodian</labl>
+      </catgry>
+      <catgry>
+        <catValu>704</catValu>
+        <labl>Khmer</labl>
+      </catgry>
+      <catgry>
+        <catValu>706</catValu>
+        <labl>Chinese</labl>
+      </catgry>
+      <catgry>
+        <catValu>707</catValu>
+        <labl>Cantonese</labl>
+      </catgry>
+      <catgry>
+        <catValu>708</catValu>
+        <labl>Manchurian</labl>
+      </catgry>
+      <catgry>
+        <catValu>709</catValu>
+        <labl>Mandarin</labl>
+      </catgry>
+      <catgry>
+        <catValu>712</catValu>
+        <labl>Mongolian</labl>
+      </catgry>
+      <catgry>
+        <catValu>714</catValu>
+        <labl>Tibetan</labl>
+      </catgry>
+      <catgry>
+        <catValu>716</catValu>
+        <labl>Hong Kong</labl>
+      </catgry>
+      <catgry>
+        <catValu>718</catValu>
+        <labl>Macao</labl>
+      </catgry>
+      <catgry>
+        <catValu>720</catValu>
+        <labl>Filipino</labl>
+      </catgry>
+      <catgry>
+        <catValu>730</catValu>
+        <labl>Indonesian</labl>
+      </catgry>
+      <catgry>
+        <catValu>740</catValu>
+        <labl>Japanese</labl>
+      </catgry>
+      <catgry>
+        <catValu>746</catValu>
+        <labl>Ryukyu Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>748</catValu>
+        <labl>Okinawan</labl>
+      </catgry>
+      <catgry>
+        <catValu>750</catValu>
+        <labl>Korean</labl>
+      </catgry>
+      <catgry>
+        <catValu>765</catValu>
+        <labl>Laotian</labl>
+      </catgry>
+      <catgry>
+        <catValu>766</catValu>
+        <labl>Meo</labl>
+      </catgry>
+      <catgry>
+        <catValu>768</catValu>
+        <labl>Hmong</labl>
+      </catgry>
+      <catgry>
+        <catValu>770</catValu>
+        <labl>Malaysian</labl>
+      </catgry>
+      <catgry>
+        <catValu>774</catValu>
+        <labl>Singaporean</labl>
+      </catgry>
+      <catgry>
+        <catValu>776</catValu>
+        <labl>Thai</labl>
+      </catgry>
+      <catgry>
+        <catValu>777</catValu>
+        <labl>Black Thai</labl>
+      </catgry>
+      <catgry>
+        <catValu>778</catValu>
+        <labl>Western Lao</labl>
+      </catgry>
+      <catgry>
+        <catValu>782</catValu>
+        <labl>Taiwanese</labl>
+      </catgry>
+      <catgry>
+        <catValu>785</catValu>
+        <labl>Vietnamese</labl>
+      </catgry>
+      <catgry>
+        <catValu>786</catValu>
+        <labl>Katu</labl>
+      </catgry>
+      <catgry>
+        <catValu>787</catValu>
+        <labl>Ma</labl>
+      </catgry>
+      <catgry>
+        <catValu>788</catValu>
+        <labl>Mnong</labl>
+      </catgry>
+      <catgry>
+        <catValu>790</catValu>
+        <labl>Montagnard</labl>
+      </catgry>
+      <catgry>
+        <catValu>792</catValu>
+        <labl>Indochinese</labl>
+      </catgry>
+      <catgry>
+        <catValu>793</catValu>
+        <labl>Eurasian</labl>
+      </catgry>
+      <catgry>
+        <catValu>795</catValu>
+        <labl>Asian</labl>
+      </catgry>
+      <catgry>
+        <catValu>796</catValu>
+        <labl>Other Asian</labl>
+      </catgry>
+      <catgry>
+        <catValu>800</catValu>
+        <labl>Australian</labl>
+      </catgry>
+      <catgry>
+        <catValu>801</catValu>
+        <labl>Tasmanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>802</catValu>
+        <labl>Australian Aborigine</labl>
+      </catgry>
+      <catgry>
+        <catValu>803</catValu>
+        <labl>New Zealander</labl>
+      </catgry>
+      <catgry>
+        <catValu>808</catValu>
+        <labl>Polynesian</labl>
+      </catgry>
+      <catgry>
+        <catValu>810</catValu>
+        <labl>Maori</labl>
+      </catgry>
+      <catgry>
+        <catValu>811</catValu>
+        <labl>Hawaiian</labl>
+      </catgry>
+      <catgry>
+        <catValu>813</catValu>
+        <labl>Part Hawaiian</labl>
+      </catgry>
+      <catgry>
+        <catValu>814</catValu>
+        <labl>Samoan</labl>
+      </catgry>
+      <catgry>
+        <catValu>815</catValu>
+        <labl>Tongan</labl>
+      </catgry>
+      <catgry>
+        <catValu>816</catValu>
+        <labl>Tokelauan</labl>
+      </catgry>
+      <catgry>
+        <catValu>817</catValu>
+        <labl>Cook Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>818</catValu>
+        <labl>Tahitian</labl>
+      </catgry>
+      <catgry>
+        <catValu>819</catValu>
+        <labl>Niuean</labl>
+      </catgry>
+      <catgry>
+        <catValu>820</catValu>
+        <labl>Micronesian</labl>
+      </catgry>
+      <catgry>
+        <catValu>821</catValu>
+        <labl>Guamanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>822</catValu>
+        <labl>Chamorro Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>823</catValu>
+        <labl>Saipanese</labl>
+      </catgry>
+      <catgry>
+        <catValu>824</catValu>
+        <labl>Palauan</labl>
+      </catgry>
+      <catgry>
+        <catValu>825</catValu>
+        <labl>Marshall Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>826</catValu>
+        <labl>Kosraean</labl>
+      </catgry>
+      <catgry>
+        <catValu>827</catValu>
+        <labl>Ponapean</labl>
+      </catgry>
+      <catgry>
+        <catValu>828</catValu>
+        <labl>Chuukese</labl>
+      </catgry>
+      <catgry>
+        <catValu>829</catValu>
+        <labl>Yap Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>830</catValu>
+        <labl>Caroline Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>831</catValu>
+        <labl>Kiribatese</labl>
+      </catgry>
+      <catgry>
+        <catValu>832</catValu>
+        <labl>Nauruan</labl>
+      </catgry>
+      <catgry>
+        <catValu>833</catValu>
+        <labl>Tarawa Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>834</catValu>
+        <labl>Tinian Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>840</catValu>
+        <labl>Melanesian Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>841</catValu>
+        <labl>Fijian</labl>
+      </catgry>
+      <catgry>
+        <catValu>843</catValu>
+        <labl>New Guinean</labl>
+      </catgry>
+      <catgry>
+        <catValu>844</catValu>
+        <labl>Papuan</labl>
+      </catgry>
+      <catgry>
+        <catValu>845</catValu>
+        <labl>Solomon Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>846</catValu>
+        <labl>New Caledonian Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>847</catValu>
+        <labl>Vanuatuan</labl>
+      </catgry>
+      <catgry>
+        <catValu>850</catValu>
+        <labl>Pacific Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>860</catValu>
+        <labl>Oceania</labl>
+      </catgry>
+      <catgry>
+        <catValu>862</catValu>
+        <labl>Chamolinian</labl>
+      </catgry>
+      <catgry>
+        <catValu>863</catValu>
+        <labl>Reserved Codes</labl>
+      </catgry>
+      <catgry>
+        <catValu>870</catValu>
+        <labl>Other Pacific</labl>
+      </catgry>
+      <catgry>
+        <catValu>900</catValu>
+        <labl>Afro-American</labl>
+      </catgry>
+      <catgry>
+        <catValu>902</catValu>
+        <labl>African-American</labl>
+      </catgry>
+      <catgry>
+        <catValu>913</catValu>
+        <labl>Central American Indian</labl>
+      </catgry>
+      <catgry>
+        <catValu>914</catValu>
+        <labl>South American Indian</labl>
+      </catgry>
+      <catgry>
+        <catValu>920</catValu>
+        <labl>American Indian  (all tribes)</labl>
+      </catgry>
+      <catgry>
+        <catValu>921</catValu>
+        <labl>Aleut</labl>
+      </catgry>
+      <catgry>
+        <catValu>922</catValu>
+        <labl>Eskimo</labl>
+      </catgry>
+      <catgry>
+        <catValu>923</catValu>
+        <labl>Inuit</labl>
+      </catgry>
+      <catgry>
+        <catValu>924</catValu>
+        <labl>White/Caucasian</labl>
+      </catgry>
+      <catgry>
+        <catValu>930</catValu>
+        <labl>Greenlander</labl>
+      </catgry>
+      <catgry>
+        <catValu>931</catValu>
+        <labl>Canadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>933</catValu>
+        <labl>Newfoundland</labl>
+      </catgry>
+      <catgry>
+        <catValu>934</catValu>
+        <labl>Nova Scotian</labl>
+      </catgry>
+      <catgry>
+        <catValu>935</catValu>
+        <labl>French Canadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>936</catValu>
+        <labl>Acadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>939</catValu>
+        <labl>American</labl>
+      </catgry>
+      <catgry>
+        <catValu>940</catValu>
+        <labl>United States</labl>
+      </catgry>
+      <catgry>
+        <catValu>941</catValu>
+        <labl>Alabama</labl>
+      </catgry>
+      <catgry>
+        <catValu>942</catValu>
+        <labl>Alaska</labl>
+      </catgry>
+      <catgry>
+        <catValu>943</catValu>
+        <labl>Arizona</labl>
+      </catgry>
+      <catgry>
+        <catValu>944</catValu>
+        <labl>Arkansas</labl>
+      </catgry>
+      <catgry>
+        <catValu>945</catValu>
+        <labl>California</labl>
+      </catgry>
+      <catgry>
+        <catValu>946</catValu>
+        <labl>Colorado</labl>
+      </catgry>
+      <catgry>
+        <catValu>947</catValu>
+        <labl>Connecticut</labl>
+      </catgry>
+      <catgry>
+        <catValu>948</catValu>
+        <labl>District of Columbia</labl>
+      </catgry>
+      <catgry>
+        <catValu>949</catValu>
+        <labl>Delaware</labl>
+      </catgry>
+      <catgry>
+        <catValu>950</catValu>
+        <labl>Florida</labl>
+      </catgry>
+      <catgry>
+        <catValu>951</catValu>
+        <labl>Georgia</labl>
+      </catgry>
+      <catgry>
+        <catValu>952</catValu>
+        <labl>Idaho</labl>
+      </catgry>
+      <catgry>
+        <catValu>953</catValu>
+        <labl>Illinois</labl>
+      </catgry>
+      <catgry>
+        <catValu>954</catValu>
+        <labl>Indiana</labl>
+      </catgry>
+      <catgry>
+        <catValu>955</catValu>
+        <labl>Iowa</labl>
+      </catgry>
+      <catgry>
+        <catValu>956</catValu>
+        <labl>Kansas</labl>
+      </catgry>
+      <catgry>
+        <catValu>957</catValu>
+        <labl>Kentucky</labl>
+      </catgry>
+      <catgry>
+        <catValu>958</catValu>
+        <labl>Louisiana</labl>
+      </catgry>
+      <catgry>
+        <catValu>959</catValu>
+        <labl>Maine</labl>
+      </catgry>
+      <catgry>
+        <catValu>960</catValu>
+        <labl>Maryland</labl>
+      </catgry>
+      <catgry>
+        <catValu>961</catValu>
+        <labl>Massachusetts</labl>
+      </catgry>
+      <catgry>
+        <catValu>962</catValu>
+        <labl>Michigan</labl>
+      </catgry>
+      <catgry>
+        <catValu>963</catValu>
+        <labl>Minnesota</labl>
+      </catgry>
+      <catgry>
+        <catValu>964</catValu>
+        <labl>Mississippi</labl>
+      </catgry>
+      <catgry>
+        <catValu>965</catValu>
+        <labl>Missouri</labl>
+      </catgry>
+      <catgry>
+        <catValu>966</catValu>
+        <labl>Montana</labl>
+      </catgry>
+      <catgry>
+        <catValu>967</catValu>
+        <labl>Nebraska</labl>
+      </catgry>
+      <catgry>
+        <catValu>968</catValu>
+        <labl>Nevada</labl>
+      </catgry>
+      <catgry>
+        <catValu>969</catValu>
+        <labl>New Hampshire</labl>
+      </catgry>
+      <catgry>
+        <catValu>970</catValu>
+        <labl>New Jersey</labl>
+      </catgry>
+      <catgry>
+        <catValu>971</catValu>
+        <labl>New Mexico</labl>
+      </catgry>
+      <catgry>
+        <catValu>972</catValu>
+        <labl>New York</labl>
+      </catgry>
+      <catgry>
+        <catValu>973</catValu>
+        <labl>North Carolina</labl>
+      </catgry>
+      <catgry>
+        <catValu>974</catValu>
+        <labl>North Dakota</labl>
+      </catgry>
+      <catgry>
+        <catValu>975</catValu>
+        <labl>Ohio</labl>
+      </catgry>
+      <catgry>
+        <catValu>976</catValu>
+        <labl>Oklahoma</labl>
+      </catgry>
+      <catgry>
+        <catValu>977</catValu>
+        <labl>Oregon</labl>
+      </catgry>
+      <catgry>
+        <catValu>978</catValu>
+        <labl>Pennsylvania</labl>
+      </catgry>
+      <catgry>
+        <catValu>979</catValu>
+        <labl>Rhode Island</labl>
+      </catgry>
+      <catgry>
+        <catValu>980</catValu>
+        <labl>South Carolina</labl>
+      </catgry>
+      <catgry>
+        <catValu>981</catValu>
+        <labl>South Dakota</labl>
+      </catgry>
+      <catgry>
+        <catValu>982</catValu>
+        <labl>Tennessee</labl>
+      </catgry>
+      <catgry>
+        <catValu>983</catValu>
+        <labl>Texas</labl>
+      </catgry>
+      <catgry>
+        <catValu>984</catValu>
+        <labl>Utah</labl>
+      </catgry>
+      <catgry>
+        <catValu>985</catValu>
+        <labl>Vermont</labl>
+      </catgry>
+      <catgry>
+        <catValu>986</catValu>
+        <labl>Virginia</labl>
+      </catgry>
+      <catgry>
+        <catValu>987</catValu>
+        <labl>Washington</labl>
+      </catgry>
+      <catgry>
+        <catValu>988</catValu>
+        <labl>West Virginia</labl>
+      </catgry>
+      <catgry>
+        <catValu>989</catValu>
+        <labl>Wisconsin</labl>
+      </catgry>
+      <catgry>
+        <catValu>990</catValu>
+        <labl>Wyoming</labl>
+      </catgry>
+      <catgry>
+        <catValu>993</catValu>
+        <labl>Southerner</labl>
+      </catgry>
+      <catgry>
+        <catValu>994</catValu>
+        <labl>North American</labl>
+      </catgry>
+      <catgry>
+        <catValu>995</catValu>
+        <labl>Mixture</labl>
+      </catgry>
+      <catgry>
+        <catValu>996</catValu>
+        <labl>Uncodable</labl>
+      </catgry>
+      <catgry>
+        <catValu>998</catValu>
+        <labl>Other</labl>
+      </catgry>
+      <catgry>
+        <catValu>999</catValu>
+        <labl>Not Reported</labl>
+      </catgry>
+      <concept vocab="IPUMS">Race, Ethnicity, and Nativity Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+    <var ID="ANCESTR1D" dcml="0" files="ExtractData" intrvl="discrete" name="ANCESTR1D">
+      <location EndPos="102" StartPos="99" width="4"/>
+      <labl>Ancestry, first response [detailed version]</labl>
+      <txt><![CDATA[ANCESTR1 provides the respondent's self-reported ancestry or ethnic origin. In all years except 1990 and 2000, respondents could give as many ancestries as they saw fit. ANCESTR1 records the first response, while ANCESTR2 records the second response, if one exists. Additional responses were ignored, with the exception of 17 "three-origin" combination codes retained in the 1980 samples; these are described in section A of the comparability discussion below. Some compound responses such as "Pennsylvania Dutch" or "French Canadian" were treated as a single response. Respondents could give virtually any response, though they were instructed not to give a religion (the census is not allowed to collect information on religion).  A few responses were not categorized in the samples and were instead coded "Uncodable," "Deferred Cases," or "Other." These uncategorized responses were usually religions. 
+
+If a respondent listed both a broad category and a subset of that category, such as "German-Bavarian," the Census Bureau used only the subset and ignored the broad category. 
+
+The IPUMS generally follows the Census Bureau's practice of coding responses alphabetically within geographic regions. Note that some responses, especially within the NORTH AMERICAN (NON-HISPANIC) geographic region, denote people such as "African-American," "French-Canadian," or "American" whose responses indicate origins outside of the geographical region within which coding schemes have placed them. Some similar responses might therefore appear in separate places.
+
+User Caution: The labels associated with each IPUMS ancestry value do not contain all of the possible responses included within each ancestry code. To ensure that they use all codes that are necessary to their research, users are advised to examine the codes and frequencies table and the detailed components of the ancestry values (see Supplemental Code Information below).]]></txt>
+      <catgry>
+        <catValu>0010</catValu>
+        <labl>Alsatian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0020</catValu>
+        <labl>Andorran</labl>
+      </catgry>
+      <catgry>
+        <catValu>0030</catValu>
+        <labl>Austrian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0040</catValu>
+        <labl>Tirolean</labl>
+      </catgry>
+      <catgry>
+        <catValu>0051</catValu>
+        <labl>Basque (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0052</catValu>
+        <labl>Spanish Basque (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0053</catValu>
+        <labl>Basque (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0054</catValu>
+        <labl>Spanish Basque (1990-2000, 2001-2004 ACS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0060</catValu>
+        <labl>French Basque</labl>
+      </catgry>
+      <catgry>
+        <catValu>0080</catValu>
+        <labl>Belgian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0090</catValu>
+        <labl>Flemish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0100</catValu>
+        <labl>Walloon</labl>
+      </catgry>
+      <catgry>
+        <catValu>0110</catValu>
+        <labl>British</labl>
+      </catgry>
+      <catgry>
+        <catValu>0120</catValu>
+        <labl>British Isles</labl>
+      </catgry>
+      <catgry>
+        <catValu>0130</catValu>
+        <labl>Channel Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>0140</catValu>
+        <labl>Gibraltan</labl>
+      </catgry>
+      <catgry>
+        <catValu>0150</catValu>
+        <labl>Cornish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0160</catValu>
+        <labl>Corsican</labl>
+      </catgry>
+      <catgry>
+        <catValu>0170</catValu>
+        <labl>Cypriot</labl>
+      </catgry>
+      <catgry>
+        <catValu>0180</catValu>
+        <labl>Greek Cypriote</labl>
+      </catgry>
+      <catgry>
+        <catValu>0190</catValu>
+        <labl>Turkish Cypriote</labl>
+      </catgry>
+      <catgry>
+        <catValu>0200</catValu>
+        <labl>Danish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0210</catValu>
+        <labl>Dutch</labl>
+      </catgry>
+      <catgry>
+        <catValu>0211</catValu>
+        <labl>Dutch-French-Irish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0212</catValu>
+        <labl>Dutch-German-Irish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0213</catValu>
+        <labl>Dutch-Irish-Scotch</labl>
+      </catgry>
+      <catgry>
+        <catValu>0220</catValu>
+        <labl>English</labl>
+      </catgry>
+      <catgry>
+        <catValu>0221</catValu>
+        <labl>English-French-German</labl>
+      </catgry>
+      <catgry>
+        <catValu>0222</catValu>
+        <labl>English-French-Irish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0223</catValu>
+        <labl>English-German-Irish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0224</catValu>
+        <labl>English-German-Swedish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0225</catValu>
+        <labl>English-Irish-Scotch</labl>
+      </catgry>
+      <catgry>
+        <catValu>0226</catValu>
+        <labl>English-Scotch-Welsh</labl>
+      </catgry>
+      <catgry>
+        <catValu>0230</catValu>
+        <labl>Faeroe Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>0240</catValu>
+        <labl>Finnish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0250</catValu>
+        <labl>Karelian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0260</catValu>
+        <labl>French (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0261</catValu>
+        <labl>French (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0262</catValu>
+        <labl>Occitan (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0270</catValu>
+        <labl>Lorrainian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0280</catValu>
+        <labl>Breton</labl>
+      </catgry>
+      <catgry>
+        <catValu>0290</catValu>
+        <labl>Frisian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0300</catValu>
+        <labl>Friulian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0320</catValu>
+        <labl>German (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0321</catValu>
+        <labl>German (1990-2000, ACS/PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0322</catValu>
+        <labl>Pennsylvania German (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0323</catValu>
+        <labl>East German (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0324</catValu>
+        <labl>West German (2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0325</catValu>
+        <labl>German-French-Irish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0326</catValu>
+        <labl>German-Irish-Italian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0327</catValu>
+        <labl>German-Irish-Scotch</labl>
+      </catgry>
+      <catgry>
+        <catValu>0328</catValu>
+        <labl>German-Irish-Swedish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0329</catValu>
+        <labl>Germanic</labl>
+      </catgry>
+      <catgry>
+        <catValu>0330</catValu>
+        <labl>Bavarian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0340</catValu>
+        <labl>Berliner</labl>
+      </catgry>
+      <catgry>
+        <catValu>0350</catValu>
+        <labl>Hamburger</labl>
+      </catgry>
+      <catgry>
+        <catValu>0360</catValu>
+        <labl>Hanoverian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0370</catValu>
+        <labl>Hessian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0380</catValu>
+        <labl>Lubecker</labl>
+      </catgry>
+      <catgry>
+        <catValu>0390</catValu>
+        <labl>Pomeranian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0391</catValu>
+        <labl>Pomeranian (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0392</catValu>
+        <labl>Silesian (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0400</catValu>
+        <labl>Prussian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0410</catValu>
+        <labl>Saxon</labl>
+      </catgry>
+      <catgry>
+        <catValu>0420</catValu>
+        <labl>Sudetenlander</labl>
+      </catgry>
+      <catgry>
+        <catValu>0430</catValu>
+        <labl>Westphalian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0460</catValu>
+        <labl>Greek</labl>
+      </catgry>
+      <catgry>
+        <catValu>0470</catValu>
+        <labl>Cretan</labl>
+      </catgry>
+      <catgry>
+        <catValu>0480</catValu>
+        <labl>Cycladic Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>0490</catValu>
+        <labl>Icelander</labl>
+      </catgry>
+      <catgry>
+        <catValu>0500</catValu>
+        <labl>Irish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0501</catValu>
+        <labl>Celtic</labl>
+      </catgry>
+      <catgry>
+        <catValu>0502</catValu>
+        <labl>Irish Scotch</labl>
+      </catgry>
+      <catgry>
+        <catValu>0510</catValu>
+        <labl>Italian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0511</catValu>
+        <labl>Italian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0512</catValu>
+        <labl>Trieste (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0513</catValu>
+        <labl>San Marino (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0530</catValu>
+        <labl>Abruzzi</labl>
+      </catgry>
+      <catgry>
+        <catValu>0540</catValu>
+        <labl>Apulian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0550</catValu>
+        <labl>Basilicata</labl>
+      </catgry>
+      <catgry>
+        <catValu>0560</catValu>
+        <labl>Calabrian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0570</catValu>
+        <labl>Amalfi</labl>
+      </catgry>
+      <catgry>
+        <catValu>0580</catValu>
+        <labl>Emilia Romagna</labl>
+      </catgry>
+      <catgry>
+        <catValu>0590</catValu>
+        <labl>Rome</labl>
+      </catgry>
+      <catgry>
+        <catValu>0600</catValu>
+        <labl>Ligurian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0610</catValu>
+        <labl>Lombardian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0620</catValu>
+        <labl>Marches</labl>
+      </catgry>
+      <catgry>
+        <catValu>0630</catValu>
+        <labl>Molise</labl>
+      </catgry>
+      <catgry>
+        <catValu>0640</catValu>
+        <labl>Neapolitan</labl>
+      </catgry>
+      <catgry>
+        <catValu>0650</catValu>
+        <labl>Piedmontese</labl>
+      </catgry>
+      <catgry>
+        <catValu>0660</catValu>
+        <labl>Puglia</labl>
+      </catgry>
+      <catgry>
+        <catValu>0670</catValu>
+        <labl>Sardinian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0680</catValu>
+        <labl>Sicilian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0690</catValu>
+        <labl>Tuscan</labl>
+      </catgry>
+      <catgry>
+        <catValu>0700</catValu>
+        <labl>Trentino</labl>
+      </catgry>
+      <catgry>
+        <catValu>0710</catValu>
+        <labl>Umbrian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0720</catValu>
+        <labl>Valle dAosta</labl>
+      </catgry>
+      <catgry>
+        <catValu>0730</catValu>
+        <labl>Venetian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0750</catValu>
+        <labl>Lapp</labl>
+      </catgry>
+      <catgry>
+        <catValu>0760</catValu>
+        <labl>Liechtensteiner</labl>
+      </catgry>
+      <catgry>
+        <catValu>0770</catValu>
+        <labl>Luxemburger</labl>
+      </catgry>
+      <catgry>
+        <catValu>0780</catValu>
+        <labl>Maltese</labl>
+      </catgry>
+      <catgry>
+        <catValu>0790</catValu>
+        <labl>Manx</labl>
+      </catgry>
+      <catgry>
+        <catValu>0800</catValu>
+        <labl>Monegasque</labl>
+      </catgry>
+      <catgry>
+        <catValu>0810</catValu>
+        <labl>Northern Irelander</labl>
+      </catgry>
+      <catgry>
+        <catValu>0820</catValu>
+        <labl>Norwegian</labl>
+      </catgry>
+      <catgry>
+        <catValu>0840</catValu>
+        <labl>Portuguese</labl>
+      </catgry>
+      <catgry>
+        <catValu>0850</catValu>
+        <labl>Azorean</labl>
+      </catgry>
+      <catgry>
+        <catValu>0860</catValu>
+        <labl>Madeiran</labl>
+      </catgry>
+      <catgry>
+        <catValu>0870</catValu>
+        <labl>Scotch Irish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0880</catValu>
+        <labl>Scottish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0890</catValu>
+        <labl>Swedish</labl>
+      </catgry>
+      <catgry>
+        <catValu>0900</catValu>
+        <labl>Aland Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>0910</catValu>
+        <labl>Swiss</labl>
+      </catgry>
+      <catgry>
+        <catValu>0920</catValu>
+        <labl>Suisse (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0921</catValu>
+        <labl>Suisse (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0922</catValu>
+        <labl>Switzer (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0950</catValu>
+        <labl>Romansch (1980, ACS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0951</catValu>
+        <labl>Romanscho (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0952</catValu>
+        <labl>Ladin (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0960</catValu>
+        <labl>Suisse Romane (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0961</catValu>
+        <labl>Suisse Romane (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>0962</catValu>
+        <labl>Ticino</labl>
+      </catgry>
+      <catgry>
+        <catValu>0970</catValu>
+        <labl>Welsh</labl>
+      </catgry>
+      <catgry>
+        <catValu>0980</catValu>
+        <labl>Scandinavian, Nordic</labl>
+      </catgry>
+      <catgry>
+        <catValu>1000</catValu>
+        <labl>Albanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1010</catValu>
+        <labl>Azerbaijani</labl>
+      </catgry>
+      <catgry>
+        <catValu>1020</catValu>
+        <labl>Belorussian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1030</catValu>
+        <labl>Bulgarian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1050</catValu>
+        <labl>Carpathian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1051</catValu>
+        <labl>Carpatho Rusyn</labl>
+      </catgry>
+      <catgry>
+        <catValu>1052</catValu>
+        <labl>Rusyn</labl>
+      </catgry>
+      <catgry>
+        <catValu>1080</catValu>
+        <labl>Cossack (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1081</catValu>
+        <labl>Cossack (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1082</catValu>
+        <labl>Turkestani (1990-2000, 2012 ACS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1083</catValu>
+        <labl>Kirghiz (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1084</catValu>
+        <labl>Turcoman (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1090</catValu>
+        <labl>Croatian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1110</catValu>
+        <labl>Czechoslovakian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1111</catValu>
+        <labl>Czech</labl>
+      </catgry>
+      <catgry>
+        <catValu>1120</catValu>
+        <labl>Bohemian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1121</catValu>
+        <labl>Bohemian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1122</catValu>
+        <labl>Moravian (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1150</catValu>
+        <labl>Estonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1160</catValu>
+        <labl>Livonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1170</catValu>
+        <labl>Finno Ugrian (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1171</catValu>
+        <labl>Udmert</labl>
+      </catgry>
+      <catgry>
+        <catValu>1180</catValu>
+        <labl>Mordovian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1190</catValu>
+        <labl>Voytak</labl>
+      </catgry>
+      <catgry>
+        <catValu>1200</catValu>
+        <labl>Georgian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1220</catValu>
+        <labl>Germans from Russia</labl>
+      </catgry>
+      <catgry>
+        <catValu>1221</catValu>
+        <labl>Volga</labl>
+      </catgry>
+      <catgry>
+        <catValu>1222</catValu>
+        <labl>German from Russia (1990-2000); German Russian (ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1230</catValu>
+        <labl>Gruziia (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1240</catValu>
+        <labl>Rom</labl>
+      </catgry>
+      <catgry>
+        <catValu>1250</catValu>
+        <labl>Hungarian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1260</catValu>
+        <labl>Magyar</labl>
+      </catgry>
+      <catgry>
+        <catValu>1280</catValu>
+        <labl>Latvian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1290</catValu>
+        <labl>Lithuanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1300</catValu>
+        <labl>Macedonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1320</catValu>
+        <labl>North Caucasian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1330</catValu>
+        <labl>North Caucasian Turkic (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1400</catValu>
+        <labl>Ossetian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1420</catValu>
+        <labl>Polish</labl>
+      </catgry>
+      <catgry>
+        <catValu>1430</catValu>
+        <labl>Kashubian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1440</catValu>
+        <labl>Romanian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1441</catValu>
+        <labl>Rumanian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1442</catValu>
+        <labl>Transylvanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1450</catValu>
+        <labl>Bessarabian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1451</catValu>
+        <labl>Bessarabian (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1452</catValu>
+        <labl>Bucovina</labl>
+      </catgry>
+      <catgry>
+        <catValu>1460</catValu>
+        <labl>Moldavian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1470</catValu>
+        <labl>Wallachian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1480</catValu>
+        <labl>Russian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1500</catValu>
+        <labl>Muscovite</labl>
+      </catgry>
+      <catgry>
+        <catValu>1520</catValu>
+        <labl>Serbian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1521</catValu>
+        <labl>Serbian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1522</catValu>
+        <labl>Bosnian (1990) Herzegovinian (2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1523</catValu>
+        <labl>Montenegrin (1990-2000, 2012 ACS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1530</catValu>
+        <labl>Slovak</labl>
+      </catgry>
+      <catgry>
+        <catValu>1540</catValu>
+        <labl>Slovene</labl>
+      </catgry>
+      <catgry>
+        <catValu>1550</catValu>
+        <labl>Sorb/Wend</labl>
+      </catgry>
+      <catgry>
+        <catValu>1560</catValu>
+        <labl>Soviet Turkic (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1570</catValu>
+        <labl>Bashkir</labl>
+      </catgry>
+      <catgry>
+        <catValu>1580</catValu>
+        <labl>Chevash</labl>
+      </catgry>
+      <catgry>
+        <catValu>1590</catValu>
+        <labl>Gagauz (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1600</catValu>
+        <labl>Mesknetian (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1630</catValu>
+        <labl>Yakut</labl>
+      </catgry>
+      <catgry>
+        <catValu>1640</catValu>
+        <labl>Soviet Union, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>1650</catValu>
+        <labl>Tatar (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1651</catValu>
+        <labl>Tartar (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1652</catValu>
+        <labl>Crimean (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1653</catValu>
+        <labl>Tuvinian (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1654</catValu>
+        <labl>Soviet Central Asia (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1655</catValu>
+        <labl>Tadzhik (1980, 2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1690</catValu>
+        <labl>Uzbek</labl>
+      </catgry>
+      <catgry>
+        <catValu>1710</catValu>
+        <labl>Ukrainian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1711</catValu>
+        <labl>Ukrainian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1712</catValu>
+        <labl>Ruthenian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1713</catValu>
+        <labl>Ruthenian (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>1714</catValu>
+        <labl>Lemko</labl>
+      </catgry>
+      <catgry>
+        <catValu>1715</catValu>
+        <labl>Bioko</labl>
+      </catgry>
+      <catgry>
+        <catValu>1716</catValu>
+        <labl>Husel</labl>
+      </catgry>
+      <catgry>
+        <catValu>1717</catValu>
+        <labl>Windish</labl>
+      </catgry>
+      <catgry>
+        <catValu>1760</catValu>
+        <labl>Yugoslavian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1780</catValu>
+        <labl>Slav</labl>
+      </catgry>
+      <catgry>
+        <catValu>1790</catValu>
+        <labl>Slavonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>1810</catValu>
+        <labl>Central European, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>1830</catValu>
+        <labl>Northern European, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>1850</catValu>
+        <labl>Southern European, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>1870</catValu>
+        <labl>Western European, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>1900</catValu>
+        <labl>Eastern European, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>1950</catValu>
+        <labl>European, nec</labl>
+      </catgry>
+      <catgry>
+        <catValu>2000</catValu>
+        <labl>Spaniard (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2001</catValu>
+        <labl>Spaniard (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2002</catValu>
+        <labl>Castillian (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2003</catValu>
+        <labl>Valencian (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2010</catValu>
+        <labl>Andalusian (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2020</catValu>
+        <labl>Asturian (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2040</catValu>
+        <labl>Catalonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>2050</catValu>
+        <labl>Balearic Islander (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2051</catValu>
+        <labl>Balearic Islander (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2052</catValu>
+        <labl>Canary Islander (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2060</catValu>
+        <labl>Galician (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2061</catValu>
+        <labl>Gallego (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2062</catValu>
+        <labl>Galician (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2100</catValu>
+        <labl>Mexican</labl>
+      </catgry>
+      <catgry>
+        <catValu>2101</catValu>
+        <labl>Mexican (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2102</catValu>
+        <labl>Mexicano/Mexicana (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2103</catValu>
+        <labl>Mexican Indian</labl>
+      </catgry>
+      <catgry>
+        <catValu>2110</catValu>
+        <labl>Mexican American</labl>
+      </catgry>
+      <catgry>
+        <catValu>2111</catValu>
+        <labl>Mexican American Indian</labl>
+      </catgry>
+      <catgry>
+        <catValu>2130</catValu>
+        <labl>Chicano/Chicana</labl>
+      </catgry>
+      <catgry>
+        <catValu>2180</catValu>
+        <labl>Nuevo Mexicano</labl>
+      </catgry>
+      <catgry>
+        <catValu>2181</catValu>
+        <labl>Nuevo Mexicano (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2182</catValu>
+        <labl>La Raza (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2183</catValu>
+        <labl>Mexican state (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2184</catValu>
+        <labl>Tejano/Tejana (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2190</catValu>
+        <labl>Californio</labl>
+      </catgry>
+      <catgry>
+        <catValu>2210</catValu>
+        <labl>Costa Rican</labl>
+      </catgry>
+      <catgry>
+        <catValu>2220</catValu>
+        <labl>Guatemalan</labl>
+      </catgry>
+      <catgry>
+        <catValu>2230</catValu>
+        <labl>Honduran</labl>
+      </catgry>
+      <catgry>
+        <catValu>2240</catValu>
+        <labl>Nicaraguan</labl>
+      </catgry>
+      <catgry>
+        <catValu>2250</catValu>
+        <labl>Panamanian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2251</catValu>
+        <labl>Panamanian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2252</catValu>
+        <labl>Canal Zone (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2260</catValu>
+        <labl>Salvadoran</labl>
+      </catgry>
+      <catgry>
+        <catValu>2270</catValu>
+        <labl>Latin American (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2271</catValu>
+        <labl>Central American (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2272</catValu>
+        <labl>Latin American (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2273</catValu>
+        <labl>Latino/Latina (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2274</catValu>
+        <labl>Latin (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2310</catValu>
+        <labl>Argentinean</labl>
+      </catgry>
+      <catgry>
+        <catValu>2320</catValu>
+        <labl>Bolivian</labl>
+      </catgry>
+      <catgry>
+        <catValu>2330</catValu>
+        <labl>Chilean</labl>
+      </catgry>
+      <catgry>
+        <catValu>2340</catValu>
+        <labl>Colombian</labl>
+      </catgry>
+      <catgry>
+        <catValu>2350</catValu>
+        <labl>Ecuadorian</labl>
+      </catgry>
+      <catgry>
+        <catValu>2360</catValu>
+        <labl>Paraguayan</labl>
+      </catgry>
+      <catgry>
+        <catValu>2370</catValu>
+        <labl>Peruvian</labl>
+      </catgry>
+      <catgry>
+        <catValu>2380</catValu>
+        <labl>Uruguayan</labl>
+      </catgry>
+      <catgry>
+        <catValu>2390</catValu>
+        <labl>Venezuelan</labl>
+      </catgry>
+      <catgry>
+        <catValu>2480</catValu>
+        <labl>South American (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2481</catValu>
+        <labl>South American (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2482</catValu>
+        <labl>Criollo/Criolla (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>2610</catValu>
+        <labl>Puerto Rican</labl>
+      </catgry>
+      <catgry>
+        <catValu>2710</catValu>
+        <labl>Cuban</labl>
+      </catgry>
+      <catgry>
+        <catValu>2750</catValu>
+        <labl>Dominican</labl>
+      </catgry>
+      <catgry>
+        <catValu>2900</catValu>
+        <labl>Hispanic</labl>
+      </catgry>
+      <catgry>
+        <catValu>2910</catValu>
+        <labl>Spanish</labl>
+      </catgry>
+      <catgry>
+        <catValu>2950</catValu>
+        <labl>Spanish American</labl>
+      </catgry>
+      <catgry>
+        <catValu>2960</catValu>
+        <labl>Other Spanish/Hispanic</labl>
+      </catgry>
+      <catgry>
+        <catValu>3000</catValu>
+        <labl>Bahamian</labl>
+      </catgry>
+      <catgry>
+        <catValu>3010</catValu>
+        <labl>Barbadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>3020</catValu>
+        <labl>Belizean</labl>
+      </catgry>
+      <catgry>
+        <catValu>3030</catValu>
+        <labl>Bermudan</labl>
+      </catgry>
+      <catgry>
+        <catValu>3040</catValu>
+        <labl>Cayman Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>3080</catValu>
+        <labl>Jamaican</labl>
+      </catgry>
+      <catgry>
+        <catValu>3100</catValu>
+        <labl>Dutch West Indies</labl>
+      </catgry>
+      <catgry>
+        <catValu>3110</catValu>
+        <labl>Aruba Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>3120</catValu>
+        <labl>St Maarten Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>3140</catValu>
+        <labl>Trinidadian/Tobagonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>3150</catValu>
+        <labl>Trinidadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>3160</catValu>
+        <labl>Tobagonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>3170</catValu>
+        <labl>U.S. Virgin Islander (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3171</catValu>
+        <labl>U.S. Virgin Islander (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3172</catValu>
+        <labl>St. Croix Islander (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3173</catValu>
+        <labl>St. John Islander (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3174</catValu>
+        <labl>St. Thomas Islander (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3210</catValu>
+        <labl>British Virgin Islander (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3211</catValu>
+        <labl>British Virgin Islander (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3212</catValu>
+        <labl>Antigua (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3220</catValu>
+        <labl>British West Indian</labl>
+      </catgry>
+      <catgry>
+        <catValu>3230</catValu>
+        <labl>Turks and Caicos Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>3240</catValu>
+        <labl>Anguilla Islander (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3241</catValu>
+        <labl>Anguilla Islander (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3242</catValu>
+        <labl>Montserrat Islander (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3243</catValu>
+        <labl>Kitts/Nevis Islander (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3244</catValu>
+        <labl>St. Christopher (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3245</catValu>
+        <labl>St Vincent Islander (1990); Vincent-Grenadine Islander (2000 Census, 2005 ACS, 2005 PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3280</catValu>
+        <labl>Dominica Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>3290</catValu>
+        <labl>Grenadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>3310</catValu>
+        <labl>St Lucia Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>3320</catValu>
+        <labl>French West Indies</labl>
+      </catgry>
+      <catgry>
+        <catValu>3330</catValu>
+        <labl>Guadeloupe Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>3340</catValu>
+        <labl>Cayenne</labl>
+      </catgry>
+      <catgry>
+        <catValu>3350</catValu>
+        <labl>West Indian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3351</catValu>
+        <labl>West Indian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3352</catValu>
+        <labl>Caribbean (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3353</catValu>
+        <labl>Arawak (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>3360</catValu>
+        <labl>Haitian</labl>
+      </catgry>
+      <catgry>
+        <catValu>3370</catValu>
+        <labl>Other West Indian</labl>
+      </catgry>
+      <catgry>
+        <catValu>3600</catValu>
+        <labl>Brazilian</labl>
+      </catgry>
+      <catgry>
+        <catValu>3650</catValu>
+        <labl>San Andres</labl>
+      </catgry>
+      <catgry>
+        <catValu>3700</catValu>
+        <labl>Guyanese/British Guiana</labl>
+      </catgry>
+      <catgry>
+        <catValu>3750</catValu>
+        <labl>Providencia</labl>
+      </catgry>
+      <catgry>
+        <catValu>3800</catValu>
+        <labl>Surinam/Dutch Guiana</labl>
+      </catgry>
+      <catgry>
+        <catValu>4000</catValu>
+        <labl>Algerian</labl>
+      </catgry>
+      <catgry>
+        <catValu>4020</catValu>
+        <labl>Egyptian</labl>
+      </catgry>
+      <catgry>
+        <catValu>4040</catValu>
+        <labl>Libyan</labl>
+      </catgry>
+      <catgry>
+        <catValu>4060</catValu>
+        <labl>Moroccan (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4061</catValu>
+        <labl>Moroccan (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4062</catValu>
+        <labl>Moor (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4070</catValu>
+        <labl>Ifni</labl>
+      </catgry>
+      <catgry>
+        <catValu>4080</catValu>
+        <labl>Tunisian</labl>
+      </catgry>
+      <catgry>
+        <catValu>4110</catValu>
+        <labl>North African</labl>
+      </catgry>
+      <catgry>
+        <catValu>4120</catValu>
+        <labl>Alhucemas</labl>
+      </catgry>
+      <catgry>
+        <catValu>4130</catValu>
+        <labl>Berber</labl>
+      </catgry>
+      <catgry>
+        <catValu>4140</catValu>
+        <labl>Rio de Oro</labl>
+      </catgry>
+      <catgry>
+        <catValu>4150</catValu>
+        <labl>Bahraini</labl>
+      </catgry>
+      <catgry>
+        <catValu>4160</catValu>
+        <labl>Iranian</labl>
+      </catgry>
+      <catgry>
+        <catValu>4170</catValu>
+        <labl>Iraqi</labl>
+      </catgry>
+      <catgry>
+        <catValu>4190</catValu>
+        <labl>Israeli</labl>
+      </catgry>
+      <catgry>
+        <catValu>4210</catValu>
+        <labl>Jordanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>4220</catValu>
+        <labl>Transjordan</labl>
+      </catgry>
+      <catgry>
+        <catValu>4230</catValu>
+        <labl>Kuwaiti</labl>
+      </catgry>
+      <catgry>
+        <catValu>4250</catValu>
+        <labl>Lebanese</labl>
+      </catgry>
+      <catgry>
+        <catValu>4270</catValu>
+        <labl>Saudi Arabian</labl>
+      </catgry>
+      <catgry>
+        <catValu>4290</catValu>
+        <labl>Syrian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4291</catValu>
+        <labl>Syrian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4292</catValu>
+        <labl>Latakian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4293</catValu>
+        <labl>Jebel Druse (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4310</catValu>
+        <labl>Armenian</labl>
+      </catgry>
+      <catgry>
+        <catValu>4340</catValu>
+        <labl>Turkish</labl>
+      </catgry>
+      <catgry>
+        <catValu>4350</catValu>
+        <labl>Yemeni</labl>
+      </catgry>
+      <catgry>
+        <catValu>4360</catValu>
+        <labl>Omani</labl>
+      </catgry>
+      <catgry>
+        <catValu>4370</catValu>
+        <labl>Muscat</labl>
+      </catgry>
+      <catgry>
+        <catValu>4380</catValu>
+        <labl>Trucial Oman</labl>
+      </catgry>
+      <catgry>
+        <catValu>4390</catValu>
+        <labl>Qatar</labl>
+      </catgry>
+      <catgry>
+        <catValu>4410</catValu>
+        <labl>Bedouin</labl>
+      </catgry>
+      <catgry>
+        <catValu>4420</catValu>
+        <labl>Kurdish</labl>
+      </catgry>
+      <catgry>
+        <catValu>4440</catValu>
+        <labl>Kuria Muria Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>4650</catValu>
+        <labl>Palestinian</labl>
+      </catgry>
+      <catgry>
+        <catValu>4660</catValu>
+        <labl>Gazan</labl>
+      </catgry>
+      <catgry>
+        <catValu>4670</catValu>
+        <labl>West Bank</labl>
+      </catgry>
+      <catgry>
+        <catValu>4700</catValu>
+        <labl>South Yemeni</labl>
+      </catgry>
+      <catgry>
+        <catValu>4710</catValu>
+        <labl>Aden</labl>
+      </catgry>
+      <catgry>
+        <catValu>4800</catValu>
+        <labl>United Arab Emirates</labl>
+      </catgry>
+      <catgry>
+        <catValu>4820</catValu>
+        <labl>Assyrian/Chaldean/Syriac (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4821</catValu>
+        <labl>Assyrian</labl>
+      </catgry>
+      <catgry>
+        <catValu>4822</catValu>
+        <labl>Syriac (1980, 2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4823</catValu>
+        <labl>Chaldean (2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4900</catValu>
+        <labl>Middle Eastern</labl>
+      </catgry>
+      <catgry>
+        <catValu>4950</catValu>
+        <labl>Arab</labl>
+      </catgry>
+      <catgry>
+        <catValu>4951</catValu>
+        <labl>Arabic (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>4960</catValu>
+        <labl>Other Arab</labl>
+      </catgry>
+      <catgry>
+        <catValu>5000</catValu>
+        <labl>Angolan</labl>
+      </catgry>
+      <catgry>
+        <catValu>5020</catValu>
+        <labl>Benin</labl>
+      </catgry>
+      <catgry>
+        <catValu>5040</catValu>
+        <labl>Botswana</labl>
+      </catgry>
+      <catgry>
+        <catValu>5060</catValu>
+        <labl>Burundian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5080</catValu>
+        <labl>Cameroonian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5100</catValu>
+        <labl>Cape Verdean</labl>
+      </catgry>
+      <catgry>
+        <catValu>5120</catValu>
+        <labl>Central African Republic</labl>
+      </catgry>
+      <catgry>
+        <catValu>5130</catValu>
+        <labl>Chadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5150</catValu>
+        <labl>Congolese</labl>
+      </catgry>
+      <catgry>
+        <catValu>5160</catValu>
+        <labl>Congo-Brazzaville</labl>
+      </catgry>
+      <catgry>
+        <catValu>5190</catValu>
+        <labl>Djibouti</labl>
+      </catgry>
+      <catgry>
+        <catValu>5200</catValu>
+        <labl>Equatorial Guinea</labl>
+      </catgry>
+      <catgry>
+        <catValu>5210</catValu>
+        <labl>Corsico Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>5220</catValu>
+        <labl>Ethiopian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5230</catValu>
+        <labl>Eritrean</labl>
+      </catgry>
+      <catgry>
+        <catValu>5250</catValu>
+        <labl>Gabonese</labl>
+      </catgry>
+      <catgry>
+        <catValu>5270</catValu>
+        <labl>Gambian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5290</catValu>
+        <labl>Ghanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5300</catValu>
+        <labl>Guinean</labl>
+      </catgry>
+      <catgry>
+        <catValu>5310</catValu>
+        <labl>Guinea Bissau</labl>
+      </catgry>
+      <catgry>
+        <catValu>5320</catValu>
+        <labl>Ivory Coast</labl>
+      </catgry>
+      <catgry>
+        <catValu>5340</catValu>
+        <labl>Kenyan</labl>
+      </catgry>
+      <catgry>
+        <catValu>5380</catValu>
+        <labl>Lesotho</labl>
+      </catgry>
+      <catgry>
+        <catValu>5410</catValu>
+        <labl>Liberian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5430</catValu>
+        <labl>Madagascan</labl>
+      </catgry>
+      <catgry>
+        <catValu>5450</catValu>
+        <labl>Malawian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5460</catValu>
+        <labl>Malian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5470</catValu>
+        <labl>Mauritanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5490</catValu>
+        <labl>Mozambican</labl>
+      </catgry>
+      <catgry>
+        <catValu>5500</catValu>
+        <labl>Namibian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5510</catValu>
+        <labl>Niger</labl>
+      </catgry>
+      <catgry>
+        <catValu>5530</catValu>
+        <labl>Nigerian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5540</catValu>
+        <labl>Fulani</labl>
+      </catgry>
+      <catgry>
+        <catValu>5550</catValu>
+        <labl>Hausa</labl>
+      </catgry>
+      <catgry>
+        <catValu>5560</catValu>
+        <labl>Ibo</labl>
+      </catgry>
+      <catgry>
+        <catValu>5570</catValu>
+        <labl>Tiv (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>5571</catValu>
+        <labl>Tiv (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>5572</catValu>
+        <labl>Yoruba (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>5610</catValu>
+        <labl>Rwandan</labl>
+      </catgry>
+      <catgry>
+        <catValu>5640</catValu>
+        <labl>Senegalese</labl>
+      </catgry>
+      <catgry>
+        <catValu>5660</catValu>
+        <labl>Sierra Leonean</labl>
+      </catgry>
+      <catgry>
+        <catValu>5680</catValu>
+        <labl>Somalian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5690</catValu>
+        <labl>Swaziland</labl>
+      </catgry>
+      <catgry>
+        <catValu>5700</catValu>
+        <labl>South African</labl>
+      </catgry>
+      <catgry>
+        <catValu>5710</catValu>
+        <labl>Union of South Africa</labl>
+      </catgry>
+      <catgry>
+        <catValu>5720</catValu>
+        <labl>Afrikaner</labl>
+      </catgry>
+      <catgry>
+        <catValu>5730</catValu>
+        <labl>Natalian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5740</catValu>
+        <labl>Zulu</labl>
+      </catgry>
+      <catgry>
+        <catValu>5760</catValu>
+        <labl>Sudanese</labl>
+      </catgry>
+      <catgry>
+        <catValu>5770</catValu>
+        <labl>Dinka</labl>
+      </catgry>
+      <catgry>
+        <catValu>5780</catValu>
+        <labl>Nuer</labl>
+      </catgry>
+      <catgry>
+        <catValu>5790</catValu>
+        <labl>Fur</labl>
+      </catgry>
+      <catgry>
+        <catValu>5800</catValu>
+        <labl>Baggara</labl>
+      </catgry>
+      <catgry>
+        <catValu>5820</catValu>
+        <labl>Tanzanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5830</catValu>
+        <labl>Tanganyikan</labl>
+      </catgry>
+      <catgry>
+        <catValu>5840</catValu>
+        <labl>Zanzibar</labl>
+      </catgry>
+      <catgry>
+        <catValu>5860</catValu>
+        <labl>Togo</labl>
+      </catgry>
+      <catgry>
+        <catValu>5880</catValu>
+        <labl>Ugandan</labl>
+      </catgry>
+      <catgry>
+        <catValu>5890</catValu>
+        <labl>Upper Voltan</labl>
+      </catgry>
+      <catgry>
+        <catValu>5900</catValu>
+        <labl>Volta</labl>
+      </catgry>
+      <catgry>
+        <catValu>5910</catValu>
+        <labl>Zairian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5920</catValu>
+        <labl>Zambian</labl>
+      </catgry>
+      <catgry>
+        <catValu>5930</catValu>
+        <labl>Zimbabwean</labl>
+      </catgry>
+      <catgry>
+        <catValu>5940</catValu>
+        <labl>African Islands (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>5941</catValu>
+        <labl>African Islands (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>5942</catValu>
+        <labl>Mauritius (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>5950</catValu>
+        <labl>Other Subsaharan Africa</labl>
+      </catgry>
+      <catgry>
+        <catValu>5960</catValu>
+        <labl>Central African</labl>
+      </catgry>
+      <catgry>
+        <catValu>5970</catValu>
+        <labl>East African</labl>
+      </catgry>
+      <catgry>
+        <catValu>5980</catValu>
+        <labl>West African</labl>
+      </catgry>
+      <catgry>
+        <catValu>5990</catValu>
+        <labl>African</labl>
+      </catgry>
+      <catgry>
+        <catValu>6000</catValu>
+        <labl>Afghan</labl>
+      </catgry>
+      <catgry>
+        <catValu>6010</catValu>
+        <labl>Baluchi</labl>
+      </catgry>
+      <catgry>
+        <catValu>6020</catValu>
+        <labl>Pathan</labl>
+      </catgry>
+      <catgry>
+        <catValu>6030</catValu>
+        <labl>Bengali (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6031</catValu>
+        <labl>Bangladeshi (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6032</catValu>
+        <labl>Bengali (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6070</catValu>
+        <labl>Bhutanese</labl>
+      </catgry>
+      <catgry>
+        <catValu>6090</catValu>
+        <labl>Nepali</labl>
+      </catgry>
+      <catgry>
+        <catValu>6150</catValu>
+        <labl>Asian Indian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6151</catValu>
+        <labl>India (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6152</catValu>
+        <labl>East Indian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6153</catValu>
+        <labl>Madhya Pradesh (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6154</catValu>
+        <labl>Orissa (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6155</catValu>
+        <labl>Rajasthani (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6156</catValu>
+        <labl>Sikkim (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6157</catValu>
+        <labl>Uttar Pradesh (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6220</catValu>
+        <labl>Andaman Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>6240</catValu>
+        <labl>Andhra Pradesh</labl>
+      </catgry>
+      <catgry>
+        <catValu>6260</catValu>
+        <labl>Assamese</labl>
+      </catgry>
+      <catgry>
+        <catValu>6280</catValu>
+        <labl>Goanese</labl>
+      </catgry>
+      <catgry>
+        <catValu>6300</catValu>
+        <labl>Gujarati</labl>
+      </catgry>
+      <catgry>
+        <catValu>6320</catValu>
+        <labl>Karnatakan</labl>
+      </catgry>
+      <catgry>
+        <catValu>6340</catValu>
+        <labl>Keralan</labl>
+      </catgry>
+      <catgry>
+        <catValu>6380</catValu>
+        <labl>Maharashtran</labl>
+      </catgry>
+      <catgry>
+        <catValu>6400</catValu>
+        <labl>Madrasi</labl>
+      </catgry>
+      <catgry>
+        <catValu>6420</catValu>
+        <labl>Mysore</labl>
+      </catgry>
+      <catgry>
+        <catValu>6440</catValu>
+        <labl>Naga</labl>
+      </catgry>
+      <catgry>
+        <catValu>6480</catValu>
+        <labl>Pondicherry</labl>
+      </catgry>
+      <catgry>
+        <catValu>6500</catValu>
+        <labl>Punjabi</labl>
+      </catgry>
+      <catgry>
+        <catValu>6560</catValu>
+        <labl>Tamil</labl>
+      </catgry>
+      <catgry>
+        <catValu>6750</catValu>
+        <labl>East Indies (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6800</catValu>
+        <labl>Pakistani (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6801</catValu>
+        <labl>Pakistani (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6802</catValu>
+        <labl>Kashmiri (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>6900</catValu>
+        <labl>Sri Lankan</labl>
+      </catgry>
+      <catgry>
+        <catValu>6910</catValu>
+        <labl>Singhalese</labl>
+      </catgry>
+      <catgry>
+        <catValu>6920</catValu>
+        <labl>Veddah</labl>
+      </catgry>
+      <catgry>
+        <catValu>6950</catValu>
+        <labl>Maldivian</labl>
+      </catgry>
+      <catgry>
+        <catValu>7000</catValu>
+        <labl>Burmese (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7001</catValu>
+        <labl>Burmese (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7002</catValu>
+        <labl>Burman (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7020</catValu>
+        <labl>Shan</labl>
+      </catgry>
+      <catgry>
+        <catValu>7030</catValu>
+        <labl>Cambodian</labl>
+      </catgry>
+      <catgry>
+        <catValu>7040</catValu>
+        <labl>Khmer</labl>
+      </catgry>
+      <catgry>
+        <catValu>7060</catValu>
+        <labl>Chinese</labl>
+      </catgry>
+      <catgry>
+        <catValu>7070</catValu>
+        <labl>Cantonese (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7071</catValu>
+        <labl>Cantonese (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7072</catValu>
+        <labl>Formosan (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7080</catValu>
+        <labl>Manchurian</labl>
+      </catgry>
+      <catgry>
+        <catValu>7090</catValu>
+        <labl>Mandarin (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7120</catValu>
+        <labl>Mongolian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7121</catValu>
+        <labl>Mongolian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7122</catValu>
+        <labl>Kalmyk (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7140</catValu>
+        <labl>Tibetan</labl>
+      </catgry>
+      <catgry>
+        <catValu>7160</catValu>
+        <labl>Hong Kong (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7161</catValu>
+        <labl>Hong Kong (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7162</catValu>
+        <labl>Eastern Archipelago (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7180</catValu>
+        <labl>Macao</labl>
+      </catgry>
+      <catgry>
+        <catValu>7200</catValu>
+        <labl>Filipino</labl>
+      </catgry>
+      <catgry>
+        <catValu>7300</catValu>
+        <labl>Indonesian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7301</catValu>
+        <labl>Indonesian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7302</catValu>
+        <labl>Borneo (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7303</catValu>
+        <labl>Java (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7304</catValu>
+        <labl>Sumatran (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7400</catValu>
+        <labl>Japanese (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7401</catValu>
+        <labl>Japanese (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7402</catValu>
+        <labl>Issei (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7403</catValu>
+        <labl>Nisei (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7404</catValu>
+        <labl>Sansei (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7405</catValu>
+        <labl>Yonsei (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7406</catValu>
+        <labl>Gosei (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7460</catValu>
+        <labl>Ryukyu Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>7480</catValu>
+        <labl>Okinawan</labl>
+      </catgry>
+      <catgry>
+        <catValu>7500</catValu>
+        <labl>Korean</labl>
+      </catgry>
+      <catgry>
+        <catValu>7650</catValu>
+        <labl>Laotian</labl>
+      </catgry>
+      <catgry>
+        <catValu>7660</catValu>
+        <labl>Meo</labl>
+      </catgry>
+      <catgry>
+        <catValu>7680</catValu>
+        <labl>Hmong</labl>
+      </catgry>
+      <catgry>
+        <catValu>7700</catValu>
+        <labl>Malaysian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7701</catValu>
+        <labl>Malaysian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7702</catValu>
+        <labl>North Borneo (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7740</catValu>
+        <labl>Singaporean</labl>
+      </catgry>
+      <catgry>
+        <catValu>7760</catValu>
+        <labl>Thai</labl>
+      </catgry>
+      <catgry>
+        <catValu>7770</catValu>
+        <labl>Black Thai</labl>
+      </catgry>
+      <catgry>
+        <catValu>7780</catValu>
+        <labl>Western Lao</labl>
+      </catgry>
+      <catgry>
+        <catValu>7820</catValu>
+        <labl>Taiwanese</labl>
+      </catgry>
+      <catgry>
+        <catValu>7850</catValu>
+        <labl>Vietnamese</labl>
+      </catgry>
+      <catgry>
+        <catValu>7860</catValu>
+        <labl>Katu</labl>
+      </catgry>
+      <catgry>
+        <catValu>7870</catValu>
+        <labl>Ma</labl>
+      </catgry>
+      <catgry>
+        <catValu>7880</catValu>
+        <labl>Mnong</labl>
+      </catgry>
+      <catgry>
+        <catValu>7900</catValu>
+        <labl>Montagnard</labl>
+      </catgry>
+      <catgry>
+        <catValu>7920</catValu>
+        <labl>Indochinese</labl>
+      </catgry>
+      <catgry>
+        <catValu>7930</catValu>
+        <labl>Eurasian</labl>
+      </catgry>
+      <catgry>
+        <catValu>7931</catValu>
+        <labl>Amerasian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>7950</catValu>
+        <labl>Asian</labl>
+      </catgry>
+      <catgry>
+        <catValu>7960</catValu>
+        <labl>Other Asian</labl>
+      </catgry>
+      <catgry>
+        <catValu>8000</catValu>
+        <labl>Australian</labl>
+      </catgry>
+      <catgry>
+        <catValu>8010</catValu>
+        <labl>Tasmanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>8020</catValu>
+        <labl>Australian Aborigine (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8030</catValu>
+        <labl>New Zealander</labl>
+      </catgry>
+      <catgry>
+        <catValu>8080</catValu>
+        <labl>Polynesian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8081</catValu>
+        <labl>Polynesian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8082</catValu>
+        <labl>Norfolk Islander (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8090</catValu>
+        <labl>Kapinagamarangan (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8091</catValu>
+        <labl>Kapinagamarangan (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8092</catValu>
+        <labl>Nukuoroan (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8100</catValu>
+        <labl>Maori</labl>
+      </catgry>
+      <catgry>
+        <catValu>8110</catValu>
+        <labl>Hawaiian</labl>
+      </catgry>
+      <catgry>
+        <catValu>8130</catValu>
+        <labl>Part Hawaiian</labl>
+      </catgry>
+      <catgry>
+        <catValu>8140</catValu>
+        <labl>Samoan (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8141</catValu>
+        <labl>Samoan (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8142</catValu>
+        <labl>American Samoan (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8143</catValu>
+        <labl>French Samoan</labl>
+      </catgry>
+      <catgry>
+        <catValu>8144</catValu>
+        <labl>Part Samoan (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8150</catValu>
+        <labl>Tongan</labl>
+      </catgry>
+      <catgry>
+        <catValu>8160</catValu>
+        <labl>Tokelauan</labl>
+      </catgry>
+      <catgry>
+        <catValu>8170</catValu>
+        <labl>Cook Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>8180</catValu>
+        <labl>Tahitian</labl>
+      </catgry>
+      <catgry>
+        <catValu>8190</catValu>
+        <labl>Niuean</labl>
+      </catgry>
+      <catgry>
+        <catValu>8200</catValu>
+        <labl>Micronesian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8201</catValu>
+        <labl>Micronesian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8202</catValu>
+        <labl>U.S. Trust Terr of the Pacific (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8210</catValu>
+        <labl>Guamanian</labl>
+      </catgry>
+      <catgry>
+        <catValu>8220</catValu>
+        <labl>Chamorro Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>8230</catValu>
+        <labl>Saipanese (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8231</catValu>
+        <labl>Saipanese (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8232</catValu>
+        <labl>Northern Marianas (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8240</catValu>
+        <labl>Palauan</labl>
+      </catgry>
+      <catgry>
+        <catValu>8250</catValu>
+        <labl>Marshall Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>8260</catValu>
+        <labl>Kosraean</labl>
+      </catgry>
+      <catgry>
+        <catValu>8270</catValu>
+        <labl>Ponapean (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8271</catValu>
+        <labl>Ponapean (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8272</catValu>
+        <labl>Mokilese (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8273</catValu>
+        <labl>Ngatikese (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8274</catValu>
+        <labl>Pingelapese (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8280</catValu>
+        <labl>Chuukese (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8281</catValu>
+        <labl>Hall Islander (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8282</catValu>
+        <labl>Mortlockese (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8283</catValu>
+        <labl>Namanouito (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8284</catValu>
+        <labl>Pulawatese (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8285</catValu>
+        <labl>Truk Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>8290</catValu>
+        <labl>Yap Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>8300</catValu>
+        <labl>Caroline Islander (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8301</catValu>
+        <labl>Caroline Islander (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8302</catValu>
+        <labl>Lamotrekese (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8303</catValu>
+        <labl>Ulithian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8304</catValu>
+        <labl>Woleaian (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8310</catValu>
+        <labl>Kiribatese</labl>
+      </catgry>
+      <catgry>
+        <catValu>8320</catValu>
+        <labl>Nauruan</labl>
+      </catgry>
+      <catgry>
+        <catValu>8330</catValu>
+        <labl>Tarawa Islander (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8340</catValu>
+        <labl>Tinian Islander (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8400</catValu>
+        <labl>Melanesian Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>8410</catValu>
+        <labl>Fijian</labl>
+      </catgry>
+      <catgry>
+        <catValu>8430</catValu>
+        <labl>New Guinean</labl>
+      </catgry>
+      <catgry>
+        <catValu>8440</catValu>
+        <labl>Papuan</labl>
+      </catgry>
+      <catgry>
+        <catValu>8450</catValu>
+        <labl>Solomon Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>8460</catValu>
+        <labl>New Caledonian Islander</labl>
+      </catgry>
+      <catgry>
+        <catValu>8470</catValu>
+        <labl>Vanuatuan</labl>
+      </catgry>
+      <catgry>
+        <catValu>8500</catValu>
+        <labl>Pacific Islander (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8501</catValu>
+        <labl>Campbell Islander (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8502</catValu>
+        <labl>Christmas Islander (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8503</catValu>
+        <labl>Kermadec Islander (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8504</catValu>
+        <labl>Midway Islander (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8505</catValu>
+        <labl>Phoenix Islander (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8506</catValu>
+        <labl>Wake Islander (1980)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8600</catValu>
+        <labl>Oceania</labl>
+      </catgry>
+      <catgry>
+        <catValu>8620</catValu>
+        <labl>Chamolinian (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>8630</catValu>
+        <labl>Reserved Codes</labl>
+      </catgry>
+      <catgry>
+        <catValu>8700</catValu>
+        <labl>Other Pacific</labl>
+      </catgry>
+      <catgry>
+        <catValu>9000</catValu>
+        <labl>Afro-American</labl>
+      </catgry>
+      <catgry>
+        <catValu>9001</catValu>
+        <labl>Afro-American (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9002</catValu>
+        <labl>Black (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9003</catValu>
+        <labl>Negro (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9004</catValu>
+        <labl>Nonwhite (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9005</catValu>
+        <labl>Colored (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9006</catValu>
+        <labl>Creole (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9007</catValu>
+        <labl>Mulatto (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9008</catValu>
+        <labl>Afro</labl>
+      </catgry>
+      <catgry>
+        <catValu>9020</catValu>
+        <labl>African-American (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9130</catValu>
+        <labl>Central American Indian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9140</catValu>
+        <labl>South American Indian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9200</catValu>
+        <labl>American Indian (all tribes)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9201</catValu>
+        <labl>American Indian-English-French</labl>
+      </catgry>
+      <catgry>
+        <catValu>9202</catValu>
+        <labl>American Indian-English-German</labl>
+      </catgry>
+      <catgry>
+        <catValu>9203</catValu>
+        <labl>American Indian-English-Irish</labl>
+      </catgry>
+      <catgry>
+        <catValu>9204</catValu>
+        <labl>American Indian-German-Irish</labl>
+      </catgry>
+      <catgry>
+        <catValu>9205</catValu>
+        <labl>Cherokee</labl>
+      </catgry>
+      <catgry>
+        <catValu>9206</catValu>
+        <labl>Native American</labl>
+      </catgry>
+      <catgry>
+        <catValu>9207</catValu>
+        <labl>Indian</labl>
+      </catgry>
+      <catgry>
+        <catValu>9210</catValu>
+        <labl>Aleut</labl>
+      </catgry>
+      <catgry>
+        <catValu>9220</catValu>
+        <labl>Eskimo</labl>
+      </catgry>
+      <catgry>
+        <catValu>9230</catValu>
+        <labl>Inuit</labl>
+      </catgry>
+      <catgry>
+        <catValu>9240</catValu>
+        <labl>White/Caucasian</labl>
+      </catgry>
+      <catgry>
+        <catValu>9241</catValu>
+        <labl>White/Caucasian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9242</catValu>
+        <labl>Anglo (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9243</catValu>
+        <labl>Appalachian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9244</catValu>
+        <labl>Aryan (1990-2000)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9300</catValu>
+        <labl>Greenlander</labl>
+      </catgry>
+      <catgry>
+        <catValu>9310</catValu>
+        <labl>Canadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>9330</catValu>
+        <labl>Newfoundland</labl>
+      </catgry>
+      <catgry>
+        <catValu>9340</catValu>
+        <labl>Nova Scotian</labl>
+      </catgry>
+      <catgry>
+        <catValu>9350</catValu>
+        <labl>French Canadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>9360</catValu>
+        <labl>Acadian</labl>
+      </catgry>
+      <catgry>
+        <catValu>9361</catValu>
+        <labl>Acadian (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9362</catValu>
+        <labl>Cajun (1990-2000, ACS, PRCS)</labl>
+      </catgry>
+      <catgry>
+        <catValu>9390</catValu>
+        <labl>American</labl>
+      </catgry>
+      <catgry>
+        <catValu>9391</catValu>
+        <labl>American/United States</labl>
+      </catgry>
+      <catgry>
+        <catValu>9400</catValu>
+        <labl>United States</labl>
+      </catgry>
+      <catgry>
+        <catValu>9410</catValu>
+        <labl>Alabama</labl>
+      </catgry>
+      <catgry>
+        <catValu>9420</catValu>
+        <labl>Alaska</labl>
+      </catgry>
+      <catgry>
+        <catValu>9430</catValu>
+        <labl>Arizona</labl>
+      </catgry>
+      <catgry>
+        <catValu>9440</catValu>
+        <labl>Arkansas</labl>
+      </catgry>
+      <catgry>
+        <catValu>9450</catValu>
+        <labl>California</labl>
+      </catgry>
+      <catgry>
+        <catValu>9460</catValu>
+        <labl>Colorado</labl>
+      </catgry>
+      <catgry>
+        <catValu>9470</catValu>
+        <labl>Connecticut</labl>
+      </catgry>
+      <catgry>
+        <catValu>9480</catValu>
+        <labl>District of Columbia</labl>
+      </catgry>
+      <catgry>
+        <catValu>9490</catValu>
+        <labl>Delaware</labl>
+      </catgry>
+      <catgry>
+        <catValu>9500</catValu>
+        <labl>Florida</labl>
+      </catgry>
+      <catgry>
+        <catValu>9510</catValu>
+        <labl>Georgia</labl>
+      </catgry>
+      <catgry>
+        <catValu>9520</catValu>
+        <labl>Idaho</labl>
+      </catgry>
+      <catgry>
+        <catValu>9530</catValu>
+        <labl>Illinois</labl>
+      </catgry>
+      <catgry>
+        <catValu>9540</catValu>
+        <labl>Indiana</labl>
+      </catgry>
+      <catgry>
+        <catValu>9550</catValu>
+        <labl>Iowa</labl>
+      </catgry>
+      <catgry>
+        <catValu>9560</catValu>
+        <labl>Kansas</labl>
+      </catgry>
+      <catgry>
+        <catValu>9570</catValu>
+        <labl>Kentucky</labl>
+      </catgry>
+      <catgry>
+        <catValu>9580</catValu>
+        <labl>Louisiana</labl>
+      </catgry>
+      <catgry>
+        <catValu>9590</catValu>
+        <labl>Maine</labl>
+      </catgry>
+      <catgry>
+        <catValu>9600</catValu>
+        <labl>Maryland</labl>
+      </catgry>
+      <catgry>
+        <catValu>9610</catValu>
+        <labl>Massachusetts</labl>
+      </catgry>
+      <catgry>
+        <catValu>9620</catValu>
+        <labl>Michigan</labl>
+      </catgry>
+      <catgry>
+        <catValu>9630</catValu>
+        <labl>Minnesota</labl>
+      </catgry>
+      <catgry>
+        <catValu>9640</catValu>
+        <labl>Mississippi</labl>
+      </catgry>
+      <catgry>
+        <catValu>9650</catValu>
+        <labl>Missouri</labl>
+      </catgry>
+      <catgry>
+        <catValu>9660</catValu>
+        <labl>Montana</labl>
+      </catgry>
+      <catgry>
+        <catValu>9670</catValu>
+        <labl>Nebraska</labl>
+      </catgry>
+      <catgry>
+        <catValu>9680</catValu>
+        <labl>Nevada</labl>
+      </catgry>
+      <catgry>
+        <catValu>9690</catValu>
+        <labl>New Hampshire</labl>
+      </catgry>
+      <catgry>
+        <catValu>9700</catValu>
+        <labl>New Jersey</labl>
+      </catgry>
+      <catgry>
+        <catValu>9710</catValu>
+        <labl>New Mexico</labl>
+      </catgry>
+      <catgry>
+        <catValu>9720</catValu>
+        <labl>New York</labl>
+      </catgry>
+      <catgry>
+        <catValu>9730</catValu>
+        <labl>North Carolina</labl>
+      </catgry>
+      <catgry>
+        <catValu>9740</catValu>
+        <labl>North Dakota</labl>
+      </catgry>
+      <catgry>
+        <catValu>9750</catValu>
+        <labl>Ohio</labl>
+      </catgry>
+      <catgry>
+        <catValu>9760</catValu>
+        <labl>Oklahoma</labl>
+      </catgry>
+      <catgry>
+        <catValu>9770</catValu>
+        <labl>Oregon</labl>
+      </catgry>
+      <catgry>
+        <catValu>9780</catValu>
+        <labl>Pennsylvania</labl>
+      </catgry>
+      <catgry>
+        <catValu>9790</catValu>
+        <labl>Rhode Island</labl>
+      </catgry>
+      <catgry>
+        <catValu>9800</catValu>
+        <labl>South Carolina</labl>
+      </catgry>
+      <catgry>
+        <catValu>9810</catValu>
+        <labl>South Dakota</labl>
+      </catgry>
+      <catgry>
+        <catValu>9820</catValu>
+        <labl>Tennessee</labl>
+      </catgry>
+      <catgry>
+        <catValu>9830</catValu>
+        <labl>Texas</labl>
+      </catgry>
+      <catgry>
+        <catValu>9840</catValu>
+        <labl>Utah</labl>
+      </catgry>
+      <catgry>
+        <catValu>9850</catValu>
+        <labl>Vermont</labl>
+      </catgry>
+      <catgry>
+        <catValu>9860</catValu>
+        <labl>Virginia</labl>
+      </catgry>
+      <catgry>
+        <catValu>9870</catValu>
+        <labl>Washington</labl>
+      </catgry>
+      <catgry>
+        <catValu>9880</catValu>
+        <labl>West Virginia</labl>
+      </catgry>
+      <catgry>
+        <catValu>9890</catValu>
+        <labl>Wisconsin</labl>
+      </catgry>
+      <catgry>
+        <catValu>9900</catValu>
+        <labl>Wyoming</labl>
+      </catgry>
+      <catgry>
+        <catValu>9930</catValu>
+        <labl>Southerner</labl>
+      </catgry>
+      <catgry>
+        <catValu>9940</catValu>
+        <labl>North American</labl>
+      </catgry>
+      <catgry>
+        <catValu>9950</catValu>
+        <labl>Mixture</labl>
+      </catgry>
+      <catgry>
+        <catValu>9960</catValu>
+        <labl>Uncodable</labl>
+      </catgry>
+      <catgry>
+        <catValu>9961</catValu>
+        <labl>Not Classified</labl>
+      </catgry>
+      <catgry>
+        <catValu>9962</catValu>
+        <labl>Suppressed</labl>
+      </catgry>
+      <catgry>
+        <catValu>9980</catValu>
+        <labl>Other</labl>
+      </catgry>
+      <catgry>
+        <catValu>9990</catValu>
+        <labl>Not Reported</labl>
+      </catgry>
+      <concept vocab="IPUMS">Race, Ethnicity, and Nativity Variables -- PERSON</concept>
+      <varFormat schema="other" type="numeric"/>
+    </var>
+  </dataDscr>
+</codeBook>

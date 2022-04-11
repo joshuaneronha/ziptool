@@ -57,7 +57,7 @@ def test_data_by_zip(test_data):
         },
     )
 
-    assert test_results == {
+    assert test_results.round(2).to_dict(orient = 'index') == {
         "02835": {
             "HHINCOME": {"mean": 119942.7, "std": 135934.56, "median": 83000.0},
             "EDUC": {"mean": 7.36, "std": 3.01, "median": 7.0},

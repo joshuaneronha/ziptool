@@ -4,7 +4,7 @@ pd.options.mode.chained_assignment = None
 import tempfile
 from typing import List, Union
 
-import geopandas as pd
+import geopandas as gpd
 
 from . import fetch_data, geo_conversion, interface
 
@@ -33,19 +33,8 @@ def data_by_zip(zips: List[str], acs_data, variables=None, year="2019"):
 
 
     Returns:
-        When variables of interest are passed, a dictionary of the form::
-
-                {
-                    zip_1: {
-                        var_1: {
-                            "mean": 12345.67,
-                            "std": 23456.78,
-                            "median": 34567.89
-                        },
-                        var_2: ...
-                    },
-                    zip_2: ...
-                }
+        When variables of interest are passed, a pd.DataFrame containing
+        the summary statistics foor each ZIP code.
 
         When variables of interest are NOT passed, a dictionary of the form::
 
@@ -66,10 +55,10 @@ def data_by_zip(zips: List[str], acs_data, variables=None, year="2019"):
     """
 
     ans_dict = {}
+    ans_df = []
 
     global hud_crosswalk
 
-    # TODO(khw): zip is a keyword, change the name
     for this_zip in zips:
         tracts, state_fips_code = geo_conversion.zip_to_tract(this_zip)
 
@@ -82,6 +71,16 @@ def data_by_zip(zips: List[str], acs_data, variables=None, year="2019"):
         ans = interface.get_acs_data(
             acs_data, int(state_fips_code), puma_ratios, variables
         )
-        ans_dict[this_zip] = ans
 
-    return ans_dict
+        if variables is None:
+            ans_dict[this_zip] = ans
+
+        else:
+            ans_df.append(ans)
+
+    if variables is None:
+        return ans_dict
+    else:
+        df = pd.concat(ans_df,axis=1).transpose()
+        df.index = zips
+        return df

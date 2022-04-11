@@ -90,26 +90,3 @@ def get_fips_code_from_abbr(state: str) -> str:
         raise KeyError(f"No such abbreviation: {state}")
 
     return obj.fips
-
-
-def convert_to_df(data_dict: dict) -> pd.DataFrame:
-    """
-    Converts summary statistics returned by query_by_zip to a dataframe.
-
-    Args:
-        data_dict: the dictionary returned by query_by_zip
-
-    Returns:
-        pd.DataFrame containing the summary statistics by ZIP code
-
-    Raises:
-    """
-
-    df = pd.DataFrame.from_dict(data_dict, orient="index")
-    for col in df:
-        df[col + "_mean"] = df[col].apply(lambda x: x["mean"])
-        df[col + "_median"] = df[col].apply(lambda x: x["median"])
-        df[col + "_std"] = df[col].apply(lambda x: x["std"])
-        df.drop([col], axis=1, inplace=True)
-
-    return df

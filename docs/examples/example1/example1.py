@@ -15,9 +15,9 @@ extract = UsaExtract(
     ["us2019a"],
     ["STATEFIP","PUMA","HHINCOME","ANCESTR1"],
 )
-ipums.submit_extract(extract)
-ipums.wait_for_extract(extract)
-ipums.download_extract(extract, download_dir=DOWNLOAD_DIR)
+# ipums.submit_extract(extract)
+# ipums.wait_for_extract(extract)
+# ipums.download_extract(extract, download_dir=DOWNLOAD_DIR)
 
 ddi_file = list(DOWNLOAD_DIR.glob("*.xml"))[0]
 ddi = ipumspy.readers.read_ipums_ddi(ddi_file)
@@ -26,11 +26,10 @@ ipums_df = ipumspy.readers.read_microdata(ddi,
             DOWNLOAD_DIR / ddi.file_description.filename)
 
 from ziptool.query_by_zip import data_by_zip
-from ziptool.utils import convert_to_df
 
-income_data = data_by_zip(['02835','04046','02740','06355','02804'], ipums_df,
+income_df = data_by_zip(['02740','02804','02835','04046','06355'], ipums_df,
     {"HHINCOME": {"null": 9999999, "type":'household'}})
-income_df = convert_to_df(income_data)
+# income_df = convert_to_df(income_data)
 
 import matplotlib.pyplot as plt
 ylgnbu = ['#7fcdbb', '#41b6c4', '#225ea8',
