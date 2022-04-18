@@ -59,13 +59,19 @@ def test_data_by_zip(test_data):
 
     assert test_results.round(2).to_dict(orient = 'index') == {
         "02835": {
-            "HHINCOME": {"mean": 119942.7, "std": 135934.56, "median": 83000.0},
-            "EDUC": {"mean": 7.36, "std": 3.01, "median": 7.0},
-        },
+            "HHINCOME_mean": 119942.7,
+            "HHINCOME_std": 135844.35,
+            "HHINCOME_median": 83000.0,
+            "EDUC_mean": 7.36,
+            "EDUC_std": 3.01,
+            "EDUC_median": 7.0},
         "45103": {
-            "HHINCOME": {"mean": 89828.29, "std": 80997.83, "median": 68000.0},
-            "EDUC": {"mean": 6.27, "std": 2.75, "median": 6.0},
-        },
+            "HHINCOME_mean": 89828.29,
+            "HHINCOME_std": 80913.67,
+            "HHINCOME_median": 68000.0,
+            "EDUC_mean": 6.27,
+            "EDUC_std": 2.75,
+            "EDUC_median": 6.0},
     }
 
 
