@@ -1,8 +1,12 @@
 [tool.poetry]
 name = "ziptool"
-version = "0.1.0"
+version = "0.0.1.dev7"
 description = "A tool for aggregating Census data at the ZIP code level"
 authors = ["Joshua Neronha <joshua_neronha@brown.edu>"]
+keywords = ["census"]
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/joshuaneronha/ziptool"
 packages = [
     { include = "ziptool", from = "src" },
 ]

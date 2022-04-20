@@ -3,7 +3,6 @@ from typing import Dict, List, Optional, Union
 
 import numpy as np
 import pandas as pd
-import wquantiles
 
 FilenameType = Union[str, Path]
 
@@ -121,8 +120,9 @@ def get_acs_data(
 
 
             # Transform the null value to a pandas null value
-                sub_state.loc[sub_state[key] == value["null"], key] = pd.NA
 
+                sub_state.loc[sub_state[key] == value["null"], key] = pd.NA
+                
                 # For household variables, put null values in extra rows
                 if value["type"] != "individual":
                     sub_state.loc[sub_state["PERNUM"] > 1, key] = pd.NA
