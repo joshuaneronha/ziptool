@@ -14,4 +14,4 @@ You can find the project's documentation <a href = https://ziptool.readthedocs.i
 
 ### Development
 
-This project is in the early stages of development, so please email <a href = mailto:joshua_neronha@brown.edu>joshua_neronha@brown.edu</a> with any problems you may encounter!
+This project is in the early stages of development, so please email <a href = mailto:joshua_neronha@brown.edu>joshua_neronha@brown.edu</a> with any problems you encounter.
