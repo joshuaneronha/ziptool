@@ -20,3 +20,4 @@ docs/examples/example1/configuration.py
 
 # Mac cruft
 .DS_Store
+docs/examples/example2/configuration.py
