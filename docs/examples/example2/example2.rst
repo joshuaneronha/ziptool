@@ -110,9 +110,15 @@ broadband access, not what kind). Then, we generate a heatmap and plot!
 
         plt.tight_layout()
 
-We now have a pd.DataFrame, income_data, that contains all of our data! We can easily generate
-a bar plot to visualize differences by income as an example of the easy analysis
-that we can now perform.
+Now that the function is defined, we can simply call it for whichever variables
+we are interested in.
+
+::
+
+    compare_variables(['02835','10001','79901'])
 
 .. image:: ex2heatmap.png
     :width: 500pt
+
+Boom! We've used ziptool to extract ZIP-level data which we can use
+to perform advanced geographical analyses for any variables we would like.
