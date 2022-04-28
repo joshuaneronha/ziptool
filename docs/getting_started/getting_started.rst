@@ -5,7 +5,6 @@ Installation
 ------------
 
 Ziptool requires Python >= 3.8.0. Install using :code:`pip`:
-*Not yet active!*
 
 ::
 
@@ -48,20 +47,14 @@ You must provide the null value for a variable and its type (household or
 individual), both of which are readily available from the IPUMS codebook.
 
 If you performed the following query on the 2019 ACS, it would return the
-following dictionary. You can easily pull out the statistics you would like.
+following DataFrame. You can easily pull out the statistics you would like.
 
-::
-
-    {'02835':
-        {'HHINCOME':
-               {'mean': 119942.69862560992, 'std': 135934.56385165124, 'median': 83000.0},
-        'EDUC':
-               {'mean': 7.361143491088583, 'std': 3.014875918280958, 'median': 7.0}},
-     '79901':
-        {'HHINCOME':
-               {'mean': 46493.49292927944, 'std': 57214.110770472565, 'median': 29982.499776612964},
-         'EDUC':
-               {'mean': 5.51115705612258, 'std': 2.90874723027615, 'median': 5.999999955296516}}}
+=====  ===============  ==============  =================  ===========  ==========  =============
+   ..    HHINCOME_mean    HHINCOME_std    HHINCOME_median    EDUC_mean    EDUC_std    EDUC_median
+=====  ===============  ==============  =================  ===========  ==========  =============
+02835         119943          135844                83000      7.36114     3.01399              7
+79901          46493.5         57143.2              30000      5.51116     2.90709              6
+=====  ===============  ==============  =================  ===========  ==========  =============
 
 The summary statistics for household income make sense! However, education is a
 categorical variable, so the summary statistics might be less useful. In that

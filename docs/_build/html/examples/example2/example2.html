@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Example 2 &#8212; Ziptool 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Example using ipumspy" href="../example1/example1.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="example-2">
+<h1>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h1>
+<p>Here, we are interested in comparing the correlations between different household
+variables for different variables. We will use ipumspy and ziptool to easily
+extract this data and generate correlation matrices.</p>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>First, import pandas, ziptool, ipumspy and some plotting mechanisms.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">configuration</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">ipumspy</span>
+<span class="kn">from</span> <span class="nn">ipumspy</span> <span class="kn">import</span> <span class="n">IpumsApiClient</span><span class="p">,</span> <span class="n">UsaExtract</span><span class="p">,</span> <span class="n">readers</span><span class="p">,</span> <span class="n">ddi</span>
+
+<span class="kn">from</span> <span class="nn">ziptool.query_by_zip</span> <span class="kn">import</span> <span class="n">data_by_zip</span>
+</pre></div>
+</div>
+<p>First, we pull our data using ipumspy.</p>
+</section>
+<section id="fetching-data">
+<h2>Fetching Data<a class="headerlink" href="#fetching-data" title="Permalink to this headline">¶</a></h2>
+<p>Using our API key, we request the variables we are interested in (a selection
+of household dwelling and economic indicators) along with ‘PUMA’ and ‘STATEFIP’,
+both of which are required variables for usage with ziptool. We also would like
+to get data from the 2019 ACS, which is labeled in ipums as ‘us2019a’. The
+request is then submitted and downloaded (note that this can take quite a while).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IPUMS_API_KEY</span> <span class="o">=</span> <span class="n">your_api_key</span>
+<span class="n">DOWNLOAD_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">your_download_dir</span><span class="p">)</span>
+
+<span class="n">ipums</span> <span class="o">=</span> <span class="n">IpumsApiClient</span><span class="p">(</span><span class="n">IPUMS_API_KEY</span><span class="p">)</span>
+
+<span class="n">extract</span> <span class="o">=</span> <span class="n">UsaExtract</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;us2019a&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;STATEFIP&quot;</span><span class="p">,</span><span class="s2">&quot;PUMA&quot;</span><span class="p">,</span><span class="s2">&quot;HHINCOME&quot;</span><span class="p">,</span><span class="s2">&quot;ROOMS&quot;</span><span class="p">,</span><span class="s2">&quot;BEDROOMS&quot;</span><span class="p">,</span> \
+     <span class="s2">&quot;CIHISPEED&quot;</span><span class="p">,</span><span class="s2">&quot;FUELHEAT&quot;</span><span class="p">,</span><span class="s2">&quot;VEHICLES&quot;</span><span class="p">,</span><span class="s2">&quot;VALUEH&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="n">ipums</span><span class="o">.</span><span class="n">submit_extract</span><span class="p">(</span><span class="n">extract</span><span class="p">)</span>
+<span class="n">ipums</span><span class="o">.</span><span class="n">wait_for_extract</span><span class="p">(</span><span class="n">extract</span><span class="p">)</span>
+<span class="n">ipums</span><span class="o">.</span><span class="n">download_extract</span><span class="p">(</span><span class="n">extract</span><span class="p">,</span> <span class="n">download_dir</span><span class="o">=</span><span class="n">DOWNLOAD_DIR</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="analyzing-the-data">
+<h2>Analyzing The Data<a class="headerlink" href="#analyzing-the-data" title="Permalink to this headline">¶</a></h2>
+<p>Now all the data needed for analysis is downloaded, and we can read it in as
+a pd.DataFrame along with the codebook that contains the information associated
+with each variable so that we can properly conduct our analysis.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ddi_file</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">DOWNLOAD_DIR</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.xml&quot;</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ddi</span> <span class="o">=</span> <span class="n">ipumspy</span><span class="o">.</span><span class="n">readers</span><span class="o">.</span><span class="n">read_ipums_ddi</span><span class="p">(</span><span class="n">ddi_file</span><span class="p">)</span>
+
+<span class="n">ipums_df</span> <span class="o">=</span> <span class="n">ipumspy</span><span class="o">.</span><span class="n">readers</span><span class="o">.</span><span class="n">read_microdata</span><span class="p">(</span><span class="n">ddi</span><span class="p">,</span>
+            <span class="n">DOWNLOAD_DIR</span> <span class="o">/</span> <span class="n">ddi</span><span class="o">.</span><span class="n">file_description</span><span class="o">.</span><span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>First, we define the null values of each of our variables (obtained from the
+IPUMS online codebook).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HHINCOME_null</span> <span class="o">=</span> <span class="mi">9999999</span>
+<span class="n">BEDROOMS_null</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ROOMS_null</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">CHISPEED_null</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">FUELHEAT_null</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">VEHICLES_null</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">VALUEH_null</span> <span class="o">=</span> <span class="mi">9999999</span>
+</pre></div>
+</div>
+<p>Then, we define a function called compare_variables which takes in a list of zip codes
+and computes / plots the cross-correlation matrix between each variable of interest.
+We first use ziptool’s data_by_zip function to return the raw dataframes for each
+ZIP code (we do not want any intermediate analysis or summary statistics) and remove the
+null values for each zip code; we then pre-process the CIHISPEED variable to transform
+it from a categorical variable to a binary variable (i.e. does a household have
+broadband access, not what kind). Then, we generate a heatmap and plot!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compare_variables</span><span class="p">(</span><span class="n">zips</span><span class="p">):</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">zips</span><span class="p">),</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">data_by_zip</span><span class="p">(</span><span class="n">zips</span><span class="p">,</span> <span class="n">ipums_df</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="nb">zip</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+
+        <span class="n">mask</span> <span class="o">=</span> <span class="p">[</span><span class="n">value</span><span class="p">[</span><span class="s2">&quot;BEDROOMS&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">BEDROOMS_null</span><span class="p">]</span> <span class="ow">and</span> <span class="p">[</span><span class="n">value</span><span class="p">[</span><span class="s2">&quot;ROOMS&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">ROOMS_null</span><span class="p">]</span> <span class="ow">and</span> \
+        <span class="p">[</span><span class="n">value</span><span class="p">[</span><span class="s2">&quot;CIHISPEED&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">CHISPEED_null</span><span class="p">]</span> <span class="ow">and</span> <span class="p">[</span><span class="n">value</span><span class="p">[</span><span class="s2">&quot;FUELHEAT&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">FUELHEAT_null</span><span class="p">]</span> <span class="ow">and</span> \
+        <span class="p">[</span><span class="n">value</span><span class="p">[</span><span class="s2">&quot;VEHICLES&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">VEHICLES_null</span><span class="p">]</span> <span class="ow">and</span> <span class="p">[</span><span class="n">value</span><span class="p">[</span><span class="s2">&quot;VALUEH&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">VALUEH_null</span><span class="p">]</span> <span class="ow">and</span> \
+        <span class="p">[</span><span class="n">value</span><span class="p">[</span><span class="s2">&quot;HHINCOME&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">HHINCOME_null</span> <span class="p">]</span>
+
+        <span class="n">filtered</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="n">mask</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+        <span class="n">oneperson</span> <span class="o">=</span> <span class="n">filtered</span><span class="p">[</span><span class="n">filtered</span><span class="p">[</span><span class="s1">&#39;PERNUM&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">oneperson</span><span class="p">[</span><span class="s1">&#39;CIHISPEED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">oneperson</span><span class="p">[</span><span class="s1">&#39;CIHISPEED&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">oneperson</span><span class="p">[</span><span class="s1">&#39;CIHISPEED&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">oneperson</span><span class="p">[</span><span class="s1">&#39;CIHISPEED&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">oneperson</span><span class="p">[[</span><span class="s2">&quot;HHINCOME&quot;</span><span class="p">,</span><span class="s2">&quot;ROOMS&quot;</span><span class="p">,</span><span class="s2">&quot;BEDROOMS&quot;</span><span class="p">,</span><span class="s2">&quot;CIHISPEED&quot;</span><span class="p">,</span><span class="s2">&quot;VEHICLES&quot;</span><span class="p">,</span><span class="s2">&quot;VALUEH&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">oneperson</span><span class="p">[</span><span class="s1">&#39;HHWT&#39;</span><span class="p">],</span><span class="n">axis</span> <span class="o">=</span> <span class="s1">&#39;index&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s1">&#39;YlGnBu&#39;</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="nb">zip</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now that the function is defined, we can simply call it for whichever variables
+we are interested in.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">compare_variables</span><span class="p">([</span><span class="s1">&#39;02835&#39;</span><span class="p">,</span><span class="s1">&#39;10001&#39;</span><span class="p">,</span><span class="s1">&#39;79901&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/ex2heatmap.png"><img alt="../../_images/ex2heatmap.png" src="../../_images/ex2heatmap.png" style="width: 500pt;" /></a>
+<p>Boom! We’ve used ziptool to extract ZIP-level data which we can use
+to perform advanced geographical analyses for any variables we would like.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Ziptool</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started.html"> Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../why.html"> Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html"> Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../examples.html"> Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../example1/example1.html"> Example 1: Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> Example 2: Cross-Correlations</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../examples.html">Examples</a><ul>
+      <li>Previous: <a href="../example1/example1.html" title="previous chapter">Example using ipumspy</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Joshua Neronha.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/examples/example2/example2.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,5 +1,5 @@
-Example using ipumspy
-=====================
+Example 1
+=========
 
 Ziptool can be used with downloaded CSV files of ACS data, but it works best
 with ipumspy, a Python package that uses your IPUMS API key to pull data directly.

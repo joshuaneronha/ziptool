@@ -63,9 +63,3 @@ def compare_variables(zips):
 
 
 compare_variables(['02835','10001','79901'])
-
-
-compare_variables('10001',1)
-compare_variables('79901',2)
-
-plt.tight_layout()

@@ -55,4 +55,5 @@ data by ZIP code from the American Community Survey.
 
 So, in summary, what does this tool actually do? It works through these messy
 geographical conversions (ZIP -> census tract -> PUMA) to pull out approximate
-data from the ACS on a ZIP code level.
+data from the ACS on a ZIP code level, all without you having to think about
+this geographical weirdness.

@@ -72,20 +72,12 @@ representing the state of interest’s FIPS codes</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><p>When variables of interest are passed, a dictionary of the form:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="n">var_1</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="mf">46493.49</span><span class="p">,</span>
-        <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="mf">57214.11</span><span class="p">,</span>
-        <span class="s2">&quot;median&quot;</span><span class="p">:</span> <span class="mf">29982.5</span>
-    <span class="p">}</span><span class="o">...</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>When variables of interest are NOT passed, a dictionary of the form:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">puma_1</span><span class="p">:</span> <span class="p">[</span><span class="n">puma1_df</span><span class="p">,</span> <span class="n">ratio1</span><span class="p">],</span> <span class="n">puma_2</span><span class="p">:</span> <span class="p">[</span><span class="n">puma2_df</span><span class="p">,</span> <span class="n">ratio2</span><span class="p">]</span><span class="o">...</span><span class="p">}</span>
-</pre></div>
-</div>
+<dd class="field-even"><p><p>When variables of interest are passed, a pd.DataFrame containing
+the summary statistics.</p>
+<dl class="simple">
+<dt>When variables of interest are NOT passed, a dictionary of the form::</dt><dd><p>{puma_1: [puma1_df, ratio1], puma_2: [puma2_df, ratio2]…}</p>
+</dd>
+</dl>
 </p>
 </dd>
 </dl>
@@ -112,6 +104,7 @@ representing the state of interest’s FIPS codes</p></li>
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../getting_started/getting_started.html"> Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../why.html"> Background</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html"> Modules</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="query_by_zip.html"> query_by_zip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="fetch_data.html"> fetch_data</a></li>

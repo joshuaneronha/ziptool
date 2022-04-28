@@ -15,7 +15,7 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Modules" href="../modules/modules.html" />
+    <link rel="next" title="Why does this tool exist?" href="../why.html" />
     <link rel="prev" title="Ziptool Documentation" href="../index.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -74,19 +74,46 @@ household income for the zip codes 79901 and 02835.</p>
 You must provide the null value for a variable and its type (household or
 individual), both of which are readily available from the IPUMS codebook.</p>
 <p>If you performed the following query on the 2019 ACS, it would return the
-following dictionary. You can easily pull out the statistics you would like.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;02835&#39;</span><span class="p">:</span>
-    <span class="p">{</span><span class="s1">&#39;HHINCOME&#39;</span><span class="p">:</span>
-           <span class="p">{</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="mf">119942.69862560992</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">:</span> <span class="mf">135934.56385165124</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">:</span> <span class="mf">83000.0</span><span class="p">},</span>
-    <span class="s1">&#39;EDUC&#39;</span><span class="p">:</span>
-           <span class="p">{</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="mf">7.361143491088583</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">:</span> <span class="mf">3.014875918280958</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">}},</span>
- <span class="s1">&#39;79901&#39;</span><span class="p">:</span>
-    <span class="p">{</span><span class="s1">&#39;HHINCOME&#39;</span><span class="p">:</span>
-           <span class="p">{</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="mf">46493.49292927944</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">:</span> <span class="mf">57214.110770472565</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">:</span> <span class="mf">29982.499776612964</span><span class="p">},</span>
-     <span class="s1">&#39;EDUC&#39;</span><span class="p">:</span>
-           <span class="p">{</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="mf">5.51115705612258</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">:</span> <span class="mf">2.90874723027615</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">:</span> <span class="mf">5.999999955296516</span><span class="p">}}}</span>
-</pre></div>
-</div>
+following DataFrame. You can easily pull out the statistics you would like.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 20%" />
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>HHINCOME_mean</p></th>
+<th class="head"><p>HHINCOME_std</p></th>
+<th class="head"><p>HHINCOME_median</p></th>
+<th class="head"><p>EDUC_mean</p></th>
+<th class="head"><p>EDUC_std</p></th>
+<th class="head"><p>EDUC_median</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>02835</p></td>
+<td><p>119943</p></td>
+<td><p>135844</p></td>
+<td><p>83000</p></td>
+<td><p>7.36114</p></td>
+<td><p>3.01399</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-odd"><td><p>79901</p></td>
+<td><p>46493.5</p></td>
+<td><p>57143.2</p></td>
+<td><p>30000</p></td>
+<td><p>5.51116</p></td>
+<td><p>2.90709</p></td>
+<td><p>6</p></td>
+</tr>
+</tbody>
+</table>
 <p>The summary statistics for household income make sense! However, education is a
 categorical variable, so the summary statistics might be less useful. In that
 case, you might choose to provide no argument for <code class="code docutils literal notranslate"><span class="pre">variables</span></code> to simply
@@ -147,6 +174,7 @@ your choice.</p>
 <li class="toctree-l2"><a class="reference internal" href="#extracting-zip-level-data">Extracting ZIP-level Data</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../why.html"> Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../modules/modules.html"> Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/examples.html"> Examples</a></li>
 </ul>
@@ -156,7 +184,7 @@ your choice.</p>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="../index.html" title="previous chapter">Ziptool Documentation</a></li>
-      <li>Next: <a href="../modules/modules.html" title="next chapter">Modules</a></li>
+      <li>Next: <a href="../why.html" title="next chapter">Why does this tool exist?</a></li>
   </ul></li>
 </ul>
 </div>

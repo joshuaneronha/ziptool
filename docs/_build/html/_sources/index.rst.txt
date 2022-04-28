@@ -27,3 +27,9 @@ However, many subfunctions are also documented and can be used standalone.
     Background <why>
     Modules <modules/modules>
     Examples <examples/examples>
+
+**Indices and tables**
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

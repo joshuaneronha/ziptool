@@ -15,6 +15,7 @@
     <script src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Example 2" href="../example2/example2.html" />
     <link rel="prev" title="Examples" href="../examples.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -42,13 +43,42 @@ research using ipumspy and both implementations of data_by_zip.</p>
 New England towns throughout the region: Jamestown, RI (02835); Kennebunkport,
 ME (04046); New Bedford, MA (02740); Stonington, CT (06355); and Westerly, RI
 (02804). We are particularly interested in household income and ancestry.</p>
-<section id="pulling-data-with-ipumspy">
-<h2>Pulling Data with ipumspy<a class="headerlink" href="#pulling-data-with-ipumspy" title="Permalink to this headline">¶</a></h2>
-<p>First, import ipumspy, its readers, and other important dependencies.</p>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>First, import pandas, numpy, and some other important dependencies.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">import</span> <span class="nn">ipumspy</span>
+</pre></div>
+</div>
+<p>We give two options for pulling data. Using ipumspy is recommended as it is much
+easier to use, but importing CSVs is fully supported as well.</p>
+</section>
+<section id="option-1-manually-pulling-data">
+<h2>Option 1: Manually Pulling Data<a class="headerlink" href="#option-1-manually-pulling-data" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Go to <a class="reference external" href="https://usa.ipums.org/usa/">https://usa.ipums.org/usa/</a> and create a free account.</p></li>
+<li><p>Click the “Select Data” tab.</p></li>
+<li><p>Click “Select Samples” to select the year of ACS data you are interested in</p></li>
+</ol>
+<blockquote>
+<div><p>(ziptool only supports one year at a time).</p>
+</div></blockquote>
+<p>4. Under the “Select Harmonized Variables” dropdown, choose the variables you
+would like. Be sure to add “PUMA” and “STATEFIP” under the Household -&gt;
+Geographic tab
+5. Hit “View Cart” then select “Create Data Extract.” Select .csv as the data
+format and rectangular under structure.
+6. Hit submit extract and wait until it is finished so you can download!</p>
+<p>Once you have the data downloaded, simply pass the path to the CSV as an argument
+in data_by_zip. Ziptool will handle the import for you.</p>
+<p>The rest of the tutorial will use the ipumspy option because of its ability
+to import and parse the associated codebook, which we need in this example.</p>
+</section>
+<section id="option-2-pulling-data-with-ipumspy">
+<h2>Option 2: Pulling Data with ipumspy<a class="headerlink" href="#option-2-pulling-data-with-ipumspy" title="Permalink to this headline">¶</a></h2>
+<p>Import ipumspy and the modules we need explicitly.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ipumspy</span>
 <span class="kn">from</span> <span class="nn">ipumspy</span> <span class="kn">import</span> <span class="n">IpumsApiClient</span><span class="p">,</span> <span class="n">UsaExtract</span><span class="p">,</span> <span class="n">readers</span><span class="p">,</span> <span class="n">ddi</span>
 </pre></div>
 </div>
@@ -100,10 +130,9 @@ codebook, as does the type (household vs. individual variable).</p>
 
 <span class="n">income_data</span> <span class="o">=</span> <span class="n">data_by_zip</span><span class="p">([</span><span class="s1">&#39;02835&#39;</span><span class="p">,</span><span class="s1">&#39;04046&#39;</span><span class="p">,</span><span class="s1">&#39;02740&#39;</span><span class="p">,</span><span class="s1">&#39;06355&#39;</span><span class="p">,</span><span class="s1">&#39;02804&#39;</span><span class="p">],</span> <span class="n">ipums_df</span><span class="p">,</span>
     <span class="p">{</span><span class="s2">&quot;HHINCOME&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;null&quot;</span><span class="p">:</span> <span class="mi">9999999</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s1">&#39;household&#39;</span><span class="p">}})</span>
-<span class="n">income_df</span> <span class="o">=</span> <span class="n">convert_to_df</span><span class="p">(</span><span class="n">income_data</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We now have a pd.DataFrame that contains all of our data! We can easily generate
+<p>We now have a pd.DataFrame, income_data, that contains all of our data! We can easily generate
 a bar plot to visualize differences by income as an example of the easy analysis
 that we can now perform.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -183,9 +212,11 @@ data in a standard pd.DataFrame!</p>
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started/getting_started.html"> Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../why.html"> Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules/modules.html"> Modules</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../examples.html"> Examples</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#"> Example 1: ziptool + ipumspy</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> Example 1: Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../example2/example2.html"> Example 2: Cross-Correlations</a></li>
 </ul>
 </li>
 </ul>
@@ -196,6 +227,7 @@ data in a standard pd.DataFrame!</p>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../examples.html">Examples</a><ul>
       <li>Previous: <a href="../examples.html" title="previous chapter">Examples</a></li>
+      <li>Next: <a href="../example2/example2.html" title="next chapter">Example 2</a></li>
   </ul></li>
   </ul></li>
 </ul>
