@@ -81,6 +81,6 @@ def data_by_zip(zips: List[str], acs_data, variables=None, year="2019"):
     if variables is None:
         return ans_dict
     else:
-        df = pd.concat(ans_df,axis=1).transpose()
+        df = pd.concat(ans_df, axis=1).transpose()
         df.index = zips
         return df

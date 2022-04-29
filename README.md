@@ -1,4 +1,4 @@
-[![Documentation Status](https://readthedocs.org/projects/ziptool/badge/?version=latest)](https://ziptool.readthedocs.io/en/latest/?badge=latest)
+[![PyPI version](https://badge.fury.io/py/ziptool.svg)](https://badge.fury.io/py/ziptool) [![Documentation Status](https://readthedocs.org/projects/ziptool/badge/?version=latest)](https://ziptool.readthedocs.io/en/latest/?badge=latest)
 
 # ZIPtool
 
